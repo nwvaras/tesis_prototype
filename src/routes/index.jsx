@@ -10,6 +10,7 @@ import PresentationPage from "views/PresentationPage/PresentationPage.jsx";
 import PricingPage from "views/PricingPage/PricingPage.jsx";
 import ProfilePage from "views/ProfilePage/ProfilePage.jsx";
 import ProductPage from "views/ProductPage/ProductPage.jsx";
+import SideBar from "views/SideBar/SideBar.jsx";
 import SectionsPage from "views/SectionsPage/SectionsPage.jsx";
 import ShoppingCartPage from "views/ShoppingCartPage/ShoppingCartPage.jsx";
 import SignupPage from "views/SignupPage/SignupPage.jsx";
@@ -27,6 +28,7 @@ var indexRoutes = [
   { path: "/profile-page", name: "ProfilePage", component: ProfilePage },
   { path: "/product-page", name: "ProductPage", component: ProductPage },
   { path: "/sections", name: "SectionsPage", component: SectionsPage },
+  { path: "/sidebar", name: "SideBar", component: SideBar},
   {
     path: "/shopping-cart-page",
     name: "ShoppingCartPage",

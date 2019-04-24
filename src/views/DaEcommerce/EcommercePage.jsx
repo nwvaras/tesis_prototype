@@ -42,12 +42,30 @@ import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
 import Settings from "@material-ui/icons/Settings";
 import SectionLatestOffers2 from "./Sections/SectionLatestOffers2";
 import SectionLatestOffers3 from "./Sections/SectionLatestOffers3";
+import {bindActionCreators} from "redux";
+import * as actionCreators from "../../actions/auth";
+import {connect} from "react-redux";
 
 class DaEcommerce extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   }
+  hasFeature(id,node){
+        if(node.id === id){
+            return node.selected
+        }else{
+            if(node.children){
+
+                return node.children.some( (child) => {
+                    return this.hasFeature(id,child)
+                })
+            }
+        }
+        return false
+
+
+    }
   render() {
 
     const { classes } = this.props;
@@ -110,7 +128,7 @@ class DaEcommerce extends React.Component {
                       <Search className={classes.searchIcon} />
                     </Button>
                   </ListItem>
-                    <ListItem className={classes.listItem}>
+                      {this.hasFeature("Compra",this.props.tree) &&<ListItem className={classes.listItem}>
                     <Button
                       href="#pablo"
                       className={classes.navLink + " " + classes.navLinkActive}
@@ -119,7 +137,7 @@ class DaEcommerce extends React.Component {
                     >
                       <ShoppingCart /> Compras
                     </Button>
-                  </ListItem>
+                  </ListItem>}
                   <ListItem className={classes.listItem}>
                     <Button
                       href="#pablo"
@@ -182,13 +200,13 @@ class DaEcommerce extends React.Component {
         </Parallax>
 
         <div className={classNames(classes.main, classes.mainRaised)}>
-          <SectionLatestOffers />
+            {this.hasFeature("Novedades",this.props.tree) && <SectionLatestOffers />}
         </div>
           <div className={classNames(classes.main, classes.mainRaised)}>
-          <SectionLatestOffers2 />
+          {this.hasFeature("Recomendados",this.props.tree) && <SectionLatestOffers2 />}
         </div>
          <div className={classNames(classes.main, classes.mainRaised)}>
-          <SectionLatestOffers3 />
+         {this.hasFeature("TopProductsBuyTimes",this.props.tree) && <SectionLatestOffers3 />}
         </div>
         <div
           className={classNames(
@@ -319,5 +337,17 @@ class DaEcommerce extends React.Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+    return {
+        tree: state.auth.data
+    };
+};
 
-export default withStyles(styles)(DaEcommerce);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatch,
+        actions: bindActionCreators(actionCreators, dispatch)
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(DaEcommerce));
