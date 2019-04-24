@@ -31,21 +31,44 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import configureStore from './store/configureStore';
 import {setDataTree} from "./actions/auth";
+import Notification from "@material-ui/icons/NotificationImportant"
+import List from "@material-ui/icons/List"
+import Favorite from "@material-ui/icons/Favorite"
+import AddCircle from "@material-ui/icons/AddCircle"
+import CardGiftcard from "@material-ui/icons/CardGiftcard"
+import DirectionsCar from "@material-ui/icons/DirectionsCar"
+import AllInbox from "@material-ui/icons/AllInbox"
+import ChromeReaderMode from "@material-ui/icons/ChromeReaderMode"
+import ViewHeadline from "@material-ui/icons/ViewHeadline"
+import Money from "@material-ui/icons/AttachMoney"
+import StarRate from "@material-ui/icons/StarRate"
+import QuestionAnswer from "@material-ui/icons/QuestionAnswer"
+import Search from "@material-ui/icons/Search"
+import Chat from "@material-ui/icons/Chat"
+import Email from "@material-ui/icons/Email"
+import Category from "@material-ui/icons/Category"
+import Description from "@material-ui/icons/Description"
+import CreditCard from "@material-ui/icons/CreditCard"
+import AccountBalance from "@material-ui/icons/AccountBalance"
+import AccountBalanceWallet from "@material-ui/icons/AccountBalanceWallet"
+import AccountCircle from "@material-ui/icons/AccountCircle"
 const initialState = {};
 const hist = createBrowserHistory()
 const store = configureStore(initialState, hist);
+
 let data={}
-try {
-
-   data = JSON.parse(localStorage.getItem('data'));
-
-}
-catch (e) {
-  data= data = {
+// try {
+//
+//    data = JSON.parse(localStorage.getItem('datsa'));
+//
+// }
+// catch (e) {
+  data= {
     name: 'Ecommerce',
     id: 'Ecommerce',
     toggled: true,
     selected: true,
+      icon: Money,
     children: [
         {
             name: 'Usuarios',
@@ -53,21 +76,27 @@ catch (e) {
             children: [
                 { name: 'Notificaciones',
                  id: 'Notificaciones',
-            selected: true },
+            selected: true,
+                icon: Notification,},
                 { name: 'HistorialDeCompra',
                  id: 'HistorialDeCompra',
-            selected: true },
+            selected: true,
+                icon: List,},
                 { name: 'Fidelizacion',
                  id: 'Fidelizacion',
-            selected: true },
+            selected: true,
+                icon: Favorite,},
                 { name: 'WishList',
                  id: 'WishList',
-            selected: true },
+            selected: true,
+                icon: AddCircle,},
                 { name: 'CodigoDesc',
                  id: 'CodigoDesc',
-            selected: true },
+            selected: true,
+                icon:CardGiftcard,},
             ],
-            selected: true
+            selected: true,
+            icon: AccountCircle,
         },
         {
             name: 'Compra',
@@ -75,12 +104,15 @@ catch (e) {
             children: [
                 { name: 'Despacho',
                  id: 'Despacho',
-            selected: true},
+            selected: true,
+                icon: DirectionsCar,},
                 { name: 'Ordenes',
                  id: 'Ordenes',
-            selected: true},
+            selected: true,
+                icon: AllInbox,},
             ],
                 selected: true,
+            icon: Money,
 
         },
         {
@@ -89,19 +121,25 @@ catch (e) {
                     children: [
                 { name: 'Ofertas',
                  id: 'Ofertas',
-            selected: true },
+            selected: true,
+                icon: ChromeReaderMode,},
                 { name: 'Recomendados',
                  id: 'Recomendados',
-            selected: true },
+            selected: true,
+                icon: ChromeReaderMode,},
                 { name: 'Novedades',
                  id: 'Novedades',
-            selected: true },
+            selected: true,
+                icon: ChromeReaderMode,},
                 { name: 'TopProductsBuyTimes',
                  id: 'TopProductsBuyTimes',
-            selected: true },
+            selected: true,
+                icon: ChromeReaderMode,},
                 { name: 'TopProductsEvaluations',
-                 id: 'TopProductsEvaluations',}],
-            selected: true
+                 id: 'TopProductsEvaluations',
+                selected: true, icon:ChromeReaderMode}],
+            selected: true,
+            icon: ChromeReaderMode,
         },
         {
             name: 'Products',
@@ -109,29 +147,38 @@ catch (e) {
                     children: [
                 { name: 'Precio',
                  id: 'Precio',
-            selected: true },
+            selected: true,
+                icon: Money,},
                 { name: 'Stock',
                  id: 'Stock',
-            selected: true },
+            selected: true,
+                icon: AllInbox,},
                 { name: 'Evaluacion',
                  id: 'Evaluacion',
-            selected: true },
+            selected: true,
+                icon: StarRate,},
                 { name: 'Preguntas',
-                 id: 'Preguntas'}],
-            selected: true
+                 id: 'Preguntas',
+                selected: true, icon:QuestionAnswer}],
+            selected: true,
+            icon: AllInbox,
         },
         {
             name: 'Catalogo',
             id: 'Catalogo',
+            selected: true,
+            icon: Category,
             children: [
                 { name: 'Busqueda',
                  id: 'Busqueda',
-            selected: true},
+            selected: true,
+                icon: Search,},
                 { name: 'Categorias',
                  id: 'Categorias',
-            selected: true},
+            selected: true,
+                icon: Category,},
             ],
-                selected: true,
+
 
         },
         {
@@ -140,12 +187,15 @@ catch (e) {
             children: [
                 { name: 'Chat',
                  id: 'Chat',
-            selected: true},
+            selected: true,
+                icon: Chat,},
                 { name: 'Email',
                  id: 'Email',
-            selected: true},
+            selected: true,
+                icon: Email,},
             ],
                 selected: true,
+            icon: Email,
 
         },
         {
@@ -154,9 +204,11 @@ catch (e) {
             children: [
                 { name: 'Informacion',
                  id: 'Informacion',
-            selected: true}
+            selected: true,
+                icon: Description,}
             ],
                 selected: true,
+            icon: Description,
 
         },
         {
@@ -165,24 +217,29 @@ catch (e) {
             children: [
                 { name: 'TarjetaDeCredito',
                  id: 'TarjetaDeCredito',
-            selected: true},
+            selected: true,
+                icon: CreditCard,},
                 { name: 'TransferenciaBancaria',
                  id: 'TransferenciaBancaria',
-            selected: true},
+            selected: true,
+                icon: AccountBalance,},
                 { name: 'PagoEnCash',
                  id: 'PagoEnCash',
-            selected: true},
+            selected: true,
+                icon: Money,},
                 { name: 'PagoEnCuotas',
                  id: 'PagoEnCuotas',
-            selected: true},
+            selected: true,
+                icon: AccountBalanceWallet,},
             ],
                 selected: true,
+            icon: Money,
 
         }
     ]
 };
 
-}
+// }
 store.dispatch(setDataTree(data))
 
 ReactDOM.render(
@@ -208,7 +265,7 @@ ReactDOM.render(
       <Route path="/error-page" component={ErrorPage} />
       <Route path="/category-page" component={CategoryPage} />
       <Route path="/sidebar" component={SideBar} />
-      <Route path="/" component={PresentationPage} />
+      <Route path="/" component={EcommercePage} />
     </Switch>
     </SideBar>
   </Router>

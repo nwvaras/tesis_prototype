@@ -45,6 +45,7 @@ import SectionLatestOffers3 from "./Sections/SectionLatestOffers3";
 import {bindActionCreators} from "redux";
 import * as actionCreators from "../../actions/auth";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 class DaEcommerce extends React.Component {
   componentDidMount() {
@@ -78,7 +79,7 @@ class DaEcommerce extends React.Component {
                 <div className={classes.collapse}>
                   <List className={classes.list + " " + classes.mlAuto}>
 
-                    <ListItem className={classes.listItem}>
+                    {this.hasFeature("Categorias",this.props.tree) &&<ListItem className={classes.listItem}>
                       <CustomDropdown
                       left
                       caret={false}
@@ -102,12 +103,12 @@ class DaEcommerce extends React.Component {
                         color: "transparent"
                       }}
                       dropdownList={[
-                        "Me",
-                        "Settings and other stuff",
-                        "Sign out"
+                        <Link to="/category-page">Ropa</Link>,
+                        "Laptops",
+                        "Instrumentos"
                       ]}
                     />
-                    </ListItem>
+                    </ListItem>}
                   <ListItem className={classes.listItem + " " + classes.mlAuto}>
                   {/*<div className={classes.mlAuto}>*/}
                     <CustomInput
@@ -117,9 +118,9 @@ class DaEcommerce extends React.Component {
                         className: classes.formControl
                       }}
                       inputProps={{
-                        placeholder: "Search",
+                        placeholder: "Buscar",
                         inputProps: {
-                          "aria-label": "Search",
+                          "aria-label": "Buscar",
                           className: classes.searchInput
                         }
                       }}
@@ -128,7 +129,7 @@ class DaEcommerce extends React.Component {
                       <Search className={classes.searchIcon} />
                     </Button>
                   </ListItem>
-                      {this.hasFeature("Compra",this.props.tree) &&<ListItem className={classes.listItem}>
+                      {this.hasFeature("Compra",this.props.tree) && this.hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
                     <Button
                       href="#pablo"
                       className={classes.navLink + " " + classes.navLinkActive}
@@ -138,26 +139,26 @@ class DaEcommerce extends React.Component {
                       <ShoppingCart /> Compras
                     </Button>
                   </ListItem>}
-                  <ListItem className={classes.listItem}>
+                      {this.hasFeature("Usuarios",this.props.tree) && this.hasFeature("HistorialDeCompra",this.props.tree) && <ListItem className={classes.listItem}>
                     <Button
                       href="#pablo"
                       className={classes.navLink}
                       onClick={e => e.preventDefault()}
                       color="transparent"
                     >
-                      <AccountCircle /> Profile
+                      <AccountCircle /> Historial
                     </Button>
-                  </ListItem>
-                  <ListItem className={classes.listItem}>
+                  </ListItem>}
+                  {this.hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
                     <Button
                       href="#pablo"
                       className={classes.navLink}
                       onClick={e => e.preventDefault()}
                       color="transparent"
                     >
-                      <Settings /> Settings
+                      <Settings /> Configuracion
                     </Button>
-                  </ListItem>
+                  </ListItem>}
                   {/*</div>*/}
                     </List>
 
@@ -188,10 +189,10 @@ class DaEcommerce extends React.Component {
                 )}
               >
                 <div className={classes.brand}>
-                  <h1 className={classes.title}>Ecommerce Page!</h1>
+
                   <h4>
-                    Free global delivery for all products. Use coupon{" "}
-                    <b>25summer</b> for an extra 25% Off
+                    Delivery a todo Chile. Usa el cupon{" "}
+                    <b>25verano</b> para un descuento extra de un 25%
                   </h4>
                 </div>
               </GridItem>
@@ -200,13 +201,13 @@ class DaEcommerce extends React.Component {
         </Parallax>
 
         <div className={classNames(classes.main, classes.mainRaised)}>
-            {this.hasFeature("Novedades",this.props.tree) && <SectionLatestOffers />}
+            {this.hasFeature("Ads",this.props.tree) &&this.hasFeature("Novedades",this.props.tree) && <SectionLatestOffers />}
         </div>
           <div className={classNames(classes.main, classes.mainRaised)}>
-          {this.hasFeature("Recomendados",this.props.tree) && <SectionLatestOffers2 />}
+          {this.hasFeature("Ads",this.props.tree) &&this.hasFeature("Recomendados",this.props.tree) && <SectionLatestOffers2 />}
         </div>
          <div className={classNames(classes.main, classes.mainRaised)}>
-         {this.hasFeature("TopProductsBuyTimes",this.props.tree) && <SectionLatestOffers3 />}
+         {this.hasFeature("Ads",this.props.tree) &&this.hasFeature("TopProductsBuyTimes",this.props.tree) && <SectionLatestOffers3 />}
         </div>
         <div
           className={classNames(
@@ -224,10 +225,9 @@ class DaEcommerce extends React.Component {
                 className={classNames(classes.mlAuto, classes.mrAuto)}
               >
                 <div className={classes.textCenter}>
-                  <h3 className={classes.title}>Subscribe to our Newsletter</h3>
+                  <h3 className={classes.title}>¿Buscas ofertas?</h3>
                   <p className={classes.description}>
-                    Join our newsletter and get news in your inbox every week!
-                    We hate spam too, so no worries about this.
+                    Subscribete para recibir actualizaciones de las ultimas ofertas
                   </p>
                 </div>
                 <Card raised className={classes.card}>
@@ -247,7 +247,7 @@ class DaEcommerce extends React.Component {
                                   <Mail />
                                 </InputAdornment>
                               ),
-                              placeholder: "Your Email..."
+                              placeholder: "Tu Email..."
                             }}
                           />
                         </GridItem>
@@ -257,7 +257,7 @@ class DaEcommerce extends React.Component {
                             block
                             className={classes.subscribeButton}
                           >
-                            subscribe
+                            subscribir
                           </Button>
                         </GridItem>
                       </GridContainer>
@@ -277,7 +277,7 @@ class DaEcommerce extends React.Component {
                 <List className={classes.list}>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="http://blog.creative-tim.com/"
+                      href=""
                       className={classes.block}
                     >
                       Blog
@@ -285,10 +285,10 @@ class DaEcommerce extends React.Component {
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/presentation"
+                      href=""
                       className={classes.block}
                     >
-                      Presentation
+                      Presentacion
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
@@ -297,36 +297,25 @@ class DaEcommerce extends React.Component {
                       onClick={e => e.preventDefault()}
                       className={classes.block}
                     >
-                      Discover
+                      Descubre
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
-                    <a
-                      href="#pablito"
-                      onClick={e => e.preventDefault()}
-                      className={classes.block}
-                    >
-                      Payment
-                    </a>
+
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/contact-us"
+                      href=""
                       className={classes.block}
                     >
-                      Contact us
+                      Contactanos
                     </a>
                   </ListItem>
                 </List>
               </div>
               <div className={classes.right}>
                 Copyright &copy; {1900 + new Date().getYear()}{" "}
-                <a
-                  href="https://www.creative-tim.com"
-                  className={classes.aClasses}
-                >
-                  Creative Tim
-                </a>{" "}
+
                 All Rights Reserved.
               </div>
             </div>
@@ -337,6 +326,7 @@ class DaEcommerce extends React.Component {
     );
   }
 }
+
 const mapStateToProps = (state) => {
     return {
         tree: state.auth.data

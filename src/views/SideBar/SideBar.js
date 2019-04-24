@@ -154,7 +154,7 @@ class MiniDrawer extends React.Component {
           <List>
 
               <ListItem button key={element.name} onClick={() => this.props.actions.activateOrDesactivate(element.name)}>
-                  <ListItemIcon>{index % 2 === 0 ?<div style={{marginLeft:'-5px',color: element.selected?'#3a7d2a':'#7d7d7d'}}>  <InboxIcon/> </div> :<div style={{marginLeft:'-5px',color:element.selected?'#3a7d2a':'#7d7d7d'}}> <MailIcon /></div>}</ListItemIcon>
+                  <ListItemIcon>{index % 2 === 0 ?<div style={{marginLeft:'-5px',color: element.selected?'#3a7d2a':'#7d7d7d'}}>  <element.icon/> </div> :<div style={{marginLeft:'-5px',color:element.selected?'#3a7d2a':'#7d7d7d'}}> <element.icon /></div>}</ListItemIcon>
                 <ListItemText primary={element.name} />
               </ListItem>
 
@@ -163,9 +163,9 @@ class MiniDrawer extends React.Component {
           <Divider />
           <Divider />
           <List>
-            {element.children && element.children.map((child, index) => (
+            {element.children && element.children.map((child, index) => ( (console.log(child) || true) &&
               <ListItem button key={child.name} onClick={() => this.props.actions.activateOrDesactivate(child.name)}>
-                  <ListItemIcon>{index % 2 === 0 ? <div  style={{color:child.selected?'#3a7d2a':'#7d7d7d'}}><InboxIcon /> </div>: <div style={{color:child.selected?'#3a7d2a':'#7d7d7d'}}> <MailIcon /> </div>}</ListItemIcon>
+                  <ListItemIcon>{index % 2 === 0 ? <div  style={{color:child.selected?'#3a7d2a':'#7d7d7d'}}><child.icon/> </div>: <div style={{color:child.selected?'#3a7d2a':'#7d7d7d'}}> <child.icon /> </div>}</ListItemIcon>
                 <ListItemText primary={child.name} />
               </ListItem>
             ))}

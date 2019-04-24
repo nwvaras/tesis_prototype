@@ -42,6 +42,7 @@ export default function authReducer(state = initialState, action) {
                                            : onSelected(action.payload.name,content)
                 )
             console.log(newData)
+            localStorage.setItem('data', JSON.stringify({...state.data,children : newData}));
              return Object.assign({}, state, {
                data: {...state.data,children : newData}
             });

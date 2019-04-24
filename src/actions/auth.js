@@ -43,7 +43,7 @@ import {
 } from '../constants';
 
 export function setDataTree(data) {
-    localStorage.setItem('data', JSON.stringify(data));
+
     return {
         type: AUTH_LOGIN_USER_SUCCESS,
         payload: {

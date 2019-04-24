@@ -20,9 +20,27 @@ import styles from "assets/jss/material-kit-pro-react/views/ecommerceSections/la
 import gucci from "assets/img/examples/gucci.jpg";
 import tomFord from "assets/img/examples/tom-ford.jpg";
 import dolce from "assets/img/examples/dolce.jpg";
+import * as actionCreators from "../../../actions/auth";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 
 const SectionLatestOffers = props => {
   const { classes } = props;
+  const hasFeature =(id,node) =>{
+        if(node.id === id){
+            return node.selected
+        }else{
+            if(node.children){
+
+                return node.children.some( (child) => {
+                    return hasFeature(id,child)
+                })
+            }
+        }
+        return false
+
+
+    }
   return (
     <div className={classes.section}>
       <div className={classes.container}>
@@ -49,14 +67,14 @@ const SectionLatestOffers = props => {
               </CardBody>
               <CardFooter plain>
                 <div className={classes.priceContainer}>
-                  <span className={classNames(classes.price, classes.priceOld)}>
+                  {hasFeature("Precio",props.tree) &&<span className={classNames(classes.price, classes.priceOld)}>
                     {" "}
                     €1,430
-                  </span>
-                  <span className={classNames(classes.price, classes.priceNew)}>
+                  </span>}
+                  {hasFeature("Precio",props.tree) &&<span className={classNames(classes.price, classes.priceNew)}>
                     {" "}
                     €743
-                  </span>
+                  </span>}
                 </div>
                 <div className={classNames(classes.stats, classes.mlAuto)}>
                   <Tooltip
@@ -94,14 +112,14 @@ const SectionLatestOffers = props => {
               </CardBody>
               <CardFooter plain>
                 <div className={classes.priceContainer}>
-                  <span className={classNames(classes.price, classes.priceOld)}>
+                  {hasFeature("Precio",props.tree) &&<span className={classNames(classes.price, classes.priceOld)}>
                     {" "}
                     €1,430
-                  </span>
-                  <span className={classNames(classes.price, classes.priceNew)}>
+                  </span>}
+                  {hasFeature("Precio",props.tree) &&<span className={classNames(classes.price, classes.priceNew)}>
                     {" "}
                     €743
-                  </span>
+                  </span>}
                 </div>
                 <div className={classNames(classes.stats, classes.mlAuto)}>
                   <Tooltip
@@ -139,14 +157,14 @@ const SectionLatestOffers = props => {
               </CardBody>
               <CardFooter plain>
                 <div className={classes.priceContainer}>
-                  <span className={classNames(classes.price, classes.priceOld)}>
+                  {hasFeature("Precio",props.tree) &&<span className={classNames(classes.price, classes.priceOld)}>
                     {" "}
                     €1,430
-                  </span>
-                  <span className={classNames(classes.price, classes.priceNew)}>
+                  </span>}
+                  {hasFeature("Precio",props.tree) &&<span className={classNames(classes.price, classes.priceNew)}>
                     {" "}
                     €743
-                  </span>
+                  </span>}
                 </div>
                 <div className={classNames(classes.stats, classes.mlAuto)}>
                   <Tooltip
@@ -169,4 +187,17 @@ const SectionLatestOffers = props => {
   );
 };
 
-export default withStyles(styles)(SectionLatestOffers);
+const mapStateToProps = (state) => {
+    return {
+        tree: state.auth.data
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatch,
+        actions: bindActionCreators(actionCreators, dispatch)
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SectionLatestOffers));

@@ -38,6 +38,9 @@ import dg3 from "assets/img/dg3.jpg";
 import dg1 from "assets/img/dg1.jpg";
 
 import styles from "assets/jss/material-kit-pro-react/views/ecommerceSections/productsStyle.jsx";
+import * as actionCreators from "../../../actions/auth";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 
 class SectionProducts extends React.Component {
   constructor(props) {
@@ -81,7 +84,21 @@ class SectionProducts extends React.Component {
       checked: newChecked
     });
   }
+    hasFeature(id,node){
+        if(node.id === id){
+            return node.selected
+        }else{
+            if(node.children){
 
+                return node.children.some( (child) => {
+                    return this.hasFeature(id,child)
+                })
+            }
+        }
+        return false
+
+
+    }
   render() {
     const { classes } = this.props;
 
@@ -114,11 +131,11 @@ class SectionProducts extends React.Component {
                     </Tooltip>
                     <Clearfix />
                   </h4>
-                  <Accordion
+                    <Accordion
                     active={[0, 2]}
                     activeColor="rose"
                     collapses={[
-                      {
+                      this.hasFeature("Precio",this.props.tree)? {
                         title: "Price Range",
                         content: (
                           <CardBody className={classes.cardBodyRefine}>
@@ -147,7 +164,7 @@ class SectionProducts extends React.Component {
                             <div ref="slider1" className="slider-rose" />
                           </CardBody>
                         )
-                      },
+                      }: {},
                       {
                         title: "Clothing",
                         content: (
@@ -980,7 +997,7 @@ class SectionProducts extends React.Component {
                     </CardBody>
                     <CardFooter plain className={classes.justifyContentBetween}>
                       <div className={classes.priceContainer}>
-                        <span className={classes.price}> €800</span>
+                        {this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €800</span>}
                       </div>
                       <Tooltip
                         id="tooltip-top"
@@ -1017,7 +1034,7 @@ class SectionProducts extends React.Component {
                     </CardBody>
                     <CardFooter plain className={classes.justifyContentBetween}>
                       <div className={classes.priceContainer}>
-                        <span className={classes.price}> €555</span>
+                        {this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €555</span>}
                       </div>
                       <Tooltip
                         id="tooltip-top"
@@ -1054,7 +1071,7 @@ class SectionProducts extends React.Component {
                     </CardBody>
                     <CardFooter plain className={classes.justifyContentBetween}>
                       <div className={classes.priceContainer}>
-                        <span className={classes.price}> €879</span>
+                        {this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €879</span>}
                       </div>
                       <Tooltip
                         id="tooltip-top"
@@ -1091,7 +1108,7 @@ class SectionProducts extends React.Component {
                     </CardBody>
                     <CardFooter plain className={classes.justifyContentBetween}>
                       <div className={classes.priceContainer}>
-                        <span className={classes.price}> €680</span>
+                        {this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €680</span>}
                       </div>
                       <Tooltip
                         id="tooltip-top"
@@ -1128,7 +1145,7 @@ class SectionProducts extends React.Component {
                     </CardBody>
                     <CardFooter plain className={classes.justifyContentBetween}>
                       <div className={classes.priceContainer}>
-                        <span className={classes.price}> €725</span>
+                        {this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €725</span>}
                       </div>
                       <Tooltip
                         id="tooltip-top"
@@ -1165,7 +1182,7 @@ class SectionProducts extends React.Component {
                     </CardBody>
                     <CardFooter plain className={classes.justifyContentBetween}>
                       <div className={classes.priceContainer}>
-                        <span className={classes.price}> €699</span>
+                        {this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €699</span>}
                       </div>
                       <Tooltip
                         id="tooltip-top"
@@ -1204,4 +1221,17 @@ class SectionProducts extends React.Component {
   }
 }
 
-export default withStyles(styles)(SectionProducts);
+const mapStateToProps = (state) => {
+    return {
+        tree: state.auth.data
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatch,
+        actions: bindActionCreators(actionCreators, dispatch)
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SectionProducts));

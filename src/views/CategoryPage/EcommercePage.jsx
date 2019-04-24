@@ -33,29 +33,141 @@ import face5 from "assets/img/faces/marc.jpg";
 import face6 from "assets/img/faces/kendall.jpg";
 import face7 from "assets/img/faces/card-profile5-square.jpg";
 import face8 from "assets/img/faces/card-profile2-square.jpg";
+import Search from "@material-ui/icons/Search";
 
-import styles from "assets/jss/material-kit-pro-react/views/ecommerceStyle.jsx";
+// @material-ui icons
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import SectionLatestOffersTePodria from "./Sections/SectionLatestOffersTePodria";
-
+import * as actionCreators from "../../actions/auth";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import styles from "assets/jss/tesis/homestyle.js";
+import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
+import Settings from "@material-ui/icons/Settings";
+import {Link} from "react-router-dom";
 class EcommercePage extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   }
+  hasFeature(id,node){
+        if(node.id === id){
+            return node.selected
+        }else{
+            if(node.children){
+
+                return node.children.some( (child) => {
+                    return this.hasFeature(id,child)
+                })
+            }
+        }
+        return false
+
+
+    }
   render() {
     const { classes } = this.props;
     return (
       <div>
         <Header
-          brand="Material Kit PRO React"
-          links={<HeaderLinks dropdownHoverColor="info" />}
-          fixed
+              brand={"Ecommerce"}
+              links={
+                <div className={classes.collapse}>
+                  <List className={classes.list + " " + classes.mlAuto}>
+
+                    {this.hasFeature("Categorias",this.props.tree) &&<ListItem className={classes.listItem}>
+                      <CustomDropdown
+                      left
+                      caret={false}
+                      hoverColor="dark"
+                      dropdownHeader="Categorias"
+                      buttonText={
+                        <Button
+                        href="#pablo"
+                        className={
+                          classes.navLink + " " + classes.navLinkActive
+                        }
+                        onClick={e => e.preventDefault()}
+                        color="transparent"
+                      >
+                        Categorias
+                      </Button>
+                      }
+                      buttonProps={{
+                        className:
+                          classes.navLink + " " + classes.imageDropdownButton,
+                        color: "transparent"
+                      }}
+                      dropdownList={[
+                        <Link to="/category-page">Ropa</Link>,
+                        "Laptops",
+                        "Instrumentos"
+                      ]}
+                    />
+                    </ListItem>}
+                  <ListItem className={classes.listItem + " " + classes.mlAuto}>
+                  {/*<div className={classes.mlAuto}>*/}
+                    <CustomInput
+                      white
+                      inputRootCustomClasses={classes.inputRootCustomClasses}
+                      formControlProps={{
+                        className: classes.formControl
+                      }}
+                      inputProps={{
+                        placeholder: "Buscar",
+                        inputProps: {
+                          "aria-label": "Buscar",
+                          className: classes.searchInput
+                        }
+                      }}
+                    />
+                    <Button color="white" justIcon round>
+                      <Search className={classes.searchIcon} />
+                    </Button>
+                  </ListItem>
+                      {this.hasFeature("Compra",this.props.tree) && this.hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
+                    <Button
+                      href="#pablo"
+                      className={classes.navLink + " " + classes.navLinkActive}
+                      onClick={e => e.preventDefault()}
+                      color="transparent"
+                    >
+                      <ShoppingCart /> Compras
+                    </Button>
+                  </ListItem>}
+                      {this.hasFeature("Usuarios",this.props.tree) && this.hasFeature("HistorialDeCompra",this.props.tree) && <ListItem className={classes.listItem}>
+                    <Button
+                      href="#pablo"
+                      className={classes.navLink}
+                      onClick={e => e.preventDefault()}
+                      color="transparent"
+                    >
+                      <AccountCircle /> Historial
+                    </Button>
+                  </ListItem>}
+                  {this.hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
+                    <Button
+                      href="#pablo"
+                      className={classes.navLink}
+                      onClick={e => e.preventDefault()}
+                      color="transparent"
+                    >
+                      <Settings /> Configuracion
+                    </Button>
+                  </ListItem>}
+                  {/*</div>*/}
+                    </List>
+
+                </div>
+              }
+              fixed
           color="transparent"
           changeColorOnScroll={{
             height: 300,
             color: "info"
           }}
-        />
+            />
         <Parallax
           image={require("assets/img/examples/clark-street-merc.jpg")}
           filter="dark"
@@ -73,11 +185,7 @@ class EcommercePage extends React.Component {
                 )}
               >
                 <div className={classes.brand}>
-                  <h1 className={classes.title}>Ecommerce Page!</h1>
-                  <h4>
-                    Free global delivery for all products. Use coupon{" "}
-                    <b>25summer</b> for an extra 25% Off
-                  </h4>
+                  <h1 className={classes.title}>Ropa</h1>
                 </div>
               </GridItem>
             </GridContainer>
@@ -85,7 +193,7 @@ class EcommercePage extends React.Component {
         </Parallax>
 
         <div className={classNames(classes.main, classes.mainRaised)}>
-          <SectionLatestOffersTePodria/>
+           {this.hasFeature("TopProductsBuyTimes",this.props.tree) &&<SectionLatestOffersTePodria/>}
             <SectionProducts />
         </div>
 
@@ -105,10 +213,9 @@ class EcommercePage extends React.Component {
                 className={classNames(classes.mlAuto, classes.mrAuto)}
               >
                 <div className={classes.textCenter}>
-                  <h3 className={classes.title}>Subscribe to our Newsletter</h3>
+                  <h3 className={classes.title}>¿Buscas ofertas?</h3>
                   <p className={classes.description}>
-                    Join our newsletter and get news in your inbox every week!
-                    We hate spam too, so no worries about this.
+                    Subscribete para recibir actualizaciones de las ultimas ofertas
                   </p>
                 </div>
                 <Card raised className={classes.card}>
@@ -128,7 +235,7 @@ class EcommercePage extends React.Component {
                                   <Mail />
                                 </InputAdornment>
                               ),
-                              placeholder: "Your Email..."
+                              placeholder: "Tu Email..."
                             }}
                           />
                         </GridItem>
@@ -138,7 +245,7 @@ class EcommercePage extends React.Component {
                             block
                             className={classes.subscribeButton}
                           >
-                            subscribe
+                            subscribir
                           </Button>
                         </GridItem>
                       </GridContainer>
@@ -158,7 +265,7 @@ class EcommercePage extends React.Component {
                 <List className={classes.list}>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="http://blog.creative-tim.com/"
+                      href=""
                       className={classes.block}
                     >
                       Blog
@@ -166,10 +273,10 @@ class EcommercePage extends React.Component {
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/presentation"
+                      href=""
                       className={classes.block}
                     >
-                      Presentation
+                      Presentacion
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
@@ -178,156 +285,46 @@ class EcommercePage extends React.Component {
                       onClick={e => e.preventDefault()}
                       className={classes.block}
                     >
-                      Discover
+                      Descubre
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
-                    <a
-                      href="#pablito"
-                      onClick={e => e.preventDefault()}
-                      className={classes.block}
-                    >
-                      Payment
-                    </a>
+
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/contact-us"
+                      href=""
                       className={classes.block}
                     >
-                      Contact us
+                      Contactanos
                     </a>
                   </ListItem>
                 </List>
               </div>
               <div className={classes.right}>
                 Copyright &copy; {1900 + new Date().getYear()}{" "}
-                <a
-                  href="https://www.creative-tim.com"
-                  className={classes.aClasses}
-                >
-                  Creative Tim
-                </a>{" "}
+
                 All Rights Reserved.
               </div>
             </div>
           }
         >
-          <GridContainer>
-            <GridItem xs={12} sm={4} md={4}>
-              <h5>About Us</h5>
-              <p>
-                Creative Tim is a startup that creates design tools that make
-                the web development process faster and easier.{" "}
-              </p>
-              <p>
-                We love the web and care deeply for how users interact with a
-                digital product. We power businesses and individuals to create
-                better looking web projects around the world.{" "}
-              </p>
-            </GridItem>
-            <GridItem xs={12} sm={4} md={4}>
-              <h5>Social Feed</h5>
-              <div className={classes.socialFeed}>
-                <div>
-                  <i className="fab fa-twitter" />
-                  <p>How to handle ethical disagreements with your clients.</p>
-                </div>
-                <div>
-                  <i className="fab fa-twitter" />
-                  <p>The tangible benefits of designing at 1x pixel density.</p>
-                </div>
-                <div>
-                  <i className="fab fa-facebook-square" />
-                  <p>
-                    A collection of 25 stunning sites that you can use for
-                    inspiration.
-                  </p>
-                </div>
-              </div>
-            </GridItem>
-            <GridItem xs={12} sm={4} md={4}>
-              <h5>Instagram Feed</h5>
-              <div className={classes.galleryFeed}>
-                <img
-                  src={face1}
-                  className={classNames(
-                    classes.img,
-                    classes.imgRaised,
-                    classes.imgRounded
-                  )}
-                  alt="..."
-                />
-                <img
-                  src={face2}
-                  className={classNames(
-                    classes.img,
-                    classes.imgRaised,
-                    classes.imgRounded
-                  )}
-                  alt="..."
-                />
-                <img
-                  src={face3}
-                  className={classNames(
-                    classes.img,
-                    classes.imgRaised,
-                    classes.imgRounded
-                  )}
-                  alt="..."
-                />
-                <img
-                  src={face4}
-                  className={classNames(
-                    classes.img,
-                    classes.imgRaised,
-                    classes.imgRounded
-                  )}
-                  alt="..."
-                />
-                <img
-                  src={face5}
-                  className={classNames(
-                    classes.img,
-                    classes.imgRaised,
-                    classes.imgRounded
-                  )}
-                  alt="..."
-                />
-                <img
-                  src={face6}
-                  className={classNames(
-                    classes.img,
-                    classes.imgRaised,
-                    classes.imgRounded
-                  )}
-                  alt="..."
-                />
-                <img
-                  src={face7}
-                  className={classNames(
-                    classes.img,
-                    classes.imgRaised,
-                    classes.imgRounded
-                  )}
-                  alt="..."
-                />
-                <img
-                  src={face8}
-                  className={classNames(
-                    classes.img,
-                    classes.imgRaised,
-                    classes.imgRounded
-                  )}
-                  alt="..."
-                />
-              </div>
-            </GridItem>
-          </GridContainer>
         </Footer>
       </div>
     );
   }
 }
+const mapStateToProps = (state) => {
+    return {
+        tree: state.auth.data
+    };
+};
 
-export default withStyles(styles)(EcommercePage);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatch,
+        actions: bindActionCreators(actionCreators, dispatch)
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(EcommercePage));
