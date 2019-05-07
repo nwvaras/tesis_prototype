@@ -42,7 +42,17 @@ import product1 from "assets/img/examples/product1.jpg";
 import product2 from "assets/img/examples/product2.jpg";
 import product3 from "assets/img/examples/product3.jpg";
 import product4 from "assets/img/examples/product4.jpg";
-
+import * as actionCreators from "../../actions/auth";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
+import Settings from "@material-ui/icons/Settings";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import Search from "@material-ui/icons/Search";
+import {Link} from "react-router-dom";
+import CustomInput from "components/CustomInput/CustomInput.jsx";
+import hasFeature from "../../utils/index"
+import styles from "assets/jss/tesis/homestyle.js";
 class ProductPage extends React.Component {
   constructor(props) {
     super(props);
@@ -80,31 +90,97 @@ class ProductPage extends React.Component {
     ];
     return (
       <div className={classes.productPage}>
-        <Header
-          brand="Material Kit PRO React"
-          links={<HeaderLinks dropdownHoverColor="rose" />}
-          fixed
-          color="transparent"
-          changeColorOnScroll={{
-            height: 100,
-            color: "rose"
-          }}
-        />
-        <Parallax
-          image={require("assets/img/bg6.jpg")}
-          filter="rose"
-          className={classes.pageHeader}
-        >
-          <div className={classes.container}>
-            <GridContainer className={classes.titleRow}>
-              <GridItem md={4} className={classes.mlAuto}>
-                <Button color="white" className={classes.floatRight}>
-                  <ShoppingCart /> 0 items
-                </Button>
-              </GridItem>
-            </GridContainer>
-          </div>
-        </Parallax>
+         <Header
+              brand={"Ecommerce"}
+              links={
+                <div className={classes.collapse}>
+                  <List className={classes.list + " " + classes.mlAuto}>
+
+                    {hasFeature("Categorias",this.props.tree) &&<ListItem className={classes.listItem}>
+                      <CustomDropdown
+                      left
+                      caret={false}
+                      hoverColor="dark"
+                      dropdownHeader="Categorias"
+                      buttonText={
+                        <Button
+                        href="#pablo"
+                        className={
+                          classes.navLink + " " + classes.navLinkActive
+                        }
+                        onClick={e => e.preventDefault()}
+                        color="transparent"
+                      >
+                        Categorias
+                      </Button>
+                      }
+                      buttonProps={{
+                        className:
+                          classes.navLink + " " + classes.imageDropdownButton,
+                        color: "transparent"
+                      }}
+                      dropdownList={this.props.categories.map( (category,index) => <Link to="/category-page" onClick={() => console.log(category.name)}>{category.name}</Link>)}
+                    />
+                    </ListItem>}
+                  <ListItem className={classes.listItem + " " + classes.mlAuto}>
+                  {/*<div className={classes.mlAuto}>*/}
+                    <CustomInput
+                      white
+                      inputRootCustomClasses={classes.inputRootCustomClasses}
+                      formControlProps={{
+                        className: classes.formControl
+                      }}
+                      inputProps={{
+                        placeholder: "Buscar",
+                        inputProps: {
+                          "aria-label": "Buscar",
+                          className: classes.searchInput
+                        }
+                      }}
+                    />
+                    <Button color="white" justIcon round>
+                      <Search className={classes.searchIcon} />
+                    </Button>
+                  </ListItem>
+                      {hasFeature("Compra",this.props.tree) && hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
+                    <Button
+                      href="#pablo"
+                      className={classes.navLink + " " + classes.navLinkActive}
+                      onClick={e => e.preventDefault()}
+                      color="transparent"
+                    >
+                      <ShoppingCart /> Compras
+                    </Button>
+                  </ListItem>}
+                      {hasFeature("Usuarios",this.props.tree) && hasFeature("HistorialDeCompra",this.props.tree) && <ListItem className={classes.listItem}>
+                    <Button
+                      href="#pablo"
+                      className={classes.navLink}
+                      onClick={e => e.preventDefault()}
+                      color="transparent"
+                    >
+                      <AccountCircle /> Historial
+                    </Button>
+                  </ListItem>}
+                  {hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
+                    <Button
+                      href="#pablo"
+                      className={classes.navLink}
+                      onClick={e => e.preventDefault()}
+                      color="transparent"
+                    >
+                      <Settings /> Configuracion
+                    </Button>
+                  </ListItem>}
+                  {/*</div>*/}
+                    </List>
+
+                </div>
+              }
+              absolute
+          color="info"
+
+            />
         <div className={classNames(classes.section, classes.sectionGray)}>
           <div className={classes.container}>
             <div className={classNames(classes.main, classes.mainRaised)}>
@@ -113,13 +189,13 @@ class ProductPage extends React.Component {
                   <ImageGallery
                     showFullscreenButton={false}
                     showPlayButton={false}
-                    startIndex={3}
-                    items={images}
+                    startIndex={0}
+                    items={this.props.activeProduct.photos.map((product,index) =>{ return {original: product.src, thumbnail: product.src}})}
                   />
                 </GridItem>
                 <GridItem md={6} sm={6}>
-                  <h2 className={classes.title}>Becky Silk Blazer</h2>
-                  <h3 className={classes.mainPrice}>$335</h3>
+                  <h2 className={classes.title}>{this.props.activeProduct.name}</h2>
+                  <h3 className={classes.mainPrice}>{this.props.activeProduct.price}</h3>
                   <Accordion
                     active={0}
                     activeColor="rose"
@@ -128,12 +204,7 @@ class ProductPage extends React.Component {
                         title: "Description",
                         content: (
                           <p>
-                            Eres' daring 'Grigri Fortune' swimsuit has the fit
-                            and coverage of a bikini in a one-piece silhouette.
-                            This fuchsia style is crafted from the label's
-                            sculpting peau douce fabric and has flattering
-                            cutouts through the torso and back. Wear yours with
-                            mirrored sunglasses on vacation.
+                              {this.props.activeProduct.description}
                           </p>
                         )
                       },
@@ -141,13 +212,7 @@ class ProductPage extends React.Component {
                         title: "Designer Information",
                         content: (
                           <p>
-                            An infusion of West Coast cool and New York
-                            attitude, Rebecca Minkoff is synonymous with It girl
-                            style. Minkoff burst on the fashion scene with her
-                            best-selling 'Morning After Bag' and later expanded
-                            her offering with the Rebecca Minkoff Collection - a
-                            range of luxe city staples with a \"downtown
-                            romantic\" theme.
+                           {this.props.activeProduct.description}
                           </p>
                         )
                       },
@@ -156,13 +221,12 @@ class ProductPage extends React.Component {
                         content: (
                           <ul>
                             <li>
-                              Storm and midnight-blue stretch cotton-blend
+                             {this.props.activeProduct.description}
                             </li>
                             <li>
-                              Notch lapels, functioning buttoned cuffs, two
-                              front flap pockets, single vent, internal pocket
+                              {this.props.activeProduct.description}
                             </li>
-                            <li>Two button fastening</li>
+                            <li>{this.props.activeProduct.description}</li>
                             <li>84% cotton, 14% nylon, 2% elastane</li>
                             <li>Dry clean</li>
                           </ul>
@@ -316,11 +380,12 @@ class ProductPage extends React.Component {
                 You may also be interested in:
               </h3>
               <GridContainer>
+                  {this.props.randomProducts.map( (product,index) =>
                 <GridItem sm={6} md={3}>
                   <Card product>
                     <CardHeader image>
                       <a href="#pablo">
-                        <img src={cardProduct1} alt="cardProduct" />
+                        <img src={product.photos[0].src} alt="cardProduct" />
                       </a>
                     </CardHeader>
                     <CardBody>
@@ -332,15 +397,14 @@ class ProductPage extends React.Component {
                       >
                         Trending
                       </h6>
-                      <h4 className={classes.cardTitle}>Dolce & Gabbana</h4>
+                      <h4 className={classes.cardTitle}>{product.name}</h4>
                       <div className={classes.cardDescription}>
-                        Dolce & Gabbana's 'Greta' tote has been crafted in Italy
-                        from hard-wearing red textured-leather.
+                          {product.description}
                       </div>
                     </CardBody>
                     <CardFooter className={classes.justifyContentBetween}>
                       <div className={classes.price}>
-                        <h4>$1,459</h4>
+                        <h4>{product.price}</h4>
                       </div>
                       <div className={classes.stats}>
                         <Tooltip
@@ -356,118 +420,118 @@ class ProductPage extends React.Component {
                       </div>
                     </CardFooter>
                   </Card>
-                </GridItem>
-                <GridItem sm={6} md={3}>
-                  <Card product>
-                    <CardHeader image>
-                      <a href="#pablo">
-                        <img src={cardProduct3} alt="cardProduct3" />
-                      </a>
-                    </CardHeader>
-                    <CardBody>
-                      <h6 className={classes.cardCategory}>Popular</h6>
-                      <h4 className={classes.cardTitle}>Balmain</h4>
-                      <div className={classes.cardDescription}>
-                        Balmain's mid-rise skinny jeans are cut with stretch to
-                        ensure they retain their second-skin fit but move
-                        comfortably.
-                      </div>
-                    </CardBody>
-                    <CardFooter className={classes.justifyContentBetween}>
-                      <div className={classes.price}>
-                        <h4>$459</h4>
-                      </div>
-                      <div className={classes.stats}>
-                        <Tooltip
-                          id="tooltip-top"
-                          title="Save to Wishlist"
-                          placement="top"
-                          classes={{ tooltip: classes.tooltip }}
-                        >
-                          <Button justIcon link>
-                            <Favorite />
-                          </Button>
-                        </Tooltip>
-                      </div>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
-                <GridItem sm={6} md={3}>
-                  <Card product>
-                    <CardHeader image>
-                      <a href="#pablo">
-                        <img src={cardProduct4} alt="cardProduct4" />
-                      </a>
-                    </CardHeader>
-                    <CardBody>
-                      <h6 className={classes.cardCategory}>Popular</h6>
-                      <h4 className={classes.cardTitle}>Balenciaga</h4>
-                      <div className={classes.cardDescription}>
-                        Balenciaga's black textured-leather wallet is finished
-                        with the label's iconic 'Giant' studs. This is where you
-                        can...
-                      </div>
-                    </CardBody>
-                    <CardFooter className={classes.justifyContentBetween}>
-                      <div className={classes.price}>
-                        <h4>$590</h4>
-                      </div>
-                      <div className={classes.stats}>
-                        <Tooltip
-                          id="tooltip-top"
-                          title="Save to Wishlist"
-                          placement="top"
-                          classes={{ tooltip: classes.tooltip }}
-                        >
-                          <Button justIcon color="rose" simple>
-                            <Favorite />
-                          </Button>
-                        </Tooltip>
-                      </div>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
-                <GridItem sm={6} md={3}>
-                  <Card product>
-                    <CardHeader image>
-                      <a href="#pablo">
-                        <img src={cardProduct2} alt="cardProduct2" />
-                      </a>
-                    </CardHeader>
-                    <CardBody>
-                      <h6
-                        className={classNames(
-                          classes.cardCategory,
-                          classes.textRose
-                        )}
-                      >
-                        Trending
-                      </h6>
-                      <h4 className={classes.cardTitle}>Dolce & Gabbana</h4>
-                      <div className={classes.cardDescription}>
-                        Dolce & Gabbana's 'Greta' tote has been crafted in Italy
-                        from hard-wearing red textured-leather.
-                      </div>
-                    </CardBody>
-                    <CardFooter className={classes.justifyContentBetween}>
-                      <div className={classes.price}>
-                        <h4>$1,459</h4>
-                      </div>
-                      <div className={classes.stats}>
-                        <Tooltip
-                          id="tooltip-top"
-                          title="Save to Wishlist"
-                          placement="top"
-                          classes={{ tooltip: classes.tooltip }}
-                        >
-                          <Button justIcon link>
-                            <Favorite />
-                          </Button>
-                        </Tooltip>
-                      </div>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
+                </GridItem>)}
+                {/*<GridItem sm={6} md={3}>*/}
+                  {/*<Card product>*/}
+                    {/*<CardHeader image>*/}
+                      {/*<a href="#pablo">*/}
+                        {/*<img src={cardProduct3} alt="cardProduct3" />*/}
+                      {/*</a>*/}
+                    {/*</CardHeader>*/}
+                    {/*<CardBody>*/}
+                      {/*<h6 className={classes.cardCategory}>Popular</h6>*/}
+                      {/*<h4 className={classes.cardTitle}>Balmain</h4>*/}
+                      {/*<div className={classes.cardDescription}>*/}
+                        {/*Balmain's mid-rise skinny jeans are cut with stretch to*/}
+                        {/*ensure they retain their second-skin fit but move*/}
+                        {/*comfortably.*/}
+                      {/*</div>*/}
+                    {/*</CardBody>*/}
+                    {/*<CardFooter className={classes.justifyContentBetween}>*/}
+                      {/*<div className={classes.price}>*/}
+                        {/*<h4>$459</h4>*/}
+                      {/*</div>*/}
+                      {/*<div className={classes.stats}>*/}
+                        {/*<Tooltip*/}
+                          {/*id="tooltip-top"*/}
+                          {/*title="Save to Wishlist"*/}
+                          {/*placement="top"*/}
+                          {/*classes={{ tooltip: classes.tooltip }}*/}
+                        {/*>*/}
+                          {/*<Button justIcon link>*/}
+                            {/*<Favorite />*/}
+                          {/*</Button>*/}
+                        {/*</Tooltip>*/}
+                      {/*</div>*/}
+                    {/*</CardFooter>*/}
+                  {/*</Card>*/}
+                {/*</GridItem>*/}
+                {/*<GridItem sm={6} md={3}>*/}
+                  {/*<Card product>*/}
+                    {/*<CardHeader image>*/}
+                      {/*<a href="#pablo">*/}
+                        {/*<img src={cardProduct4} alt="cardProduct4" />*/}
+                      {/*</a>*/}
+                    {/*</CardHeader>*/}
+                    {/*<CardBody>*/}
+                      {/*<h6 className={classes.cardCategory}>Popular</h6>*/}
+                      {/*<h4 className={classes.cardTitle}>Balenciaga</h4>*/}
+                      {/*<div className={classes.cardDescription}>*/}
+                        {/*Balenciaga's black textured-leather wallet is finished*/}
+                        {/*with the label's iconic 'Giant' studs. This is where you*/}
+                        {/*can...*/}
+                      {/*</div>*/}
+                    {/*</CardBody>*/}
+                    {/*<CardFooter className={classes.justifyContentBetween}>*/}
+                      {/*<div className={classes.price}>*/}
+                        {/*<h4>$590</h4>*/}
+                      {/*</div>*/}
+                      {/*<div className={classes.stats}>*/}
+                        {/*<Tooltip*/}
+                          {/*id="tooltip-top"*/}
+                          {/*title="Save to Wishlist"*/}
+                          {/*placement="top"*/}
+                          {/*classes={{ tooltip: classes.tooltip }}*/}
+                        {/*>*/}
+                          {/*<Button justIcon color="rose" simple>*/}
+                            {/*<Favorite />*/}
+                          {/*</Button>*/}
+                        {/*</Tooltip>*/}
+                      {/*</div>*/}
+                    {/*</CardFooter>*/}
+                  {/*</Card>*/}
+                {/*</GridItem>*/}
+                {/*<GridItem sm={6} md={3}>*/}
+                  {/*<Card product>*/}
+                    {/*<CardHeader image>*/}
+                      {/*<a href="#pablo">*/}
+                        {/*<img src={cardProduct2} alt="cardProduct2" />*/}
+                      {/*</a>*/}
+                    {/*</CardHeader>*/}
+                    {/*<CardBody>*/}
+                      {/*<h6*/}
+                        {/*className={classNames(*/}
+                          {/*classes.cardCategory,*/}
+                          {/*classes.textRose*/}
+                        {/*)}*/}
+                      {/*>*/}
+                        {/*Trending*/}
+                      {/*</h6>*/}
+                      {/*<h4 className={classes.cardTitle}>Dolce & Gabbana</h4>*/}
+                      {/*<div className={classes.cardDescription}>*/}
+                        {/*Dolce & Gabbana's 'Greta' tote has been crafted in Italy*/}
+                        {/*from hard-wearing red textured-leather.*/}
+                      {/*</div>*/}
+                    {/*</CardBody>*/}
+                    {/*<CardFooter className={classes.justifyContentBetween}>*/}
+                      {/*<div className={classes.price}>*/}
+                        {/*<h4>$1,459</h4>*/}
+                      {/*</div>*/}
+                      {/*<div className={classes.stats}>*/}
+                        {/*<Tooltip*/}
+                          {/*id="tooltip-top"*/}
+                          {/*title="Save to Wishlist"*/}
+                          {/*placement="top"*/}
+                          {/*classes={{ tooltip: classes.tooltip }}*/}
+                        {/*>*/}
+                          {/*<Button justIcon link>*/}
+                            {/*<Favorite />*/}
+                          {/*</Button>*/}
+                        {/*</Tooltip>*/}
+                      {/*</div>*/}
+                    {/*</CardFooter>*/}
+                  {/*</Card>*/}
+                {/*</GridItem>*/}
               </GridContainer>
             </div>
           </div>
@@ -531,4 +595,20 @@ class ProductPage extends React.Component {
   }
 }
 
-export default withStyles(productStyle)(ProductPage);
+const mapStateToProps = (state) => {
+    return {
+        tree: state.auth.data,
+        activeProduct : state.auth.products[state.auth.activeProduct],
+        categories: state.auth.categories,
+        randomProducts :state.auth.products.concat().sort( function() { return 0.5 - Math.random() } ).slice(1,5),
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatch,
+        actions: bindActionCreators(actionCreators, dispatch)
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ProductPage));

@@ -1,11 +1,581 @@
 import {
     AUTH_LOGIN_USER_SUCCESS,
-    AUTH_LOGIN_USER_FAILURE
+    AUTH_GO_TO_PRODUCT_PAGE,
+    AUTH_LOGIN_USER_FAILURE,
+    AUTH_ADD_PRODUCT_TO_CART,
 } from '../constants';
 import {setDataTree} from "../actions/auth";
-
+import gucci from "assets/img/examples/gucci.jpg";
+import tomFord from "assets/img/examples/tom-ford.jpg";
+import dolce from "assets/img/examples/dolce.jpg";
+{/*<Button color="inherit">*/}
+              {/*List. Productos*/}
+            {/*</Button>*/}
+            {/*<Button color="inherit">*/}
+              {/*Producto*/}
+            {/*</Button>*/}
+            {/*<Button color="inherit">*/}
+              {/*Pago*/}
+            {/*</Button>*/}
+            {/*<Button color="inherit">*/}
+              {/*Despacho*/}
+            {/*</Button>*/}
+            {/*<Button color="inherit">*/}
+              {/*Carro*/}
+            {/*</Button>*/}
+            {/*<Button color="inherit">*/}
+              {/*Confirmacion*/}
+            {/*</Button>*/}
 const initialState = {
+
     data: null,
+    pages:[{name:"Home", url: "/"},{name:"List. Productos", url: "/category-page"},{name:"Producto", url: "/product-page"},{name:"Cart", url: "/shopping-cart-page"},{name:"Pago", url: "/pay"},{name:"Despacho", url: "/despacho"},{name:"Confirmacion", url: "/confirmation"}],
+    ads:{
+        top:[
+            {src:1}
+        ],
+    },
+    categories:[
+        {
+            name:"Ropa",
+            id:1,
+
+        }
+    ],
+    products:[{
+       name:"Gucci",
+       photos:[{src: gucci},{src: gucci},{src: gucci}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.",
+       price:"€1,431",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                id:1,
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                id: 1,
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"TomFord",
+       photos:[{src: tomFord}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,432",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:"€1,433",
+       discountPrice:"€743",
+       category:0,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },],
+    activeCategory: 0,
+    activeProduct: 0,
+    cart:[1,2,3,4],
+
 };
 
 
@@ -46,7 +616,16 @@ export default function authReducer(state = initialState, action) {
              return Object.assign({}, state, {
                data: {...state.data,children : newData}
             });
+        case AUTH_GO_TO_PRODUCT_PAGE:
+            return Object.assign({}, state, {
+               activeProduct: action.payload.productId
+            });
+        case AUTH_ADD_PRODUCT_TO_CART:
+            return Object.assign({}, state, {
+               cart: state.auth.cart.push(action.payload.productId)
+            });
         default:
+
             return state;
     }
 }

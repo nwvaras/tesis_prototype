@@ -77,7 +77,7 @@ const SectionLatestOffers = props => {
                   </span>}
                 </div>
                 <div className={classNames(classes.stats, classes.mlAuto)}>
-                  <Tooltip
+                  {hasFeature("WishList",props.tree) &&<Tooltip
                     id="tooltip-top"
                     title="Saved to Wishlist"
                     placement="top"
@@ -86,7 +86,7 @@ const SectionLatestOffers = props => {
                     <Button justIcon simple color="rose">
                       <Favorite />
                     </Button>
-                  </Tooltip>
+                  </Tooltip>}
                 </div>
               </CardFooter>
             </Card>
@@ -106,7 +106,7 @@ const SectionLatestOffers = props => {
                 <h4 className={classes.cardTitle}>Dolce & Gabbana</h4>
                 {/*<p className={classes.cardDescription}>*/}
                   {/*The structured shoulders and sleek detailing ensure a sharp*/}
-                  {/*silhouette. Team it with a silk pocket square and leather*/}
+                  {/*silhouette. Team   it with a silk pocket square and leather*/}
                   {/*loafers.*/}
                 {/*</p>*/}
               </CardBody>
@@ -122,7 +122,7 @@ const SectionLatestOffers = props => {
                   </span>}
                 </div>
                 <div className={classNames(classes.stats, classes.mlAuto)}>
-                  <Tooltip
+                  {hasFeature("WishList",props.tree) &&<Tooltip
                     id="tooltip-top"
                     title="Saved to Wishlist"
                     placement="top"
@@ -131,7 +131,7 @@ const SectionLatestOffers = props => {
                     <Button justIcon simple color="rose">
                       <Favorite />
                     </Button>
-                  </Tooltip>
+                  </Tooltip>}
                 </div>
               </CardFooter>
             </Card>
@@ -167,7 +167,7 @@ const SectionLatestOffers = props => {
                   </span>}
                 </div>
                 <div className={classNames(classes.stats, classes.mlAuto)}>
-                  <Tooltip
+                  {hasFeature("WishList",props.tree) &&<Tooltip
                     id="tooltip-top"
                     title="Saved to Wishlist"
                     placement="top"
@@ -176,7 +176,7 @@ const SectionLatestOffers = props => {
                     <Button justIcon simple color="rose">
                       <Favorite />
                     </Button>
-                  </Tooltip>
+                  </Tooltip>}
                 </div>
               </CardFooter>
             </Card>

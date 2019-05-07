@@ -9,7 +9,6 @@ import Parallax from "components/Parallax/Parallax.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
 import Footer from "components/Footer/Footer.jsx";
 // sections for this page
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
@@ -33,11 +32,9 @@ import face5 from "assets/img/faces/marc.jpg";
 import face6 from "assets/img/faces/kendall.jpg";
 import face7 from "assets/img/faces/card-profile5-square.jpg";
 import face8 from "assets/img/faces/card-profile2-square.jpg";
-import Search from "@material-ui/icons/Search";
 
 // @material-ui icons
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import ShoppingCart from "@material-ui/icons/ShoppingCart";
+
 import SectionLatestOffersTePodria from "./Sections/SectionLatestOffersTePodria";
 import * as actionCreators from "../../actions/auth";
 import {connect} from "react-redux";
@@ -45,7 +42,11 @@ import {bindActionCreators} from "redux";
 import styles from "assets/jss/tesis/homestyle.js";
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
 import Settings from "@material-ui/icons/Settings";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import ShoppingCart from "@material-ui/icons/ShoppingCart";
+import Search from "@material-ui/icons/Search";
 import {Link} from "react-router-dom";
+import CustomInput from "components/CustomInput/CustomInput.jsx";
 class EcommercePage extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -99,11 +100,7 @@ class EcommercePage extends React.Component {
                           classes.navLink + " " + classes.imageDropdownButton,
                         color: "transparent"
                       }}
-                      dropdownList={[
-                        <Link to="/category-page">Ropa</Link>,
-                        "Laptops",
-                        "Instrumentos"
-                      ]}
+                      dropdownList={this.props.categories.map( (category,index) => <Link to="/category-page" onClick={() => console.log(category.name)}>{category.name}</Link>)}
                     />
                     </ListItem>}
                   <ListItem className={classes.listItem + " " + classes.mlAuto}>
@@ -161,12 +158,9 @@ class EcommercePage extends React.Component {
 
                 </div>
               }
-              fixed
-          color="transparent"
-          changeColorOnScroll={{
-            height: 300,
-            color: "info"
-          }}
+              absolute
+          color="info"
+
             />
         <Parallax
           image={require("assets/img/examples/clark-street-merc.jpg")}
@@ -316,7 +310,8 @@ class EcommercePage extends React.Component {
 }
 const mapStateToProps = (state) => {
     return {
-        tree: state.auth.data
+                    tree: state.auth.data,
+                    categories: state.auth.categories,
     };
 };
 

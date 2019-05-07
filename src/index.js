@@ -244,9 +244,11 @@ store.dispatch(setDataTree(data))
 
 ReactDOM.render(
   <Provider store={store}>
+
         <ConnectedRouter history={hist}>
   <Router history={hist}>
-    <SideBar>
+      <SideBar/>
+    <div style={{marginTop: '64px',marginLeft:'64px'}}>
     <Switch>
       <Route path="/about-us" component={AboutUsPage} />
       <Route path="/blog-post" component={BlogPostPage} />
@@ -267,7 +269,7 @@ ReactDOM.render(
       <Route path="/sidebar" component={SideBar} />
       <Route path="/" component={EcommercePage} />
     </Switch>
-    </SideBar>
+    </div>
   </Router>
   </ConnectedRouter>
     </Provider>,

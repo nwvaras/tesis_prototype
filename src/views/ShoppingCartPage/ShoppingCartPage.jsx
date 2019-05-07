@@ -29,6 +29,9 @@ import shoppingCartStyle from "assets/jss/material-kit-pro-react/views/shoppingC
 import product1 from "assets/img/product1.jpg";
 import product2 from "assets/img/product2.jpg";
 import product3 from "assets/img/product3.jpg";
+import * as actionCreators from "../../actions/auth";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 
 class ShoppingCartPage extends React.Component {
   componentDidMount() {
@@ -37,6 +40,77 @@ class ShoppingCartPage extends React.Component {
   }
   render() {
     const { classes } = this.props;
+    let list =
+                    this.props.cart.map( (product,index) => [
+                      <div className={classes.imgContainer}>
+                        <img src={product.photos[0].src} alt="..." className={classes.img} />
+                      </div>,
+                      <span>
+                        <a href="#jacket" className={classes.tdNameAnchor}>
+                            {product.name}
+                        </a>
+                        <br />
+                        <small className={classes.tdNameSmall}>
+                          by Dolce&amp;Gabbana
+                        </small>
+                      </span>,
+                      "Red",
+                      "M",
+                      <span>
+                        <small className={classes.tdNumberSmall}>€</small> 549
+                      </span>,
+                      <span>
+                        1{` `}
+                        <div className={classes.buttonGroup}>
+                          <Button
+                            color="info"
+                            size="sm"
+                            round
+                            className={classes.firstButton}
+                          >
+                            <Remove />
+                          </Button>
+                          <Button
+                            color="info"
+                            size="sm"
+                            round
+                            className={classes.lastButton}
+                          >
+                            <Add />
+                          </Button>
+                        </div>
+                      </span>,
+                      <span>
+                        <small className={classes.tdNumberSmall}>{product.price}</small>
+                      </span>,
+                      <Tooltip
+                        id="close1"
+                        title="Remove item"
+                        placement="left"
+                        classes={{ tooltip: classes.tooltip }}
+                      >
+                        <Button link className={classes.actionButton}>
+                          <Close />
+                        </Button>
+                      </Tooltip>
+                    ])
+      list.push({
+                      purchase: true,
+                      colspan: "3",
+                      amount: (
+                        <span>
+                          <small>€</small>2,346
+                        </span>
+                      ),
+                      col: {
+                        colspan: 3,
+                        text: (
+                          <Button color="info" round>
+                            Complete Purchase <KeyboardArrowRight />
+                          </Button>
+                        )
+                      }
+                    })
     return (
       <div>
         <Header
@@ -87,182 +161,8 @@ class ShoppingCartPage extends React.Component {
                     "AMOUNT",
                     ""
                   ]}
-                  tableData={[
-                    [
-                      <div className={classes.imgContainer}>
-                        <img src={product1} alt="..." className={classes.img} />
-                      </div>,
-                      <span>
-                        <a href="#jacket" className={classes.tdNameAnchor}>
-                          Spring Jacket
-                        </a>
-                        <br />
-                        <small className={classes.tdNameSmall}>
-                          by Dolce&amp;Gabbana
-                        </small>
-                      </span>,
-                      "Red",
-                      "M",
-                      <span>
-                        <small className={classes.tdNumberSmall}>€</small> 549
-                      </span>,
-                      <span>
-                        1{` `}
-                        <div className={classes.buttonGroup}>
-                          <Button
-                            color="info"
-                            size="sm"
-                            round
-                            className={classes.firstButton}
-                          >
-                            <Remove />
-                          </Button>
-                          <Button
-                            color="info"
-                            size="sm"
-                            round
-                            className={classes.lastButton}
-                          >
-                            <Add />
-                          </Button>
-                        </div>
-                      </span>,
-                      <span>
-                        <small className={classes.tdNumberSmall}>€</small> 549
-                      </span>,
-                      <Tooltip
-                        id="close1"
-                        title="Remove item"
-                        placement="left"
-                        classes={{ tooltip: classes.tooltip }}
-                      >
-                        <Button link className={classes.actionButton}>
-                          <Close />
-                        </Button>
-                      </Tooltip>
-                    ],
-                    [
-                      <div className={classes.imgContainer}>
-                        <img src={product2} alt="..." className={classes.img} />
-                      </div>,
-                      <span>
-                        <a href="#jacket" className={classes.tdNameAnchor}>
-                          Short Pants{" "}
-                        </a>
-                        <br />
-                        <small className={classes.tdNameSmall}>by Gucci</small>
-                      </span>,
-                      "Purple",
-                      "M",
-                      <span>
-                        <small className={classes.tdNumberSmall}>€</small> 499
-                      </span>,
-                      <span>
-                        2{` `}
-                        <div className={classes.buttonGroup}>
-                          <Button
-                            color="info"
-                            size="sm"
-                            round
-                            className={classes.firstButton}
-                          >
-                            <Remove />
-                          </Button>
-                          <Button
-                            color="info"
-                            size="sm"
-                            round
-                            className={classes.lastButton}
-                          >
-                            <Add />
-                          </Button>
-                        </div>
-                      </span>,
-                      <span>
-                        <small className={classes.tdNumberSmall}>€</small> 998
-                      </span>,
-                      <Tooltip
-                        id="close2"
-                        title="Remove item"
-                        placement="left"
-                        classes={{ tooltip: classes.tooltip }}
-                      >
-                        <Button link className={classes.actionButton}>
-                          <Close />
-                        </Button>
-                      </Tooltip>
-                    ],
-                    [
-                      <div className={classes.imgContainer}>
-                        <img src={product3} alt="..." className={classes.img} />
-                      </div>,
-                      <span>
-                        <a href="#jacket" className={classes.tdNameAnchor}>
-                          Pencil Skirt
-                        </a>
-                        <br />
-                        <small className={classes.tdNameSmall}>
-                          by Valentino
-                        </small>
-                      </span>,
-                      "White",
-                      "XL",
-                      <span>
-                        <small className={classes.tdNumberSmall}>€</small> 799
-                      </span>,
-                      <span>
-                        1{` `}
-                        <div className={classes.buttonGroup}>
-                          <Button
-                            color="info"
-                            size="sm"
-                            round
-                            className={classes.firstButton}
-                          >
-                            <Remove />
-                          </Button>
-                          <Button
-                            color="info"
-                            size="sm"
-                            round
-                            className={classes.lastButton}
-                          >
-                            <Add />
-                          </Button>
-                        </div>
-                      </span>,
-                      <span>
-                        <small className={classes.tdNumberSmall}>€</small> 799
-                      </span>,
-                      <Tooltip
-                        id="close3"
-                        title="Remove item"
-                        placement="left"
-                        classes={{ tooltip: classes.tooltip }}
-                      >
-                        <Button link className={classes.actionButton}>
-                          <Close />
-                        </Button>
-                      </Tooltip>
-                    ],
-                    {
-                      purchase: true,
-                      colspan: "3",
-                      amount: (
-                        <span>
-                          <small>€</small>2,346
-                        </span>
-                      ),
-                      col: {
-                        colspan: 3,
-                        text: (
-                          <Button color="info" round>
-                            Complete Purchase <KeyboardArrowRight />
-                          </Button>
-                        )
-                      }
-                    }
-                  ]}
+                  tableData={
+                    list}
                   tableShopping
                   customHeadCellClasses={[
                     classes.textCenter,
@@ -339,5 +239,19 @@ class ShoppingCartPage extends React.Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+    return {
+        tree: state.auth.data,
+        categories: state.auth.categories,
+        cart :state.auth.cart.map( (product,index )=> state.auth.products[index]),
+    };
+};
 
-export default withStyles(shoppingCartStyle)(ShoppingCartPage);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatch,
+        actions: bindActionCreators(actionCreators, dispatch)
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(shoppingCartStyle)(ShoppingCartPage));

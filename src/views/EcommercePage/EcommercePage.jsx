@@ -48,12 +48,8 @@ class EcommercePage extends React.Component {
         <Header
           brand="Material Kit PRO React"
           links={<HeaderLinks dropdownHoverColor="info" />}
-          fixed
-          color="transparent"
-          changeColorOnScroll={{
-            height: 300,
-            color: "info"
-          }}
+          absolute
+          color="info"
         />
         <Parallax
           image={require("assets/img/examples/clark-street-merc.jpg")}

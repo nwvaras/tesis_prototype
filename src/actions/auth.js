@@ -3,6 +3,8 @@ import {
     AUTH_LOGIN_USER_REQUEST,
     AUTH_LOGIN_USER_FAILURE,
     AUTH_LOGIN_USER_SUCCESS,
+    AUTH_GO_TO_PRODUCT_PAGE,
+    AUTH_ADD_PRODUCT_TO_CART,
     AUTH_SIGNUP_USER_REQUEST,
     AUTH_SIGNUP_USER_FAILURE,
     AUTH_SIGNUP_USER_SUCCESS,
@@ -41,6 +43,7 @@ import {
     AUTH_OPEN_SEE_MEDIA,
     AUTH_CLOSE_SEE_MEDIA
 } from '../constants';
+import { push } from 'connected-react-router'
 
 export function setDataTree(data) {
 
@@ -56,6 +59,26 @@ export function activateOrDesactivate(name) {
         type: AUTH_LOGIN_USER_FAILURE,
         payload: {
             name
+        }
+    };
+}
+
+export function goToProductPage(productId) {
+
+    return {
+        type: AUTH_GO_TO_PRODUCT_PAGE,
+        payload: {
+            productId
+        }
+    };
+}
+
+export function addProductToCart(productId) {
+
+    return {
+        type: AUTH_ADD_PRODUCT_TO_CART,
+        payload: {
+            productId
         }
     };
 }

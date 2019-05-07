@@ -33,7 +33,7 @@ class PricingPage extends React.Component {
           brand="Material Kit PRO React"
           links={<HeaderLinks dropdownHoverColor="info" />}
           fixed
-          color="transparent"
+          color="info"
           changeColorOnScroll={{
             height: 300,
             color: "info"

@@ -21,7 +21,11 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { push } from 'connected-react-router'
+
 import * as actionCreators from '../../actions/auth';
+import Button from "@material-ui/core/Button";
+import {Link} from "react-router-dom";
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -105,28 +109,29 @@ class MiniDrawer extends React.Component {
     return (
       <div className={classes.root}>
         <CssBaseline />
-        {/*<AppBar*/}
-          {/*position="fixed"*/}
-          {/*className={classNames(classes.appBar, {*/}
-            {/*[classes.appBarShift]: this.state.open,*/}
-          {/*})}*/}
-        {/*>*/}
-          {/*<Toolbar disableGutters={!this.state.open}>*/}
-            {/*<IconButton*/}
-              {/*color="inherit"*/}
-              {/*aria-label="Open drawer"*/}
-              {/*onClick={this.handleDrawerOpen}*/}
-              {/*className={classNames(classes.menuButton, {*/}
-                {/*[classes.hide]: this.state.open,*/}
-              {/*})}*/}
-            {/*>*/}
-              {/*<MenuIcon />*/}
-            {/*</IconButton>*/}
-            {/*<Typography variant="h6" color="inherit" noWrap>*/}
-              {/*Mini variant drawer*/}
-            {/*</Typography>*/}
-          {/*</Toolbar>*/}
-        {/*</AppBar>*/}
+        <AppBar
+          position="fixed"
+          className={classNames(classes.appBar, {
+            [classes.appBarShift]: this.state.open,
+          })}
+        >
+          <Toolbar disableGutters={!this.state.open}>
+            <IconButton
+              color="inherit"
+              aria-label="Open drawer"
+              onClick={this.handleDrawerOpen}
+              className={classNames(classes.menuButton, {
+                [classes.hide]: this.state.open,
+              })}
+            >
+              <MenuIcon />
+            </IconButton>
+              {this.props.pages.map( (page,index) =>  <Button color="inherit" onClick={() =>this.props.dispatch(push(page.url))}>
+                  {page.name}
+            </Button> ) }
+
+          </Toolbar>
+        </AppBar>
         <Drawer
           variant="permanent"
           className={classNames(classes.drawer, {
@@ -174,7 +179,6 @@ class MiniDrawer extends React.Component {
                 ))}
             
         </Drawer>
-          {this.props.children}
       </div>
     );
   }
@@ -186,7 +190,8 @@ MiniDrawer.propTypes = {
 };
 const mapStateToProps = (state) => {
     return {
-        data: state.auth.data
+        data: state.auth.data,
+        pages: state.auth.pages
     };
 };
 

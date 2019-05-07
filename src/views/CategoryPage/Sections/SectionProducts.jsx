@@ -24,7 +24,7 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import Clearfix from "components/Clearfix/Clearfix.jsx";
-
+import { push } from 'connected-react-router'
 import suit1 from "assets/img/examples/suit-1.jpg";
 import suit2 from "assets/img/examples/suit-2.jpg";
 import suit3 from "assets/img/examples/suit-3.jpg";
@@ -980,228 +980,266 @@ class SectionProducts extends React.Component {
             </GridItem>
             <GridItem md={9} sm={9}>
               <GridContainer>
-                <GridItem md={4} sm={4}>
-                  <Card plain product>
-                    <CardHeader noShadow image>
-                      <a href="#pablo">
-                        <img src={suit1} alt=".." />
-                      </a>
-                    </CardHeader>
-                    <CardBody plain>
-                      <a href="#pablo">
-                        <h4 className={classes.cardTitle}>Polo Ralph Lauren</h4>
-                      </a>
-                      <p className={classes.description}>
-                        Impeccably tailored in Italy from lightweight navy wool.
-                      </p>
-                    </CardBody>
-                    <CardFooter plain className={classes.justifyContentBetween}>
-                      <div className={classes.priceContainer}>
-                        {this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €800</span>}
-                      </div>
-                      <Tooltip
-                        id="tooltip-top"
-                        title="Saved to Wishlist"
-                        placement="left"
-                        classes={{ tooltip: classes.tooltip }}
-                      >
-                        <Button
-                          justIcon
-                          simple
-                          color="rose"
-                          className={classes.pullRight}
-                        >
-                          <Favorite />
-                        </Button>
-                      </Tooltip>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
-                <GridItem md={4} sm={4}>
-                  <Card plain product>
-                    <CardHeader noShadow image>
-                      <a href="#pablo">
-                        <img src={suit2} alt=".." />
-                      </a>
-                    </CardHeader>
-                    <CardBody plain>
-                      <a href="#pablo">
-                        <h4 className={classes.cardTitle}>Wooyoungmi</h4>
-                      </a>
-                      <p className={classes.description}>
-                        Dark-grey slub wool, pintucked notch lapels.
-                      </p>
-                    </CardBody>
-                    <CardFooter plain className={classes.justifyContentBetween}>
-                      <div className={classes.priceContainer}>
-                        {this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €555</span>}
-                      </div>
-                      <Tooltip
-                        id="tooltip-top"
-                        title="Save to Wishlist"
-                        placement="left"
-                        classes={{ tooltip: classes.tooltip }}
-                      >
-                        <Button
-                          justIcon
-                          simple
-                          color="rose"
-                          className={classes.pullRight}
-                        >
-                          <FavoriteBorder />
-                        </Button>
-                      </Tooltip>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
-                <GridItem md={4} sm={4}>
-                  <Card plain product>
-                    <CardHeader noShadow image>
-                      <a href="#pablo">
-                        <img src={suit3} alt=".." />
-                      </a>
-                    </CardHeader>
-                    <CardBody plain>
-                      <a href="#pablo">
-                        <h4 className={classes.cardTitle}>Tom Ford</h4>
-                      </a>
-                      <p className={classes.description}>
-                        Immaculate tailoring is TOM FORD's forte.
-                      </p>
-                    </CardBody>
-                    <CardFooter plain className={classes.justifyContentBetween}>
-                      <div className={classes.priceContainer}>
-                        {this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €879</span>}
-                      </div>
-                      <Tooltip
-                        id="tooltip-top"
-                        title="Save to Wishlist"
-                        placement="left"
-                        classes={{ tooltip: classes.tooltip }}
-                      >
-                        <Button
-                          justIcon
-                          simple
-                          color="rose"
-                          className={classes.pullRight}
-                        >
-                          <FavoriteBorder />
-                        </Button>
-                      </Tooltip>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
-                <GridItem md={4} sm={4}>
-                  <Card plain product>
-                    <CardHeader noShadow image>
-                      <a href="#pablo">
-                        <img src={suit4} alt=".." />
-                      </a>
-                    </CardHeader>
-                    <CardBody plain>
-                      <a href="#pablo">
-                        <h4 className={classes.cardTitle}>Thom Sweeney</h4>
-                      </a>
-                      <p className={classes.description}>
-                        It's made from lightweight grey wool woven.
-                      </p>
-                    </CardBody>
-                    <CardFooter plain className={classes.justifyContentBetween}>
-                      <div className={classes.priceContainer}>
-                        {this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €680</span>}
-                      </div>
-                      <Tooltip
-                        id="tooltip-top"
-                        title="Save to Wishlist"
-                        placement="left"
-                        classes={{ tooltip: classes.tooltip }}
-                      >
-                        <Button
-                          justIcon
-                          simple
-                          color="rose"
-                          className={classes.pullRight}
-                        >
-                          <FavoriteBorder />
-                        </Button>
-                      </Tooltip>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
-                <GridItem md={4} sm={4}>
-                  <Card plain product>
-                    <CardHeader noShadow image>
-                      <a href="#pablo">
-                        <img src={suit5} alt=".." />
-                      </a>
-                    </CardHeader>
-                    <CardBody plain>
-                      <a href="#pablo">
-                        <h4 className={classes.cardTitle}>Kingsman</h4>
-                      </a>
-                      <p className={classes.description}>
-                        Crafted from khaki cotton and fully canvassed.
-                      </p>
-                    </CardBody>
-                    <CardFooter plain className={classes.justifyContentBetween}>
-                      <div className={classes.priceContainer}>
-                        {this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €725</span>}
-                      </div>
-                      <Tooltip
-                        id="tooltip-top"
-                        title="Saved to Wishlist"
-                        placement="left"
-                        classes={{ tooltip: classes.tooltip }}
-                      >
-                        <Button
-                          justIcon
-                          simple
-                          color="rose"
-                          className={classes.pullRight}
-                        >
-                          <Favorite />
-                        </Button>
-                      </Tooltip>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
-                <GridItem md={4} sm={4}>
-                  <Card plain product>
-                    <CardHeader noShadow image>
-                      <a href="#pablo">
-                        <img src={suit6} alt=".." />
-                      </a>
-                    </CardHeader>
-                    <CardBody plain>
-                      <a href="#pablo">
-                        <h4 className={classes.cardTitle}>Boglioli</h4>
-                      </a>
-                      <p className={classes.description}>
-                        Masterfully crafted in Northern Italy.
-                      </p>
-                    </CardBody>
-                    <CardFooter plain className={classes.justifyContentBetween}>
-                      <div className={classes.priceContainer}>
-                        {this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €699</span>}
-                      </div>
-                      <Tooltip
-                        id="tooltip-top"
-                        title="Save to Wishlist"
-                        placement="left"
-                        classes={{ tooltip: classes.tooltip }}
-                      >
-                        <Button
-                          justIcon
-                          simple
-                          color="rose"
-                          className={classes.pullRight}
-                        >
-                          <FavoriteBorder />
-                        </Button>
-                      </Tooltip>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
+                {/*<GridItem md={4} sm={4}>*/}
+                  {/*<Card plain product>*/}
+                    {/*<CardHeader noShadow image>*/}
+                      {/*<a href="#pablo">*/}
+                        {/*<img src={suit1} alt=".." />*/}
+                      {/*</a>*/}
+                    {/*</CardHeader>*/}
+                    {/*<CardBody plain>*/}
+                      {/*<a href="#pablo">*/}
+                        {/*<h4 className={classes.cardTitle}>Polo Ralph Lauren</h4>*/}
+                      {/*</a>*/}
+                      {/*<p className={classes.description}>*/}
+                        {/*Impeccably tailored in Italy from lightweight navy wool.*/}
+                      {/*</p>*/}
+                    {/*</CardBody>*/}
+                    {/*<CardFooter plain className={classes.justifyContentBetween}>*/}
+                      {/*<div className={classes.priceContainer}>*/}
+                        {/*{this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €800</span>}*/}
+                      {/*</div>*/}
+                      {/*{this.hasFeature("WishList",this.props.tree) &&<Tooltip*/}
+                        {/*id="tooltip-top"*/}
+                        {/*title="Saved to Wishlist"*/}
+                        {/*placement="left"*/}
+                        {/*classes={{ tooltip: classes.tooltip }}*/}
+                      {/*>*/}
+                        {/*<Button*/}
+                          {/*justIcon*/}
+                          {/*simple*/}
+                          {/*color="rose"*/}
+                          {/*className={classes.pullRight}*/}
+                        {/*>*/}
+                          {/*<Favorite />*/}
+                        {/*</Button>*/}
+                      {/*</Tooltip>}*/}
+                    {/*</CardFooter>*/}
+                  {/*</Card>*/}
+                {/*</GridItem>*/}
+
+                    {this.props.products.map( (product,index) =>
+                         <GridItem md={4} sm={4}>
+                    <Card plain product>
+                        <CardHeader noShadow image>
+                          <a onClick={() =>{ this.props.dispatch(push("/product-page")); this.props.actions.goToProductPage(index)}}>
+                            <img src={product.photos[0].src} alt=".." />
+                          </a>
+                        </CardHeader>
+                        <CardBody plain>
+                          <a onClick={() =>{ this.props.dispatch(push("/product-page")); this.props.actions.goToProductPage(index)}}>
+                            <h4 className={classes.cardTitle}>{product.name}</h4>
+                          </a>
+                          <p className={classes.description}>
+                              {product.description}
+                          </p>
+                        </CardBody>
+                        <CardFooter plain className={classes.justifyContentBetween}>
+                          <div className={classes.priceContainer}>
+                            {this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> {product.price}</span>}
+                          </div>
+                          {this.hasFeature("WishList",this.props.tree) &&<Tooltip
+                            id="tooltip-top"
+                            title="Save to Wishlist"
+                            placement="left"
+                            classes={{ tooltip: classes.tooltip }}
+                          >
+                            <Button
+                              justIcon
+                              simple
+                              color="rose"
+                              className={classes.pullRight}
+                            >
+                              <FavoriteBorder />
+                            </Button>
+                          </Tooltip>}
+                        </CardFooter>
+                    </Card></GridItem>)}
+
+                  {/*<Card plain product>*/}
+                    {/*<CardHeader noShadow image>*/}
+                      {/*<a href="#pablo">*/}
+                        {/*<img src={suit2} alt=".." />*/}
+                      {/*</a>*/}
+                    {/*</CardHeader>*/}
+                    {/*<CardBody plain>*/}
+                      {/*<a href="#pablo">*/}
+                        {/*<h4 className={classes.cardTitle}>Wooyoungmi</h4>*/}
+                      {/*</a>*/}
+                      {/*<p className={classes.description}>*/}
+                        {/*Dark-grey slub wool, pintucked notch lapels.*/}
+                      {/*</p>*/}
+                    {/*</CardBody>*/}
+                    {/*<CardFooter plain className={classes.justifyContentBetween}>*/}
+                      {/*<div className={classes.priceContainer}>*/}
+                        {/*{this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €555</span>}*/}
+                      {/*</div>*/}
+                      {/*{this.hasFeature("WishList",this.props.tree) &&<Tooltip*/}
+                        {/*id="tooltip-top"*/}
+                        {/*title="Save to Wishlist"*/}
+                        {/*placement="left"*/}
+                        {/*classes={{ tooltip: classes.tooltip }}*/}
+                      {/*>*/}
+                        {/*<Button*/}
+                          {/*justIcon*/}
+                          {/*simple*/}
+                          {/*color="rose"*/}
+                          {/*className={classes.pullRight}*/}
+                        {/*>*/}
+                          {/*<FavoriteBorder />*/}
+                        {/*</Button>*/}
+                      {/*</Tooltip>}*/}
+                    {/*</CardFooter>*/}
+                  {/*</Card>*/}
+                {/*</GridItem>*/}
+                {/*<GridItem md={4} sm={4}>*/}
+                  {/*<Card plain product>*/}
+                    {/*<CardHeader noShadow image>*/}
+                      {/*<a href="#pablo">*/}
+                        {/*<img src={suit3} alt=".." />*/}
+                      {/*</a>*/}
+                    {/*</CardHeader>*/}
+                    {/*<CardBody plain>*/}
+                      {/*<a href="#pablo">*/}
+                        {/*<h4 className={classes.cardTitle}>Tom Ford</h4>*/}
+                      {/*</a>*/}
+                      {/*<p className={classes.description}>*/}
+                        {/*Immaculate tailoring is TOM FORD's forte.*/}
+                      {/*</p>*/}
+                    {/*</CardBody>*/}
+                    {/*<CardFooter plain className={classes.justifyContentBetween}>*/}
+                      {/*<div className={classes.priceContainer}>*/}
+                        {/*{this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €879</span>}*/}
+                      {/*</div>*/}
+                      {/*{this.hasFeature("WishList",this.props.tree) &&<Tooltip*/}
+                        {/*id="tooltip-top"*/}
+                        {/*title="Save to Wishlist"*/}
+                        {/*placement="left"*/}
+                        {/*classes={{ tooltip: classes.tooltip }}*/}
+                      {/*>*/}
+                        {/*<Button*/}
+                          {/*justIcon*/}
+                          {/*simple*/}
+                          {/*color="rose"*/}
+                          {/*className={classes.pullRight}*/}
+                        {/*>*/}
+                          {/*<FavoriteBorder />*/}
+                        {/*</Button>*/}
+                      {/*</Tooltip>}*/}
+                    {/*</CardFooter>*/}
+                  {/*</Card>*/}
+                {/*</GridItem>*/}
+                {/*<GridItem md={4} sm={4}>*/}
+                  {/*<Card plain product>*/}
+                    {/*<CardHeader noShadow image>*/}
+                      {/*<a href="#pablo">*/}
+                        {/*<img src={suit4} alt=".." />*/}
+                      {/*</a>*/}
+                    {/*</CardHeader>*/}
+                    {/*<CardBody plain>*/}
+                      {/*<a href="#pablo">*/}
+                        {/*<h4 className={classes.cardTitle}>Thom Sweeney</h4>*/}
+                      {/*</a>*/}
+                      {/*<p className={classes.description}>*/}
+                        {/*It's made from lightweight grey wool woven.*/}
+                      {/*</p>*/}
+                    {/*</CardBody>*/}
+                    {/*<CardFooter plain className={classes.justifyContentBetween}>*/}
+                      {/*<div className={classes.priceContainer}>*/}
+                        {/*{this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €680</span>}*/}
+                      {/*</div>*/}
+                      {/*{this.hasFeature("WishList",this.props.tree) &&<Tooltip*/}
+                        {/*id="tooltip-top"*/}
+                        {/*title="Save to Wishlist"*/}
+                        {/*placement="left"*/}
+                        {/*classes={{ tooltip: classes.tooltip }}*/}
+                      {/*>*/}
+                        {/*<Button*/}
+                          {/*justIcon*/}
+                          {/*simple*/}
+                          {/*color="rose"*/}
+                          {/*className={classes.pullRight}*/}
+                        {/*>*/}
+                          {/*<FavoriteBorder />*/}
+                        {/*</Button>*/}
+                      {/*</Tooltip>}*/}
+                    {/*</CardFooter>*/}
+                  {/*</Card>*/}
+                {/*</GridItem>*/}
+                {/*<GridItem md={4} sm={4}>*/}
+                  {/*<Card plain product>*/}
+                    {/*<CardHeader noShadow image>*/}
+                      {/*<a href="#pablo">*/}
+                        {/*<img src={suit5} alt=".." />*/}
+                      {/*</a>*/}
+                    {/*</CardHeader>*/}
+                    {/*<CardBody plain>*/}
+                      {/*<a href="#pablo">*/}
+                        {/*<h4 className={classes.cardTitle}>Kingsman</h4>*/}
+                      {/*</a>*/}
+                      {/*<p className={classes.description}>*/}
+                        {/*Crafted from khaki cotton and fully canvassed.*/}
+                      {/*</p>*/}
+                    {/*</CardBody>*/}
+                    {/*<CardFooter plain className={classes.justifyContentBetween}>*/}
+                      {/*<div className={classes.priceContainer}>*/}
+                        {/*{this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €725</span>}*/}
+                      {/*</div>*/}
+                      {/*{this.hasFeature("WishList",this.props.tree) &&<Tooltip*/}
+                        {/*id="tooltip-top"*/}
+                        {/*title="Saved to Wishlist"*/}
+                        {/*placement="left"*/}
+                        {/*classes={{ tooltip: classes.tooltip }}*/}
+                      {/*>*/}
+                        {/*<Button*/}
+                          {/*justIcon*/}
+                          {/*simple*/}
+                          {/*color="rose"*/}
+                          {/*className={classes.pullRight}*/}
+                        {/*>*/}
+                          {/*<Favorite />*/}
+                        {/*</Button>*/}
+                      {/*</Tooltip>}*/}
+                    {/*</CardFooter>*/}
+                  {/*</Card>*/}
+                {/*</GridItem>*/}
+                {/*<GridItem md={4} sm={4}>*/}
+                  {/*<Card plain product>*/}
+                    {/*<CardHeader noShadow image>*/}
+                      {/*<a href="#pablo">*/}
+                        {/*<img src={suit6} alt=".." />*/}
+                      {/*</a>*/}
+                    {/*</CardHeader>*/}
+                    {/*<CardBody plain>*/}
+                      {/*<a href="#pablo">*/}
+                        {/*<h4 className={classes.cardTitle}>Boglioli</h4>*/}
+                      {/*</a>*/}
+                      {/*<p className={classes.description}>*/}
+                        {/*Masterfully crafted in Northern Italy.*/}
+                      {/*</p>*/}
+                    {/*</CardBody>*/}
+                    {/*<CardFooter plain className={classes.justifyContentBetween}>*/}
+                      {/*<div className={classes.priceContainer}>*/}
+                        {/*{this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €699</span>}*/}
+                      {/*</div>*/}
+                      {/*{this.hasFeature("WishList",this.props.tree) &&<Tooltip*/}
+                        {/*id="tooltip-top"*/}
+                        {/*title="Save to Wishlist"*/}
+                        {/*placement="left"*/}
+                        {/*classes={{ tooltip: classes.tooltip }}*/}
+                      {/*>*/}
+                        {/*<Button*/}
+                          {/*justIcon*/}
+                          {/*simple*/}
+                          {/*color="rose"*/}
+                          {/*className={classes.pullRight}*/}
+                        {/*>*/}
+                          {/*<FavoriteBorder />*/}
+                        {/*</Button>*/}
+                      {/*</Tooltip>}*/}
+                    {/*</CardFooter>*/}
+                  {/*</Card>*/}
+
                 <GridItem
                   md={3}
                   sm={3}
@@ -1222,8 +1260,12 @@ class SectionProducts extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state.auth.activeCategory)
+    console.log(state.auth.products)
     return {
-        tree: state.auth.data
+        tree: state.auth.data,
+        products: state.auth.products.filter( product => product.category === state.auth.activeCategory),
+
     };
 };
 

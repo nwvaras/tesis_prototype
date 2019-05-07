@@ -108,12 +108,8 @@ class Components extends React.Component {
         <Header
           brand="Material Kit PRO React"
           links={<HeaderLinks dropdownHoverColor="info" />}
-          fixed
-          color="transparent"
-          changeColorOnScroll={{
-            height: 400,
-            color: "info"
-          }}
+          absolute
+          color="info"
         />
         <Parallax
           image={require("assets/img/bg4.jpg")}
