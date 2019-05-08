@@ -14,6 +14,7 @@ import ComponentsPage from "views/ComponentsPage/ComponentsPage.jsx";
 import ContactUsPage from "views/ContactUsPage/ContactUsPage.jsx";
 import EcommercePage from "views/DaEcommerce/EcommercePage.jsx";
 import LandingPage from "views/LandingPage/LandingPage.jsx";
+import PaymentPage from "views/PaymentPage/PaymentPage.js";
 import LoginPage from "views/LoginPage/LoginPage.jsx";
 import PresentationPage from "views/PresentationPage/PresentationPage.jsx";
 import PricingPage from "views/PricingPage/PricingPage.jsx";
@@ -266,6 +267,7 @@ ReactDOM.render(
       <Route path="/signup-page" component={SignupPage} />
       <Route path="/error-page" component={ErrorPage} />
       <Route path="/category-page" component={CategoryPage} />
+      <Route path="/payment-page" component={PaymentPage} />
       <Route path="/sidebar" component={SideBar} />
       <Route path="/" component={EcommercePage} />
     </Switch>

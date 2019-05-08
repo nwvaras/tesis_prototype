@@ -105,13 +105,13 @@ class SectionProducts extends React.Component {
     return (
       <div className={classes.section}>
         <div className={classes.container}>
-          <h2>Find what you need</h2>
+          <h2>Busca lo que necesites</h2>
           <GridContainer>
             <GridItem md={3} sm={3}>
               <Card plain>
                 <CardBody className={classes.cardBodyRefine}>
                   <h4 className={`${classes.cardTitle} ${classes.textLeft}`}>
-                    Refine
+                    Refinar
                     <Tooltip
                       id="tooltip-top"
                       title="Reset Filter"
@@ -136,7 +136,7 @@ class SectionProducts extends React.Component {
                     activeColor="rose"
                     collapses={[
                       this.hasFeature("Precio",this.props.tree)? {
-                        title: "Price Range",
+                        title: "Rango de precio",
                         content: (
                           <CardBody className={classes.cardBodyRefine}>
                             <span
@@ -1246,7 +1246,7 @@ class SectionProducts extends React.Component {
                   className={classNames(classes.mlAuto, classes.mrAuto)}
                 >
                   <Button round color="rose">
-                    Load more...
+                    Cargar mas...
                   </Button>
                 </GridItem>
               </GridContainer>

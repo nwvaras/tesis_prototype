@@ -24,7 +24,7 @@ import Button from "components/CustomButtons/Button.jsx";
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 
-import shoppingCartStyle from "assets/jss/material-kit-pro-react/views/shoppingCartStyle.jsx";
+import shoppingCartStyle from "assets/jss/tesis/cartstyle.js";
 
 import product1 from "assets/img/product1.jpg";
 import product2 from "assets/img/product2.jpg";
@@ -32,6 +32,15 @@ import product3 from "assets/img/product3.jpg";
 import * as actionCreators from "../../actions/auth";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
+import hasFeature from "../../utils";
+import ShoppingCart from "@material-ui/icons/ShoppingCart";
+
+import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
+import Settings from "@material-ui/icons/Settings";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import Search from "@material-ui/icons/Search";
+import {Link} from "react-router-dom";
+import CustomInput from "components/CustomInput/CustomInput.jsx";
 
 class ShoppingCartPage extends React.Component {
   componentDidMount() {
@@ -40,6 +49,7 @@ class ShoppingCartPage extends React.Component {
   }
   render() {
     const { classes } = this.props;
+    console.log(this.props.cart)
     let list =
                     this.props.cart.map( (product,index) => [
                       <div className={classes.imgContainer}>
@@ -57,7 +67,7 @@ class ShoppingCartPage extends React.Component {
                       "Red",
                       "M",
                       <span>
-                        <small className={classes.tdNumberSmall}>€</small> 549
+                        <small className={classes.tdNumberSmall}>€</small> {product.price}
                       </span>,
                       <span>
                         1{` `}
@@ -89,7 +99,7 @@ class ShoppingCartPage extends React.Component {
                         placement="left"
                         classes={{ tooltip: classes.tooltip }}
                       >
-                        <Button link className={classes.actionButton}>
+                        <Button link className={classes.actionButton} onClick={() => this.props.actions.removeProductFromCart(index)}>
                           <Close />
                         </Button>
                       </Tooltip>
@@ -99,7 +109,7 @@ class ShoppingCartPage extends React.Component {
                       colspan: "3",
                       amount: (
                         <span>
-                          <small>€</small>2,346
+                          <small>€</small>{this.props.sum}
                         </span>
                       ),
                       col: {
@@ -114,37 +124,96 @@ class ShoppingCartPage extends React.Component {
     return (
       <div>
         <Header
-          brand="Material Kit PRO React"
-          links={<HeaderLinks dropdownHoverColor="info" />}
-          fixed
-          color="transparent"
-          changeColorOnScroll={{
-            height: 300,
-            color: "info"
-          }}
-        />
+              brand={"Ecommerce"}
+              links={
+                <div className={classes.collapse}>
+                  <List className={classes.list + " " + classes.mlAuto}>
 
-        <Parallax
-          image={require("assets/img/examples/bg2.jpg")}
-          filter="dark"
-          small
-        >
-          <div className={classes.container}>
-            <GridContainer>
-              <GridItem
-                md={8}
-                sm={8}
-                className={classNames(
-                  classes.mlAuto,
-                  classes.mrAuto,
-                  classes.textCenter
-                )}
-              >
-                <h2 className={classes.title}>Shopping Page</h2>
-              </GridItem>
-            </GridContainer>
-          </div>
-        </Parallax>
+                    {hasFeature("Categorias",this.props.tree) &&<ListItem className={classes.listItem}>
+                      <CustomDropdown
+                      left
+                      caret={false}
+                      hoverColor="dark"
+                      dropdownHeader="Categorias"
+                      buttonText={
+                        <Button
+                        href="#pablo"
+                        className={
+                          classes.navLink + " " + classes.navLinkActive
+                        }
+                        onClick={e => e.preventDefault()}
+                        color="transparent"
+                      >
+                        Categorias
+                      </Button>
+                      }
+                      buttonProps={{
+                        className:
+                          classes.navLink + " " + classes.imageDropdownButton,
+                        color: "transparent"
+                      }}
+                      dropdownList={this.props.categories.map( (category,index) => <Link to="/category-page" onClick={() => console.log(category.name)}>{category.name}</Link>)}
+                    />
+                    </ListItem>}
+                  <ListItem className={classes.listItem + " " + classes.mlAuto}>
+                  {/*<div className={classes.mlAuto}>*/}
+                    <CustomInput
+                      white
+                      inputRootCustomClasses={classes.inputRootCustomClasses}
+                      formControlProps={{
+                        className: classes.formControl
+                      }}
+                      inputProps={{
+                        placeholder: "Buscar",
+                        inputProps: {
+                          "aria-label": "Buscar",
+                          className: classes.searchInput
+                        }
+                      }}
+                    />
+                    <Button color="white" justIcon round>
+                      <Search className={classes.searchIcon} />
+                    </Button>
+                  </ListItem>
+                      {hasFeature("Compra",this.props.tree) && hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
+                    <Button
+                      href="#pablo"
+                      className={classes.navLink + " " + classes.navLinkActive}
+                      onClick={e => e.preventDefault()}
+                      color="transparent"
+                    >
+                      <ShoppingCart /> Compras
+                    </Button>
+                  </ListItem>}
+                      {hasFeature("Usuarios",this.props.tree) && hasFeature("HistorialDeCompra",this.props.tree) && <ListItem className={classes.listItem}>
+                    <Button
+                      href="#pablo"
+                      className={classes.navLink}
+                      onClick={e => e.preventDefault()}
+                      color="transparent"
+                    >
+                      <AccountCircle /> Historial
+                    </Button>
+                  </ListItem>}
+                  {hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
+                    <Button
+                      href="#pablo"
+                      className={classes.navLink}
+                      onClick={e => e.preventDefault()}
+                      color="transparent"
+                    >
+                      <Settings /> Configuracion
+                    </Button>
+                  </ListItem>}
+                  {/*</div>*/}
+                    </List>
+
+                </div>
+              }
+              absolute
+          color="info"
+
+            />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div className={classes.container}>
             <Card plain>
@@ -240,10 +309,15 @@ class ShoppingCartPage extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
+  console.log(state.auth.cart)
+   const cart =state.auth.cart.map( ( index )=> state.auth.products[index])
+
     return {
         tree: state.auth.data,
         categories: state.auth.categories,
-        cart :state.auth.cart.map( (product,index )=> state.auth.products[index]),
+            cart: cart,
+        cartIndexes: state.auth.cart,
+        sum: cart.reduce((total, currentValue, currentIndex, arr) =>{ return total + currentValue.price},0),
     };
 };
 

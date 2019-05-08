@@ -201,7 +201,7 @@ class ProductPage extends React.Component {
                     activeColor="rose"
                     collapses={[
                       {
-                        title: "Description",
+                        title: "Descripcion",
                         content: (
                           <p>
                               {this.props.activeProduct.description}
@@ -209,7 +209,7 @@ class ProductPage extends React.Component {
                         )
                       },
                       {
-                        title: "Designer Information",
+                        title: "Informacion 1",
                         content: (
                           <p>
                            {this.props.activeProduct.description}
@@ -217,7 +217,7 @@ class ProductPage extends React.Component {
                         )
                       },
                       {
-                        title: "Details and Care",
+                        title: "Informacion 2",
                         content: (
                           <ul>
                             <li>
@@ -236,7 +236,7 @@ class ProductPage extends React.Component {
                   />
                   <GridContainer className={classes.pickSize}>
                     <GridItem md={6} sm={6}>
-                      <label>Select color</label>
+                      <label>Seleccion 1</label>
                       <FormControl
                         fullWidth
                         className={classes.selectFormControl}
@@ -286,7 +286,7 @@ class ProductPage extends React.Component {
                       </FormControl>
                     </GridItem>
                     <GridItem md={6} sm={6}>
-                      <label>Select size</label>
+                      <label>Seleccion 2</label>
                       <FormControl
                         fullWidth
                         className={classes.selectFormControl}
@@ -337,7 +337,7 @@ class ProductPage extends React.Component {
                     </GridItem>
                   </GridContainer>
                   <GridContainer className={classes.pullRight}>
-                    <Button round color="rose">
+                    <Button round color="rose" onClick={() => this.props.actions.addProductToCart(this.props.idProduct)}>
                       Add to Cart &nbsp; <ShoppingCart />
                     </Button>
                   </GridContainer>
@@ -348,8 +348,8 @@ class ProductPage extends React.Component {
               <GridContainer>
                 <GridItem md={4} sm={4}>
                   <InfoArea
-                    title="2 Days Delivery"
-                    description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
+                    title="Delivery de 2 dias"
+                    description="Aseguramos el delivery de nuestros productos dentro de un plazo prudente"
                     icon={LocalShipping}
                     iconColor="info"
                     vertical
@@ -357,8 +357,8 @@ class ProductPage extends React.Component {
                 </GridItem>
                 <GridItem md={4} sm={4}>
                   <InfoArea
-                    title="Refundable Policy"
-                    description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
+                    title="Politica de devolucion"
+                    description="Si tienes algun producto que vino con algun problema de fabrica o no te gusto, con gusto lo aceptamos de vuelta."
                     icon={VerifiedUser}
                     iconColor="success"
                     vertical
@@ -366,8 +366,8 @@ class ProductPage extends React.Component {
                 </GridItem>
                 <GridItem md={4} sm={4}>
                   <InfoArea
-                    title="Popular Item"
-                    description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
+                    title="Agregalo a tu wishlist"
+                    description="Agrega los productos a tu lista de deseados para recibir actualizaciones sobre ellos."
                     icon={Favorite}
                     iconColor="rose"
                     vertical
@@ -377,7 +377,7 @@ class ProductPage extends React.Component {
             </div>
             <div className={classes.relatedProducts}>
               <h3 className={classNames(classes.title, classes.textCenter)}>
-                You may also be interested in:
+                Quizas tambien estaras interesado en:
               </h3>
               <GridContainer>
                   {this.props.randomProducts.map( (product,index) =>
@@ -395,7 +395,7 @@ class ProductPage extends React.Component {
                           classes.textRose
                         )}
                       >
-                        Trending
+                        Tendencia
                       </h6>
                       <h4 className={classes.cardTitle}>{product.name}</h4>
                       <div className={classes.cardDescription}>
@@ -544,23 +544,23 @@ class ProductPage extends React.Component {
                 <List className={classes.list}>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/"
+                      href=""
                       className={classes.block}
                     >
-                      Creative Tim
+                      Ecommerce
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/presentation"
+                      href=""
                       className={classes.block}
                     >
-                      About us
+                      Sobre nosotros
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="//blog.creative-tim.com/"
+                      href=""
                       className={classes.block}
                     >
                       Blog
@@ -568,24 +568,23 @@ class ProductPage extends React.Component {
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/license"
+                      href=""
                       className={classes.block}
                     >
-                      Licenses
+                      Licencias
                     </a>
                   </ListItem>
                 </List>
               </div>
               <div className={classes.right}>
                 &copy; {1900 + new Date().getYear()} , made with{" "}
-                <Favorite className={classes.icon} /> by{" "}
+                <Favorite className={classes.icon} />
                 <a
-                  href="https://www.creative-tim.com"
+                  href=""
                   className={classes.aClasses}
                 >
-                  Creative Tim
+
                 </a>{" "}
-                for a better web.
               </div>
             </div>
           }
@@ -596,9 +595,11 @@ class ProductPage extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state.auth.activeProduct)
     return {
         tree: state.auth.data,
         activeProduct : state.auth.products[state.auth.activeProduct],
+        idProduct: state.auth.activeProduct,
         categories: state.auth.categories,
         randomProducts :state.auth.products.concat().sort( function() { return 0.5 - Math.random() } ).slice(1,5),
     };

@@ -74,11 +74,20 @@ export function goToProductPage(productId) {
 }
 
 export function addProductToCart(productId) {
-
+    console.log("adding " + productId)
     return {
         type: AUTH_ADD_PRODUCT_TO_CART,
         payload: {
             productId
+        }
+    };
+}
+export function removeProductFromCart(index) {
+    console.log("removing " + index)
+    return {
+        type: "REMOVE_FROM_CART",
+        payload: {
+            index
         }
     };
 }
