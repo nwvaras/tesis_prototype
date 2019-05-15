@@ -46,11 +46,14 @@ import {bindActionCreators} from "redux";
 import * as actionCreators from "../../actions/auth";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-
+import hasFeature from '../../utils/index'
+import Badge from "@material-ui/core/Badge";
+import { push } from 'connected-react-router'
 class DaEcommerce extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
+    this.props.actions.goToPage(0)
   }
   hasFeature(id,node){
         if(node.id === id){
@@ -72,101 +75,6 @@ class DaEcommerce extends React.Component {
     const { classes } = this.props;
     return (
       <div>
-
-        <Header
-              brand={"Ecommerce"}
-              links={
-                <div className={classes.collapse}>
-                  <List className={classes.list + " " + classes.mlAuto}>
-
-                    {this.hasFeature("Categorias",this.props.tree) &&<ListItem className={classes.listItem}>
-                      <CustomDropdown
-                      left
-                      caret={false}
-                      hoverColor="dark"
-                      dropdownHeader="Categorias"
-                      buttonText={
-                        <Button
-                        href="#pablo"
-                        className={
-                          classes.navLink + " " + classes.navLinkActive
-                        }
-                        onClick={e => e.preventDefault()}
-                        color="transparent"
-                      >
-                        Categorias
-                      </Button>
-                      }
-                      buttonProps={{
-                        className:
-                          classes.navLink + " " + classes.imageDropdownButton,
-                        color: "transparent"
-                      }}
-                      dropdownList={[
-                        <Link to="/category-page">Ropa</Link>,
-                        "Laptops",
-                        "Instrumentos"
-                      ]}
-                    />
-                    </ListItem>}
-                  <ListItem className={classes.listItem + " " + classes.mlAuto}>
-                  {/*<div className={classes.mlAuto}>*/}
-                    <CustomInput
-                      white
-                      inputRootCustomClasses={classes.inputRootCustomClasses}
-                      formControlProps={{
-                        className: classes.formControl
-                      }}
-                      inputProps={{
-                        placeholder: "Buscar",
-                        inputProps: {
-                          "aria-label": "Buscar",
-                          className: classes.searchInput
-                        }
-                      }}
-                    />
-                    <Button color="white" justIcon round>
-                      <Search className={classes.searchIcon} />
-                    </Button>
-                  </ListItem>
-                      {this.hasFeature("Compra",this.props.tree) && this.hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
-                    <Button
-                      href="#pablo"
-                      className={classes.navLink + " " + classes.navLinkActive}
-                      onClick={e => e.preventDefault()}
-                      color="transparent"
-                    >
-                      <ShoppingCart /> Compras
-                    </Button>
-                  </ListItem>}
-                      {this.hasFeature("Usuarios",this.props.tree) && this.hasFeature("HistorialDeCompra",this.props.tree) && <ListItem className={classes.listItem}>
-                    <Button
-                      href="#pablo"
-                      className={classes.navLink}
-                      onClick={e => e.preventDefault()}
-                      color="transparent"
-                    >
-                      <AccountCircle /> Historial
-                    </Button>
-                  </ListItem>}
-                  {this.hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
-                    <Button
-                      href="#pablo"
-                      className={classes.navLink}
-                      onClick={e => e.preventDefault()}
-                      color="transparent"
-                    >
-                      <Settings /> Configuracion
-                    </Button>
-                  </ListItem>}
-                  {/*</div>*/}
-                    </List>
-
-                </div>
-              }
-              absolute
-          color="info"
-            />
         <Parallax
           image={require("assets/img/examples/clark-street-merc.jpg")}
           filter="dark"
@@ -197,13 +105,13 @@ class DaEcommerce extends React.Component {
         </Parallax>
 
         <div className={classNames(classes.main, classes.mainRaised)}>
-            {this.hasFeature("Ads",this.props.tree) &&this.hasFeature("Novedades",this.props.tree) && <SectionLatestOffers />}
+            {this.hasFeature("Ads",this.props.tree) &&this.hasFeature("Novedades",this.props.tree) && <SectionLatestOffers title={"Novedades"} />}
         </div>
           <div className={classNames(classes.main, classes.mainRaised)}>
-          {this.hasFeature("Ads",this.props.tree) &&this.hasFeature("Recomendados",this.props.tree) && <SectionLatestOffers2 />}
+          {this.hasFeature("Ads",this.props.tree) &&this.hasFeature("Recomendados",this.props.tree) && <SectionLatestOffers title={"Recomendados"}/>}
         </div>
          <div className={classNames(classes.main, classes.mainRaised)}>
-         {this.hasFeature("Ads",this.props.tree) &&this.hasFeature("TopProductsBuyTimes",this.props.tree) && <SectionLatestOffers3 />}
+         {this.hasFeature("Ads",this.props.tree) &&this.hasFeature("TopProductsBuyTimes",this.props.tree) && <SectionLatestOffers title={"Top Products"}/>}
         </div>
         <div
           className={classNames(

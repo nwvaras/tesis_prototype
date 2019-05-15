@@ -13,6 +13,7 @@ import Button from "components/CustomButtons/Button.jsx";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Tooltip from "@material-ui/core/Tooltip";
 // @material-ui icons
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import Favorite from "@material-ui/icons/Favorite";
 
 import styles from "assets/jss/material-kit-pro-react/views/ecommerceSections/latestOffersStyle.jsx";
@@ -78,15 +79,20 @@ const SectionLatestOffers = props => {
                 </div>
                 <div className={classNames(classes.stats, classes.mlAuto)}>
                   {hasFeature("WishList",props.tree) &&<Tooltip
-                    id="tooltip-top"
-                    title="Saved to Wishlist"
-                    placement="top"
-                    classes={{ tooltip: classes.tooltip }}
-                  >
-                    <Button justIcon simple color="rose">
-                      <Favorite />
-                    </Button>
-                  </Tooltip>}
+                            id="tooltip-top"
+                            title="Save to Wishlist"
+                            placement="left"
+                            classes={{ tooltip: classes.tooltip }}
+                          >
+                            <Button
+                              justIcon
+                              simple
+                              color="rose"
+                              className={classes.pullRight}
+                            >
+                              <FavoriteBorder />
+                            </Button>
+                          </Tooltip>}
                 </div>
               </CardFooter>
             </Card>

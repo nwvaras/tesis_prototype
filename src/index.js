@@ -26,6 +26,7 @@ import SignupPage from "views/SignupPage/SignupPage.jsx";
 import SideBar from "views/SideBar/SideBar.js";
 import ErrorPage from "views/ErrorPage/ErrorPage.jsx";
 import CategoryPage from "views/CategoryPage/EcommercePage.jsx";
+import Header from "views/Header/index.js";
 
 import { ConnectedRouter } from 'connected-react-router';
 
@@ -74,26 +75,32 @@ let data={}
         {
             name: 'Usuarios',
             id: 'Usuarios',
+            disabled:[],
             children: [
                 { name: 'Notificaciones',
                  id: 'Notificaciones',
             selected: true,
+                    disabled:[3],
                 icon: Notification,},
                 { name: 'HistorialDeCompra',
                  id: 'HistorialDeCompra',
             selected: true,
+                    disabled:[0,1,2],
                 icon: List,},
                 { name: 'Fidelizacion',
                  id: 'Fidelizacion',
+                    disabled:[],
             selected: true,
                 icon: Favorite,},
                 { name: 'WishList',
                  id: 'WishList',
             selected: true,
+                    disabled:[0,1,3],
                 icon: AddCircle,},
                 { name: 'CodigoDesc',
                  id: 'CodigoDesc',
             selected: true,
+                    disabled:[0,1],
                 icon:CardGiftcard,},
             ],
             selected: true,
@@ -102,14 +109,17 @@ let data={}
         {
             name: 'Compra',
             id: 'Compra',
+            disabled:[0,1,2],
             children: [
                 { name: 'Despacho',
                  id: 'Despacho',
             selected: true,
+                    disabled:[0,1,2],
                 icon: DirectionsCar,},
                 { name: 'Ordenes',
                  id: 'Ordenes',
             selected: true,
+                    disabled:[0,1,2],
                 icon: AllInbox,},
             ],
                 selected: true,
@@ -119,25 +129,31 @@ let data={}
         {
             name: 'Ads',
             id: 'Ads',
+            disabled:[3],
                     children: [
                 { name: 'Ofertas',
                  id: 'Ofertas',
             selected: true,
+                    disabled:[0,2,3],
                 icon: ChromeReaderMode,},
                 { name: 'Recomendados',
                  id: 'Recomendados',
             selected: true,
+                    disabled:[3],
                 icon: ChromeReaderMode,},
                 { name: 'Novedades',
                  id: 'Novedades',
             selected: true,
+                    disabled:[1,2,3],
                 icon: ChromeReaderMode,},
                 { name: 'TopProductsBuyTimes',
                  id: 'TopProductsBuyTimes',
             selected: true,
+                    disabled:[2,3],
                 icon: ChromeReaderMode,},
                 { name: 'TopProductsEvaluations',
                  id: 'TopProductsEvaluations',
+                    disabled:[2,3],
                 selected: true, icon:ChromeReaderMode}],
             selected: true,
             icon: ChromeReaderMode,
@@ -145,23 +161,29 @@ let data={}
         {
             name: 'Products',
             id: 'Products',
+            disabled:[0],
                     children: [
                 { name: 'Precio',
                  id: 'Precio',
             selected: true,
+                    disabled:[0],
                 icon: Money,},
                 { name: 'Stock',
                  id: 'Stock',
             selected: true,
+                    disabled:[0,1,3],
                 icon: AllInbox,},
                 { name: 'Evaluacion',
                  id: 'Evaluacion',
             selected: true,
+                    disabled:[0,3],
                 icon: StarRate,},
                 { name: 'Preguntas',
                  id: 'Preguntas',
+                    disabled:[0,1,3],
                 selected: true, icon:QuestionAnswer}],
             selected: true,
+
             icon: AllInbox,
         },
         {
@@ -169,14 +191,17 @@ let data={}
             id: 'Catalogo',
             selected: true,
             icon: Category,
+            disabled:[3],
             children: [
                 { name: 'Busqueda',
                  id: 'Busqueda',
             selected: true,
+                    disabled:[3],
                 icon: Search,},
                 { name: 'Categorias',
                  id: 'Categorias',
             selected: true,
+                    disabled:[3],
                 icon: Category,},
             ],
 
@@ -185,14 +210,17 @@ let data={}
         {
             name: 'Soporte',
             id: 'Soporte',
+            disabled:[],
             children: [
                 { name: 'Chat',
                  id: 'Chat',
             selected: true,
+                    disabled:[],
                 icon: Chat,},
                 { name: 'Email',
                  id: 'Email',
             selected: true,
+                    disabled:[],
                 icon: Email,},
             ],
                 selected: true,
@@ -202,10 +230,12 @@ let data={}
         {
             name: 'InformacionEmpresa',
             id: 'InformacionEmpresa',
+            disabled: [],
             children: [
                 { name: 'Informacion',
                  id: 'Informacion',
             selected: true,
+                    disabled:[],
                 icon: Description,}
             ],
                 selected: true,
@@ -215,22 +245,27 @@ let data={}
         {
             name: 'Pago',
             id: 'Pago',
+            disabled:[0,1,2],
             children: [
                 { name: 'TarjetaDeCredito',
                  id: 'TarjetaDeCredito',
             selected: true,
+                    disabled:[0,1,2],
                 icon: CreditCard,},
                 { name: 'TransferenciaBancaria',
                  id: 'TransferenciaBancaria',
             selected: true,
+                    disabled:[0,1,2],
                 icon: AccountBalance,},
                 { name: 'PagoEnCash',
                  id: 'PagoEnCash',
             selected: true,
+                    disabled:[0,1,2],
                 icon: Money,},
                 { name: 'PagoEnCuotas',
                  id: 'PagoEnCuotas',
             selected: true,
+                    disabled:[0,1,2],
                 icon: AccountBalanceWallet,},
             ],
                 selected: true,
@@ -248,8 +283,10 @@ ReactDOM.render(
 
         <ConnectedRouter history={hist}>
   <Router history={hist}>
-      <SideBar/>
-    <div style={{marginTop: '64px',marginLeft:'64px'}}>
+      <SideBar>
+
+
+        <Header/>
     <Switch>
       <Route path="/about-us" component={AboutUsPage} />
       <Route path="/blog-post" component={BlogPostPage} />
@@ -271,7 +308,7 @@ ReactDOM.render(
       <Route path="/sidebar" component={SideBar} />
       <Route path="/" component={EcommercePage} />
     </Switch>
-    </div>
+      </SideBar>
   </Router>
   </ConnectedRouter>
     </Provider>,

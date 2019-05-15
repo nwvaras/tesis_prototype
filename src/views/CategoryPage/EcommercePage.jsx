@@ -12,7 +12,7 @@ import CardBody from "components/Card/CardBody.jsx";
 import Footer from "components/Footer/Footer.jsx";
 // sections for this page
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
-import SectionLatestOffers from "views/CategoryPage/Sections/SectionLatestOffers.jsx";
+import SectionLatestOffers from "views/DaEcommerce/Sections/SectionLatestOffers.jsx";
 import SectionProducts from "views/CategoryPage/Sections/SectionProducts.jsx";
 import SectionBlog from "views/EcommercePage/Sections/SectionBlog.jsx";
 // @material-ui/core components
@@ -51,6 +51,7 @@ class EcommercePage extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
+    this.props.actions.goToPage(1)
   }
   hasFeature(id,node){
         if(node.id === id){
@@ -71,97 +72,6 @@ class EcommercePage extends React.Component {
     const { classes } = this.props;
     return (
       <div>
-        <Header
-              brand={"Ecommerce"}
-              links={
-                <div className={classes.collapse}>
-                  <List className={classes.list + " " + classes.mlAuto}>
-
-                    {this.hasFeature("Categorias",this.props.tree) &&<ListItem className={classes.listItem}>
-                      <CustomDropdown
-                      left
-                      caret={false}
-                      hoverColor="dark"
-                      dropdownHeader="Categorias"
-                      buttonText={
-                        <Button
-                        href="#pablo"
-                        className={
-                          classes.navLink + " " + classes.navLinkActive
-                        }
-                        onClick={e => e.preventDefault()}
-                        color="transparent"
-                      >
-                        Categorias
-                      </Button>
-                      }
-                      buttonProps={{
-                        className:
-                          classes.navLink + " " + classes.imageDropdownButton,
-                        color: "transparent"
-                      }}
-                      dropdownList={this.props.categories.map( (category,index) => <Link to="/category-page" onClick={() => console.log(category.name)}>{category.name}</Link>)}
-                    />
-                    </ListItem>}
-                  <ListItem className={classes.listItem + " " + classes.mlAuto}>
-                  {/*<div className={classes.mlAuto}>*/}
-                    <CustomInput
-                      white
-                      inputRootCustomClasses={classes.inputRootCustomClasses}
-                      formControlProps={{
-                        className: classes.formControl
-                      }}
-                      inputProps={{
-                        placeholder: "Buscar",
-                        inputProps: {
-                          "aria-label": "Buscar",
-                          className: classes.searchInput
-                        }
-                      }}
-                    />
-                    <Button color="white" justIcon round>
-                      <Search className={classes.searchIcon} />
-                    </Button>
-                  </ListItem>
-                      {this.hasFeature("Compra",this.props.tree) && this.hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
-                    <Button
-                      href="#pablo"
-                      className={classes.navLink + " " + classes.navLinkActive}
-                      onClick={e => e.preventDefault()}
-                      color="transparent"
-                    >
-                      <ShoppingCart /> Compras
-                    </Button>
-                  </ListItem>}
-                      {this.hasFeature("Usuarios",this.props.tree) && this.hasFeature("HistorialDeCompra",this.props.tree) && <ListItem className={classes.listItem}>
-                    <Button
-                      href="#pablo"
-                      className={classes.navLink}
-                      onClick={e => e.preventDefault()}
-                      color="transparent"
-                    >
-                      <AccountCircle /> Historial
-                    </Button>
-                  </ListItem>}
-                  {this.hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
-                    <Button
-                      href="#pablo"
-                      className={classes.navLink}
-                      onClick={e => e.preventDefault()}
-                      color="transparent"
-                    >
-                      <Settings /> Configuracion
-                    </Button>
-                  </ListItem>}
-                  {/*</div>*/}
-                    </List>
-
-                </div>
-              }
-              absolute
-          color="info"
-
-            />
         <Parallax
           image={require("assets/img/examples/clark-street-merc.jpg")}
           filter="dark"
@@ -187,7 +97,7 @@ class EcommercePage extends React.Component {
         </Parallax>
 
         <div className={classNames(classes.main, classes.mainRaised)}>
-           {this.hasFeature("TopProductsBuyTimes",this.props.tree) &&<SectionLatestOffersTePodria/>}
+           {this.hasFeature("TopProductsBuyTimes",this.props.tree) &&<SectionLatestOffers title={"Top Product"}/>}
             <SectionProducts />
         </div>
 
@@ -309,6 +219,7 @@ class EcommercePage extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
+
     return {
                     tree: state.auth.data,
                     categories: state.auth.categories,

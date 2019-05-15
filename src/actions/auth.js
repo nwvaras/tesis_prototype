@@ -4,6 +4,7 @@ import {
     AUTH_LOGIN_USER_FAILURE,
     AUTH_LOGIN_USER_SUCCESS,
     AUTH_GO_TO_PRODUCT_PAGE,
+    AUTH_GO_TO_PAGE,
     AUTH_ADD_PRODUCT_TO_CART,
     AUTH_SIGNUP_USER_REQUEST,
     AUTH_SIGNUP_USER_FAILURE,
@@ -73,21 +74,52 @@ export function goToProductPage(productId) {
     };
 }
 
-export function addProductToCart(productId) {
-    console.log("adding " + productId)
+export function goToPage(page) {
+
+    return {
+        type: AUTH_GO_TO_PAGE,
+        payload: {
+            page
+        }
+    };
+}
+
+export function addProductToCart(product) {
+    console.log("adding " + product)
     return {
         type: AUTH_ADD_PRODUCT_TO_CART,
         payload: {
-            productId
+            product
         }
     };
 }
 export function removeProductFromCart(index) {
-    console.log("removing " + index)
+
     return {
         type: "REMOVE_FROM_CART",
         payload: {
             index
+        }
+    };
+}
+
+export function sideBar() {
+    console.log("this")
+
+    return {
+        type: "SIDEBAR",
+    };
+}
+
+export function qtyToProduct(product,qty) {
+    console.log("this")
+
+    return {
+        type: "QTY",
+        payload:{
+            product,
+            qty
+
         }
     };
 }

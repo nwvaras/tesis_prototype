@@ -15,6 +15,8 @@ import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import LocalShipping from "@material-ui/icons/LocalShipping";
 import VerifiedUser from "@material-ui/icons/VerifiedUser";
 import Favorite from "@material-ui/icons/Favorite";
+import Star from "@material-ui/icons/Star";
+import StarBorder from "@material-ui/icons/StarBorder";
 // core components
 import Header from "components/Header/Header.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
@@ -30,6 +32,7 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import Tooltip from "@material-ui/core/Tooltip";
+import {push} from "connected-react-router"
 
 import productStyle from "assets/jss/material-kit-pro-react/views/productStyle.jsx";
 
@@ -53,6 +56,7 @@ import {Link} from "react-router-dom";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 import hasFeature from "../../utils/index"
 import styles from "assets/jss/tesis/homestyle.js";
+import SectionContentAreas from "./SectionContentAreas";
 class ProductPage extends React.Component {
   constructor(props) {
     super(props);
@@ -60,6 +64,7 @@ class ProductPage extends React.Component {
       colorSelect: "0",
       sizeSelect: "0"
     };
+  this.props.actions.goToPage(2)
   }
   handleSelect = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -69,6 +74,7 @@ class ProductPage extends React.Component {
     document.body.scrollTop = 0;
   }
   render() {
+     const stars = Array.apply(null, { length: this.props.evaluation }).map((e, i) => <Star/>)
     const { classes } = this.props;
     const images = [
       {
@@ -88,99 +94,9 @@ class ProductPage extends React.Component {
         thumbnail: product2
       }
     ];
+
     return (
       <div className={classes.productPage}>
-         <Header
-              brand={"Ecommerce"}
-              links={
-                <div className={classes.collapse}>
-                  <List className={classes.list + " " + classes.mlAuto}>
-
-                    {hasFeature("Categorias",this.props.tree) &&<ListItem className={classes.listItem}>
-                      <CustomDropdown
-                      left
-                      caret={false}
-                      hoverColor="dark"
-                      dropdownHeader="Categorias"
-                      buttonText={
-                        <Button
-                        href="#pablo"
-                        className={
-                          classes.navLink + " " + classes.navLinkActive
-                        }
-                        onClick={e => e.preventDefault()}
-                        color="transparent"
-                      >
-                        Categorias
-                      </Button>
-                      }
-                      buttonProps={{
-                        className:
-                          classes.navLink + " " + classes.imageDropdownButton,
-                        color: "transparent"
-                      }}
-                      dropdownList={this.props.categories.map( (category,index) => <Link to="/category-page" onClick={() => console.log(category.name)}>{category.name}</Link>)}
-                    />
-                    </ListItem>}
-                  <ListItem className={classes.listItem + " " + classes.mlAuto}>
-                  {/*<div className={classes.mlAuto}>*/}
-                    <CustomInput
-                      white
-                      inputRootCustomClasses={classes.inputRootCustomClasses}
-                      formControlProps={{
-                        className: classes.formControl
-                      }}
-                      inputProps={{
-                        placeholder: "Buscar",
-                        inputProps: {
-                          "aria-label": "Buscar",
-                          className: classes.searchInput
-                        }
-                      }}
-                    />
-                    <Button color="white" justIcon round>
-                      <Search className={classes.searchIcon} />
-                    </Button>
-                  </ListItem>
-                      {hasFeature("Compra",this.props.tree) && hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
-                    <Button
-                      href="#pablo"
-                      className={classes.navLink + " " + classes.navLinkActive}
-                      onClick={e => e.preventDefault()}
-                      color="transparent"
-                    >
-                      <ShoppingCart /> Compras
-                    </Button>
-                  </ListItem>}
-                      {hasFeature("Usuarios",this.props.tree) && hasFeature("HistorialDeCompra",this.props.tree) && <ListItem className={classes.listItem}>
-                    <Button
-                      href="#pablo"
-                      className={classes.navLink}
-                      onClick={e => e.preventDefault()}
-                      color="transparent"
-                    >
-                      <AccountCircle /> Historial
-                    </Button>
-                  </ListItem>}
-                  {hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
-                    <Button
-                      href="#pablo"
-                      className={classes.navLink}
-                      onClick={e => e.preventDefault()}
-                      color="transparent"
-                    >
-                      <Settings /> Configuracion
-                    </Button>
-                  </ListItem>}
-                  {/*</div>*/}
-                    </List>
-
-                </div>
-              }
-              absolute
-          color="info"
-
-            />
         <div className={classNames(classes.section, classes.sectionGray)}>
           <div className={classes.container}>
             <div className={classNames(classes.main, classes.mainRaised)}>
@@ -196,6 +112,8 @@ class ProductPage extends React.Component {
                 <GridItem md={6} sm={6}>
                   <h2 className={classes.title}>{this.props.activeProduct.name}</h2>
                   <h3 className={classes.mainPrice}>{this.props.activeProduct.price}</h3>
+                    {Array.apply(null, { length: this.props.evaluation }).map((e, i) => <Star/>)}
+                    {Array.apply(null, { length: 5 -this.props.evaluation }).map((e, i) => <StarBorder/>)}
                   <Accordion
                     active={0}
                     activeColor="rose"
@@ -337,7 +255,7 @@ class ProductPage extends React.Component {
                     </GridItem>
                   </GridContainer>
                   <GridContainer className={classes.pullRight}>
-                    <Button round color="rose" onClick={() => this.props.actions.addProductToCart(this.props.idProduct)}>
+                    <Button round color="rose" onClick={() => { this.props.dispatch(push("/shopping-cart-page")); this.props.actions.addProductToCart(this.props.activeProduct)}}>
                       Add to Cart &nbsp; <ShoppingCart />
                     </Button>
                   </GridContainer>
@@ -535,7 +453,12 @@ class ProductPage extends React.Component {
               </GridContainer>
             </div>
           </div>
-        </div>
+        </div>}
+          <div className={classNames(classes.section, classes.sectionGray)}>
+          <div className={classes.container}>
+            <div className={classNames(classes.main, classes.mainRaised)}>
+            <SectionContentAreas/>
+            </div></div></div>
         <Footer
           // theme="dark"
           content={
@@ -596,12 +519,17 @@ class ProductPage extends React.Component {
 
 const mapStateToProps = (state) => {
   console.log(state.auth.activeProduct)
+    const activeProduct = state.auth.products.filter( (product) => product.id === state.auth.activeProduct)[0]
+    // const evaluation =activeProduct.evaluations.reduce((total, currentValue, currentIndex, arr) =>{ return total + currentValue.eval},0)/activeProduct.evaluations.length
+    // console.log(evaluation)
     return {
         tree: state.auth.data,
-        activeProduct : state.auth.products[state.auth.activeProduct],
+        activeProduct : activeProduct,
         idProduct: state.auth.activeProduct,
         categories: state.auth.categories,
         randomProducts :state.auth.products.concat().sort( function() { return 0.5 - Math.random() } ).slice(1,5),
+        evaluation: activeProduct.evaluations.reduce((total, currentValue, currentIndex, arr) =>{ return total + currentValue.eval},0)/activeProduct.evaluations.length
+
     };
 };
 

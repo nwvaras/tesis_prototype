@@ -59,6 +59,7 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 import hasFeature from "../../utils/index"
 import styles from "assets/jss/tesis/productstyle.js";
 import TextField from "@material-ui/core/TextField";
+import SectionContentAreas from "./SectionContentAreas";
 function getSteps() {
   return ['Metodo de pago', 'Despacho', 'Confirmacion'];
 }
@@ -81,6 +82,10 @@ class HorizontalLinearStepper extends React.Component {
       [name]: event.target.value,
     });
   };
+  constructor(props){
+    super(props)
+      this.props.actions.goToPage(4)
+  }
 
   getStepContent=(step) => {
     const {classes,...rest} = this.props
@@ -182,7 +187,7 @@ class HorizontalLinearStepper extends React.Component {
           variant="filled"
         /></CardBody></Card>;
         case 2:
-          return 'This is the bit I really care about!';
+          return <SectionContentAreas modoDePago={this.getTextOfSelect(this.state.simpleSelect)} valor={this.state.medium} skipped={this.state.skipped.has(1)} direccion={this.state.ciudad + " " + this.state.calle}/>;
         default:
           return 'Unknown step';
       }
@@ -255,7 +260,7 @@ class HorizontalLinearStepper extends React.Component {
 
     return (
       <div className={classes.productPage}>
-        <div className={classes.container}>
+        <div className={classes.container}style={{'marginTop' :0,'paddingTop': '20vh'}}>
         <Stepper activeStep={activeStep}>
           {steps.map((label, index) => {
             const props = {};
@@ -277,7 +282,7 @@ class HorizontalLinearStepper extends React.Component {
           {activeStep === steps.length ? (
             <div>
               <Typography className={classes.instructions}>
-                All steps completed - you&apos;re finished
+                Compra efectuada
               </Typography>
               <Button onClick={this.handleReset} className={classes.button}>
                 Reset

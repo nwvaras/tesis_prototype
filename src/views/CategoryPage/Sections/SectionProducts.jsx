@@ -36,7 +36,8 @@ import color3 from "assets/img/examples/color3.jpg";
 import color2 from "assets/img/examples/color2.jpg";
 import dg3 from "assets/img/dg3.jpg";
 import dg1 from "assets/img/dg1.jpg";
-
+import Star from "@material-ui/icons/Star";
+import StarBorder from "@material-ui/icons/StarBorder";
 import styles from "assets/jss/material-kit-pro-react/views/ecommerceSections/productsStyle.jsx";
 import * as actionCreators from "../../../actions/auth";
 import {connect} from "react-redux";
@@ -1022,17 +1023,20 @@ class SectionProducts extends React.Component {
                          <GridItem md={4} sm={4}>
                     <Card plain product>
                         <CardHeader noShadow image>
-                          <a onClick={() =>{ this.props.dispatch(push("/product-page")); this.props.actions.goToProductPage(index)}}>
+                          <a onClick={() =>{ this.props.dispatch(push("/product-page")); this.props.actions.goToProductPage(product.id)}}>
                             <img src={product.photos[0].src} alt=".." />
                           </a>
                         </CardHeader>
                         <CardBody plain>
-                          <a onClick={() =>{ this.props.dispatch(push("/product-page")); this.props.actions.goToProductPage(index)}}>
+                          <a onClick={() =>{ this.props.dispatch(push("/product-page")); this.props.actions.goToProductPage(product.id)}}>
                             <h4 className={classes.cardTitle}>{product.name}</h4>
                           </a>
+                            {this.hasFeature("Evaluacion",this.props.tree) && Array.apply(null, { length: product.eval }).map((e, i) => <Star/>)}
+                    {this.hasFeature("Evaluacion",this.props.tree) &&Array.apply(null, { length: 5 -product.eval }).map((e, i) => <StarBorder/>)}
                           <p className={classes.description}>
                               {product.description}
                           </p>
+
                         </CardBody>
                         <CardFooter plain className={classes.justifyContentBetween}>
                           <div className={classes.priceContainer}>
@@ -1261,10 +1265,18 @@ class SectionProducts extends React.Component {
 
 const mapStateToProps = (state) => {
     console.log(state.auth.activeCategory)
+     console.log(state.auth.actualPage)
     console.log(state.auth.products)
+    
     return {
         tree: state.auth.data,
-        products: state.auth.products.filter( product => product.category === state.auth.activeCategory),
+        products: state.auth.products.filter( product => product.category === state.auth.activeCategory).map(
+            (product) => {
+                product.eval=product.evaluations.reduce((total, currentValue, currentIndex, arr) =>{ return total + currentValue.eval},0)/product.evaluations.length
+                return product
+            }
+        ),
+        // evaluation: activeProduct.evaluations.reduce((total, currentValue, currentIndex, arr) =>{ return total + currentValue.eval},0)/activeProduct.evaluations.length
 
     };
 };

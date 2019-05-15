@@ -1,6 +1,7 @@
 import {
     AUTH_LOGIN_USER_SUCCESS,
     AUTH_GO_TO_PRODUCT_PAGE,
+    AUTH_GO_TO_PAGE,
     AUTH_LOGIN_USER_FAILURE,
     AUTH_ADD_PRODUCT_TO_CART,
 } from '../constants';
@@ -29,7 +30,7 @@ import dolce from "assets/img/examples/dolce.jpg";
 const initialState = {
 
     data: null,
-    pages:[{name:"Home", url: "/"},{name:"List. Productos", url: "/category-page"},{name:"Producto", url: "/product-page"},{name:"Cart", url: "/shopping-cart-page"},{name:"Pago/Despacho/Confirmacion", url: "/payment-page"}],
+    pages:[{name:"Home", url: "/",id:0},{name:"List. Productos", url: "/category-page",id:1},{name:"Producto", url: "/product-page",id:2},{name:"Cart", url: "/shopping-cart-page"},{name:"Pago/Despacho/Confirmacion", url: "/payment-page",id:3}],
     ads:{
         top:[
             {src:1}
@@ -48,12 +49,13 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.",
        price:1431,
        discountPrice:743,
+        id:0,
        category:0,
         stock:3,
         evaluations:[
             {
                 id:1,
-                eval:5,
+                eval:4,
                 commentary:"holi"
             }
         ],
@@ -74,6 +76,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1432,
        discountPrice:743,
+        id:1,
        category:0,
         stock:3,
         evaluations:[
@@ -98,6 +101,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:2,
        category:0,
         stock:3,
         evaluations:[
@@ -122,6 +126,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:3,
        category:0,
         stock:3,
         evaluations:[
@@ -146,6 +151,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:4,
        category:0,
         stock:3,
         evaluations:[
@@ -170,6 +176,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:5,
        category:0,
         stock:3,
         evaluations:[
@@ -194,6 +201,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:6,
        category:0,
         stock:3,
         evaluations:[
@@ -218,6 +226,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:7,
        category:0,
         stock:3,
         evaluations:[
@@ -242,6 +251,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:8,
        category:0,
         stock:3,
         evaluations:[
@@ -266,6 +276,32 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:9,
+        stock:3,
+        evaluations:[
+            {
+                eval:5,
+                commentary:"holi"
+            }
+        ],
+        category:0,
+        questions:[
+            {
+                description:"",
+                answer:"",
+                upVotes:30,
+                downVotes:1,
+            }
+        ]
+
+    },
+    {
+       name:"Woo",
+       photos:[{src: dolce}],
+        description:"Impeccably tailored in Italy from lightweight navy wool.2",
+       price:1433,
+       discountPrice:743,
+        id:10,
        category:0,
         stock:3,
         evaluations:[
@@ -290,6 +326,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:11,
        category:0,
         stock:3,
         evaluations:[
@@ -314,6 +351,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:12,
        category:0,
         stock:3,
         evaluations:[
@@ -338,6 +376,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:13,
        category:0,
         stock:3,
         evaluations:[
@@ -362,6 +401,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:14,
        category:0,
         stock:3,
         evaluations:[
@@ -386,6 +426,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:15,
        category:0,
         stock:3,
         evaluations:[
@@ -410,6 +451,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:16,
        category:0,
         stock:3,
         evaluations:[
@@ -434,6 +476,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:17,
        category:0,
         stock:3,
         evaluations:[
@@ -458,6 +501,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:18,
        category:0,
         stock:3,
         evaluations:[
@@ -482,6 +526,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:19,
        category:0,
         stock:3,
         evaluations:[
@@ -506,6 +551,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
+        id:20,
        category:0,
         stock:3,
         evaluations:[
@@ -530,30 +576,7 @@ const initialState = {
         description:"Impeccably tailored in Italy from lightweight navy wool.2",
        price:1433,
        discountPrice:743,
-       category:0,
-        stock:3,
-        evaluations:[
-            {
-                eval:5,
-                commentary:"holi"
-            }
-        ],
-        questions:[
-            {
-                description:"",
-                answer:"",
-                upVotes:30,
-                downVotes:1,
-            }
-        ]
-
-    },
-    {
-       name:"Woo",
-       photos:[{src: dolce}],
-        description:"Impeccably tailored in Italy from lightweight navy wool.2",
-       price:1433,
-       discountPrice:743,
+        id:21,
        category:0,
         stock:3,
         evaluations:[
@@ -574,8 +597,9 @@ const initialState = {
     },],
     activeCategory: 0,
     activeProduct: 0,
-    cart:[1,2,3,4],
+    cart:[],
     searchText: "",
+    sidebarActive: true,
 
 };
 
@@ -621,13 +645,31 @@ export default function authReducer(state = initialState, action) {
             return Object.assign({}, state, {
                activeProduct: action.payload.productId
             });
-        case AUTH_ADD_PRODUCT_TO_CART:
+        case AUTH_GO_TO_PAGE:
             return Object.assign({}, state, {
-               cart: [...state.cart,action.payload.productId]
+               actualPage: action.payload.page
+            });
+        case AUTH_ADD_PRODUCT_TO_CART:
+            action.payload.product.qty=1
+            return Object.assign({}, state, {
+               cart: [...state.cart,action.payload.product]
             });
         case "REMOVE_FROM_CART":
             return Object.assign({}, state, {
-               cart: state.cart.filter((prod,index) => index !== action.payload.index)
+               cart: state.cart.filter((prod,index) => prod.id !== action.payload.index)
+            });
+        case "SIDEBAR":
+            return Object.assign({}, state, {
+               sidebarActive: !state.sidebarActive
+            });
+        case "QTY":
+            return Object.assign({}, state, {
+               cart: state.cart.map((prod,index) =>{
+                   if(prod.id === action.payload.product.id){
+                       prod.qty = prod.qty + action.payload.qty
+                   }
+                   return prod
+               })
             });
         default:
 

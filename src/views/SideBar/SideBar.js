@@ -106,7 +106,9 @@ class MiniDrawer extends React.Component {
   render() {
     const { classes, theme } = this.props;
 
-    return (
+    return (this.props.sidebarActive?
+        (
+            <div>
       <div className={classes.root}>
         <CssBaseline />
         <AppBar
@@ -126,7 +128,7 @@ class MiniDrawer extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-              {this.props.pages.map( (page,index) =>  <Button color="inherit" onClick={() =>this.props.dispatch(push(page.url))}>
+              {this.props.pages.map( (page,index) =>  <Button color="inherit" onClick={() =>{this.props.actions.goToPage(page.id); this.props.dispatch(push(page.url)) }}>
                   {page.name}
             </Button> ) }
 
@@ -156,11 +158,11 @@ class MiniDrawer extends React.Component {
                     <Divider />
           <Divider />
           <Divider />
-          <List>
+          <List button style={{backgroundColor: '#7d7d7d'}}>
 
-              <ListItem button key={element.name} onClick={() => this.props.actions.activateOrDesactivate(element.name)}>
-                  <ListItemIcon>{index % 2 === 0 ?<div style={{marginLeft:'-5px',color: element.selected?'#3a7d2a':'#ff0006'}}>  <element.icon/> </div> :<div style={{marginLeft:'-5px',color:element.selected?'#3a7d2a':'#ff0006'}}> <element.icon /></div>}</ListItemIcon>
-                <ListItemText primary={element.name} />
+              <ListItem  key={element.name} color="info" disabled={element.disabled && element.disabled.includes(this.props.actualPage) } onClick={() => this.props.actions.activateOrDesactivate(element.name)}>
+                  {/*<ListItemIcon>{index % 2 === 0 ?<div style={{marginLeft:'-5px',color: element.selected?'#3a7d2a':'#ff0006'}}>  <element.icon/> </div> :<div style={{marginLeft:'-5px',color:element.selected?'#3a7d2a':'#ff0006'}}> <element.icon /></div>}</ListItemIcon>*/}
+                  <ListItemText style={{marginLeft:'-5px',color: element.selected?'#3a7d2a':'#ff0006'}}  ><Typography variant="subtitle2" color={ element.selected?'primary':'secondary'} gutterBottom>{element.name}</Typography></ListItemText>
               </ListItem>
 
           </List>
@@ -169,9 +171,9 @@ class MiniDrawer extends React.Component {
           <Divider />
           <List>
             {element.children && element.children.map((child, index) => ( (console.log(child) || true) &&
-              <ListItem button key={child.name} onClick={() => this.props.actions.activateOrDesactivate(child.name)}>
+              <ListItem  button key={child.name} disabled={element.disabled && element.disabled.includes(this.props.actualPage) ||child.disabled && child.disabled.includes(this.props.actualPage) } onClick={() => this.props.actions.activateOrDesactivate(child.name)}>
                   <ListItemIcon>{index % 2 === 0 ? <div  style={{color:child.selected?'#3a7d2a':'#ff0006'}}><child.icon/> </div>: <div style={{color:child.selected?'#3a7d2a':'#ff0006'}}> <child.icon /> </div>}</ListItemIcon>
-                <ListItemText primary={child.name} />
+                <ListItemText  primary={child.name} />
               </ListItem>
             ))}
           </List>
@@ -180,6 +182,10 @@ class MiniDrawer extends React.Component {
             
         </Drawer>
       </div>
+        <div style={{marginTop: '64px',marginLeft:'64px'}}>
+            {this.props.children}
+    </div>
+      </div>) :(<div>{this.props.children}</div>)
     );
   }
 }
@@ -189,9 +195,13 @@ MiniDrawer.propTypes = {
   theme: PropTypes.object.isRequired,
 };
 const mapStateToProps = (state) => {
+  console.log("yey")
+  console.log(state.auth.actualPage)
     return {
         data: state.auth.data,
-        pages: state.auth.pages
+        pages: state.auth.pages,
+        actualPage: state.auth.actualPage,
+        sidebarActive: state.auth.sidebarActive,
     };
 };
 
