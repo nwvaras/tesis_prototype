@@ -38,6 +38,7 @@ import product3 from "assets/img/product3.jpg";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import * as actionCreators from "../../actions/auth";
+import hasFeature from "../../utils";
 
 class SectionContentAreas extends React.Component {
   constructor(props) {
@@ -60,12 +61,19 @@ class SectionContentAreas extends React.Component {
       checked: newChecked
     });
   }
+  returnName=(product) => {
+      if(hasFeature("Stock",this.props.tree)){
+          if(product.qty < product.stock){
+              return(<div style={{textDecoration :'line-through'}}>{product.name}</div>)
+          }
+      }
+      return(product.name)
+
+    }
   render() {
     console.log(this.props.skipped)
     const { classes, ...rest } = this.props;
     const fillButtons = [
-      { color: "info", icon: Person },
-      { color: "success", icon: Edit },
       { color: "danger", icon: Close }
     ].map((prop, key) => {
       return (
@@ -98,17 +106,17 @@ class SectionContentAreas extends React.Component {
     });
     let data = this.props.cart.map( (product,index) => [
                     index+1,
-                    product.name,
+                    this.returnName(product),
                     product.qty,
-                    product.price,
+                    hasFeature("Precio",this.props.tree)?product.price:"",
                     fillButtons
                   ])
       data.push({
                     total: true,
                     colspan: "3",
                     amount: (
-                      <span>
-                        <small>€</small>{this.props.sum}
+                        hasFeature("Precio",this.props.tree)&&<span>
+                          <small>€</small>{this.props.sum}
                       </span>
                     )
                   })
@@ -139,7 +147,7 @@ class SectionContentAreas extends React.Component {
                   "#",
                   "Producto",
                   "Cantidad",
-                  "Precio",
+                  hasFeature("Precio",this.props.tree)?"Precio":"",
 
                   "Actions"
                 ]}
@@ -168,8 +176,8 @@ class SectionContentAreas extends React.Component {
 
           </Card></Card>
         <Card><Card>
-              <CardHeader title={"Direcion de despacho: " + (this.props.skipped? "Retiro en tienda" : "")} ></CardHeader>
-            {!this.props.skipped && <CardContent> {this.props.direccion} </CardContent>}
+              <CardHeader title={"Direcion de despacho: " + (this.props.skipped || !hasFeature("Despacho",this.props.tree)? "Retiro en tienda" : "")} ></CardHeader>
+            {!this.props.skipped && hasFeature("Despacho",this.props.tree) && <CardContent> {this.props.direccion} </CardContent>}
 
           </Card></Card>
       </div>

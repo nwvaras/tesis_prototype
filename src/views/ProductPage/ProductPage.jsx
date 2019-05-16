@@ -111,9 +111,10 @@ class ProductPage extends React.Component {
                 </GridItem>
                 <GridItem md={6} sm={6}>
                   <h2 className={classes.title}>{this.props.activeProduct.name}</h2>
-                  <h3 className={classes.mainPrice}>{this.props.activeProduct.price}</h3>
-                    {Array.apply(null, { length: this.props.evaluation }).map((e, i) => <Star/>)}
-                    {Array.apply(null, { length: 5 -this.props.evaluation }).map((e, i) => <StarBorder/>)}
+                  {hasFeature("Precio",this.props.tree) &&<h3 className={classes.mainPrice}>{this.props.activeProduct.price}</h3>}
+                    {hasFeature("Evaluacion",this.props.tree) &&Array.apply(null, { length: this.props.evaluation }).map((e, i) => <Star/>)}
+                    {hasFeature("Evaluacion",this.props.tree) &&Array.apply(null, { length: 5 -this.props.evaluation }).map((e, i) => <StarBorder/>)}
+                     {hasFeature("Stock",this.props.tree) &&<h3 className={classes.title}>Stock {": "}{this.props.activeProduct.stock}</h3>}
                   <Accordion
                     active={0}
                     activeColor="rose"
@@ -293,16 +294,16 @@ class ProductPage extends React.Component {
                 </GridItem>
               </GridContainer>
             </div>
-            <div className={classes.relatedProducts}>
+            {hasFeature("Recomendados",this.props.tree)&& <div className={classes.relatedProducts}>
               <h3 className={classNames(classes.title, classes.textCenter)}>
                 Quizas tambien estaras interesado en:
               </h3>
               <GridContainer>
                   {this.props.randomProducts.map( (product,index) =>
                 <GridItem sm={6} md={3}>
-                  <Card product>
+                  <Card product  onClick={() =>{ this.props.dispatch(push("/product-page")); this.props.actions.goToProductPage(product.id)}}>
                     <CardHeader image>
-                      <a href="#pablo">
+                      <a>
                         <img src={product.photos[0].src} alt="cardProduct" />
                       </a>
                     </CardHeader>
@@ -321,11 +322,11 @@ class ProductPage extends React.Component {
                       </div>
                     </CardBody>
                     <CardFooter className={classes.justifyContentBetween}>
-                      <div className={classes.price}>
+                       {hasFeature("Precio",this.props.tree) &&<div className={classes.price}>
                         <h4>{product.price}</h4>
-                      </div>
+                      </div>}
                       <div className={classes.stats}>
-                        <Tooltip
+                         {hasFeature("WishList",this.props.tree) &&<Tooltip
                           id="tooltip-top"
                           title="Save to Wishlist"
                           placement="top"
@@ -334,7 +335,7 @@ class ProductPage extends React.Component {
                           <Button justIcon color="rose" simple>
                             <Favorite />
                           </Button>
-                        </Tooltip>
+                        </Tooltip>}
                       </div>
                     </CardFooter>
                   </Card>
@@ -451,15 +452,15 @@ class ProductPage extends React.Component {
                   {/*</Card>*/}
                 {/*</GridItem>*/}
               </GridContainer>
-            </div>
+            </div>}
           </div>
         </div>}
-          <div className={classNames(classes.section, classes.sectionGray)}>
+          {hasFeature("Preguntas",this.props.tree) &&<div className={classNames(classes.section, classes.sectionGray)}>
           <div className={classes.container}>
             <div className={classNames(classes.main, classes.mainRaised)}>
             <SectionContentAreas/>
-            </div></div></div>
-        <Footer
+            </div></div></div>}
+        {hasFeature("Informacion",this.props.tree) &&<Footer
           // theme="dark"
           content={
             <div>
@@ -511,7 +512,7 @@ class ProductPage extends React.Component {
               </div>
             </div>
           }
-        />
+        />}
       </div>
     );
   }

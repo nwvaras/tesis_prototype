@@ -60,8 +60,12 @@ import hasFeature from "../../utils/index"
 import styles from "assets/jss/tesis/productstyle.js";
 import TextField from "@material-ui/core/TextField";
 import SectionContentAreas from "./SectionContentAreas";
-function getSteps() {
-  return ['Metodo de pago', 'Despacho', 'Confirmacion'];
+function getSteps(props) {
+  if(hasFeature("Despacho",props.tree)){
+    return ['Metodo de pago', 'Despacho', 'Confirmacion'];
+  }else{
+    return ['Metodo de pago', 'Confirmacion'];
+  }
 }
 
 
@@ -72,11 +76,12 @@ class HorizontalLinearStepper extends React.Component {
     skipped: new Set(),
       simpleSelect: "",
       medium: "",
+      desc:""
   };
   handleSimple = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
-  isStepOptional = step => step === 1;
+  isStepOptional = step => step === (hasFeature("Despacho",this.props.tree)? 1:-1);
   handleChange = name => event => {
     this.setState({
       [name]: event.target.value,
@@ -89,7 +94,8 @@ class HorizontalLinearStepper extends React.Component {
 
   getStepContent=(step) => {
     const {classes,...rest} = this.props
-  switch (step) {
+      const realStep = (!hasFeature("Despacho",this.props.tree) && step===1)? 2:step
+  switch (realStep) {
     case 0:
       return <div><Card>
                     <CardBody><GridContainer>
@@ -126,7 +132,7 @@ class HorizontalLinearStepper extends React.Component {
                         >
                           Metodo de pago
                         </MenuItem>
-                        <MenuItem
+                        {hasFeature("TarjetaDeCredito",this.props.tree) &&<MenuItem
                           classes={{
                             root: classes.selectMenuItem,
                             selected: classes.selectMenuItemSelected
@@ -134,8 +140,8 @@ class HorizontalLinearStepper extends React.Component {
                           value="2"
                         >
                           Tarjeta de credito
-                        </MenuItem>
-                        <MenuItem
+                        </MenuItem>}
+                        {hasFeature("TransferenciaBancaria",this.props.tree) &&<MenuItem
                           classes={{
                             root: classes.selectMenuItem,
                             selected: classes.selectMenuItemSelected
@@ -143,8 +149,8 @@ class HorizontalLinearStepper extends React.Component {
                           value="3"
                         >
                           Transferencia Bancaria
-                        </MenuItem>
-                        <MenuItem
+                        </MenuItem>}
+                        {hasFeature("PagoEnCash",this.props.tree) &&<MenuItem
                           classes={{
                             root: classes.selectMenuItem,
                             selected: classes.selectMenuItemSelected
@@ -152,13 +158,22 @@ class HorizontalLinearStepper extends React.Component {
                           value="4"
                         >
                           Efectivo
-                        </MenuItem>
+                        </MenuItem>}
+                        {hasFeature("PagoEnCuotas",this.props.tree) &&<MenuItem
+                          classes={{
+                            root: classes.selectMenuItem,
+                            selected: classes.selectMenuItemSelected
+                          }}
+                          value="4"
+                        >
+                          Cuotas
+                        </MenuItem>}
                       </Select>
                     </FormControl>
                   </GridItem>
                     </GridContainer></CardBody></Card>
           <Card><CardBody>
-              {this.state.simpleSelect !=="" &&<TextField
+             <div> {this.state.simpleSelect !=="" &&<TextField
           required
           id="medium"
           label={this.getTextOfSelect(this.state.simpleSelect)}
@@ -166,7 +181,17 @@ class HorizontalLinearStepper extends React.Component {
             value={this.state.medium}
           margin="normal"
           variant="filled"
-        />}</CardBody></Card></div>;
+             />}
+             {hasFeature("CodigoDesc",this.props.tree) &&<TextField
+          required
+          id="desc"
+          label="desc"
+          onChange={this.handleChange("desc")}
+            value={this.state.desc}
+          margin="normal"
+          variant="filled"
+        />}
+             </div></CardBody></Card></div>;
         case 1:
             return <Card><CardBody><TextField
           required
@@ -255,7 +280,7 @@ class HorizontalLinearStepper extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const steps = getSteps();
+    const steps = getSteps(this.props);
     const { activeStep } = this.state;
 
     return (
@@ -316,7 +341,7 @@ class HorizontalLinearStepper extends React.Component {
                   onClick={this.handleNext}
                   className={classes.button}
                 >
-                  {activeStep === steps.length - 1 ? 'Aceptar y Pagar' : 'Siguiente'}
+                  {activeStep === steps.length - 1 ? (hasFeature("Ordenes",this.props.tree)?'Aceptar y Pagar':'Consultar') : 'Siguiente'}
                 </Button>
               </div>
             </div>

@@ -114,7 +114,7 @@ class DaEcommerce extends React.Component {
                         color: "transparent"
                       }}
                       dropdownList={[
-                        <Link to="/category-page">Ropa</Link>,
+                        <Link to="/category-page?categoryId=0">Ropa</Link>,
                         "Laptops",
                         "Instrumentos"
                       ]}
@@ -150,7 +150,7 @@ class DaEcommerce extends React.Component {
                       color="transparent"
 
                     >
-                      <Badge badgeContent={this.props.cart.length} color="primary" classes={{ badge: classes.badge }}><ShoppingCart /> Compras</Badge>
+                      <Badge badgeContent={this.props.cart.length} color="primary" classes={{ badge: classes.badge }}><ShoppingCart /> Carro</Badge>
                     </Button>
                   </ListItem>):(this.hasFeature("Compra",this.props.tree) && this.hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
                     <Button

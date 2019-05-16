@@ -68,7 +68,7 @@ class ShoppingCartPage extends React.Component {
                       </span>,
                       "Red",
                       "M",
-                      <span>
+                      hasFeature("Precio",this.props.tree) &&<span>
                         <small className={classes.tdNumberSmall}>€</small> {product.price}
                       </span>,
                       <span>
@@ -95,7 +95,7 @@ class ShoppingCartPage extends React.Component {
                         </div>
                       </span>,
                       <span>
-                        <small className={classes.tdNumberSmall}>{product.price}</small>
+                          {hasFeature("Precio",this.props.tree) &&<small className={classes.tdNumberSmall}>{product.price*product.qty}</small>}
                       </span>,
                       <Tooltip
                         id="close1"
@@ -112,14 +112,14 @@ class ShoppingCartPage extends React.Component {
                       purchase: true,
                       colspan: "3",
                       amount: (
-                        <span>
+                        hasFeature("Precio",this.props.tree) &&<span>
                           <small>€</small>{this.props.sum}
                         </span>
                       ),
                       col: {
                         colspan: 3,
                         text: (
-                          <Button color="info" round onClick={() => this.props.dispatch(push("/payment-page"))}>
+                          <Button color="info" round onClick={() => {if(this.props.cart.length >0){this.props.dispatch(push("/payment-page"))}}}>
                             Complete Purchase <KeyboardArrowRight />
                           </Button>
                         )
@@ -138,9 +138,9 @@ class ShoppingCartPage extends React.Component {
                     "Producto",
                     "Var 1",
                     "Var 2",
-                        "Precio",
+                        hasFeature("Precio",this.props.tree)?"Precio":"",
                     "CANTIDAD",
-                    "P. Final",
+                    hasFeature("Precio",this.props.tree)?"P. Final":"",
                     ""
                   ]}
                   tableData={
@@ -176,15 +176,15 @@ class ShoppingCartPage extends React.Component {
                 <List className={classes.list}>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/"
+                      href=""
                       className={classes.block}
                     >
-                      Creative Tim
+                      Ecommerce
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/presentation"
+                      href=""
                       className={classes.block}
                     >
                       About us
@@ -192,7 +192,7 @@ class ShoppingCartPage extends React.Component {
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="//blog.creative-tim.com/"
+                      href=""
                       className={classes.block}
                     >
                       Blog
@@ -200,7 +200,7 @@ class ShoppingCartPage extends React.Component {
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/license"
+                      href=""
                       className={classes.block}
                     >
                       Licenses
@@ -211,8 +211,6 @@ class ShoppingCartPage extends React.Component {
               <div className={classes.right}>
                 &copy; {1900 + new Date().getYear()} , made with{" "}
                 <Favorite className={classes.icon} /> by{" "}
-                <a href="https://www.creative-tim.com">Creative Tim</a> for a
-                better web.
               </div>
             </div>
           }

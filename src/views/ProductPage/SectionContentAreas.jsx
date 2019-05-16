@@ -32,6 +32,10 @@ import placeholder from "assets/img/placeholder.jpg";
 import product1 from "assets/img/product1.jpg";
 import product2 from "assets/img/product2.jpg";
 import product3 from "assets/img/product3.jpg";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import * as actionCreators from "../../actions/auth";
+import hasFeature from "../../utils";
 
 class SectionContentAreas extends React.Component {
   constructor(props) {
@@ -104,30 +108,7 @@ class SectionContentAreas extends React.Component {
                 <h3 className={`${classes.title} ${classes.textCenter}`}>
                   10 Preguntas
                 </h3>
-                <Media
-                  avatar={avatar}
-                  title={
-                    <span>
-                      Tina Andrew <small>· 7 minutes ago</small>
-                    </span>
-                  }
-                  body={
-                    <span>
-                      <p>
-                        Chance too good. God level bars. I'm so proud of
-                        @LifeOfDesiigner #1 song in the country. Panda! Don't be
-                        scared of the truth because we need to restart the human
-                        foundation in truth I stand with the most humility. We
-                        are so blessed!
-                      </p>
-                      <p>
-                        All praises and blessings to the families of people who
-                        never gave up on dreams. Don't forget, You're Awesome!
-                      </p>
-                    </span>
-                  }
-                />
-                <Media
+                  { this.props.activeProduct.questions.map( (question,index) =><Media
                   avatar={marc}
                   title={
                     <span>
@@ -137,9 +118,7 @@ class SectionContentAreas extends React.Component {
                   body={
                     <span>
                       <p>
-                        Hello guys, nice to have you on the platform! There will
-                        be a lot of great stuff coming soon. We will keep you
-                        posted for the latest news.
+                          {question.description}
                       </p>
                       <p>Don't forget, You're Awesome!</p>
                     </span>
@@ -149,7 +128,7 @@ class SectionContentAreas extends React.Component {
 
 
                       <Button link className={classes.floatRight}>
-                        <Favorite /> 25
+                        <Favorite /> {question.upVotes}
                       </Button>
                     </div>
                   }
@@ -165,9 +144,7 @@ class SectionContentAreas extends React.Component {
                       body={
                         <span>
                           <p>
-                            Hello guys, nice to have you on the platform! There
-                            will be a lot of great stuff coming soon. We will
-                            keep you posted for the latest news.
+                              {question.answer}
                           </p>
                           <p>Don't forget, You're Awesome!</p>
                         </span>
@@ -180,44 +157,13 @@ class SectionContentAreas extends React.Component {
                             color="danger"
                             className={classes.floatRight}
                           >
-                            <Favorite /> 243
+                            <Favorite /> {question.downVotes}
                           </Button>
                         </div>
                       }
                     />
                   ]}
-                />
-                <Media
-                  key={Math.random() * Date.now()}
-                  avatar={avatar}
-                  title={
-                    <span>
-                      Rosa Thompson <small>· 2 Days Ago</small>
-                    </span>
-                  }
-                  body={
-                    <span>
-                      <p>
-                        Hello guys, nice to have you on the platform! There will
-                        be a lot of great stuff coming soon. We will keep you
-                        posted for the latest news.
-                      </p>
-                      <p>Don't forget, You're Awesome!</p>
-                    </span>
-                  }
-                  footer={
-                    <div>
-
-                      <Button
-                        simple
-                        color="danger"
-                        className={classes.floatRight}
-                      >
-                        <Favorite /> 243
-                      </Button>
-                    </div>
-                  }
-                />
+                />)}
                 <div>
                   <Paginations
                     className={`${classes.textCenter} ${
@@ -238,7 +184,7 @@ class SectionContentAreas extends React.Component {
               </div>
               <h3 className={classes.textCenter}>
                 Escribe tu pregunta <br />
-                <small>- No has iniciado sesion -</small>
+                {hasFeature("Usuarios",this.props.tree) &&<small>- No has iniciado sesion -</small>}
               </h3>
               <Media
                 avatar={placeholder}
@@ -282,17 +228,17 @@ class SectionContentAreas extends React.Component {
                   </div>
                 }
                 footer={
-                  <div className={classes.signInButton}>
-                    <h6>SIGN IN WITH</h6>
-                    <Button justIcon round color="twitter">
+                 <div className={classes.signInButton}>
+                    {hasFeature("Usuarios",this.props.tree) &&<h6>SIGN IN WITH</h6>}
+                     {hasFeature("Usuarios",this.props.tree) &&<Button justIcon round color="twitter">
                       <i className="fab fa-twitter" />
-                    </Button>
-                    <Button justIcon round color="facebook">
+                    </Button>}
+                     {hasFeature("Usuarios",this.props.tree) &&<Button justIcon round color="facebook">
                       <i className="fab fa-facebook-square" />
-                    </Button>
-                    <Button justIcon round color="google">
+                    </Button>}
+                     {hasFeature("Usuarios",this.props.tree) &&<Button justIcon round color="google">
                       <i className="fab fa-google-plus-square" />
-                    </Button>
+                    </Button>}
                     <Button color="primary" className={classes.floatRight}>
                       Post comment
                     </Button>
@@ -306,5 +252,27 @@ class SectionContentAreas extends React.Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  console.log(state.auth.activeProduct)
+    const activeProduct = state.auth.products.filter( (product) => product.id === state.auth.activeProduct)[0]
+    // const evaluation =activeProduct.evaluations.reduce((total, currentValue, currentIndex, arr) =>{ return total + currentValue.eval},0)/activeProduct.evaluations.length
+    // console.log(evaluation)
+    return {
+        tree: state.auth.data,
+        activeProduct : activeProduct,
+        idProduct: state.auth.activeProduct,
+        categories: state.auth.categories,
+        randomProducts :state.auth.products.concat().sort( function() { return 0.5 - Math.random() } ).slice(1,5),
+        evaluation: activeProduct.evaluations.reduce((total, currentValue, currentIndex, arr) =>{ return total + currentValue.eval},0)/activeProduct.evaluations.length
 
-export default withStyles(style)(SectionContentAreas);
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatch,
+        actions: bindActionCreators(actionCreators, dispatch)
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(style)(SectionContentAreas));

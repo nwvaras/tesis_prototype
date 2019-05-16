@@ -29,6 +29,9 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import hasFeature from '../../../utils/index.js'
+import Star from "@material-ui/icons/Star";
+import StarBorder from "@material-ui/icons/StarBorder";
+import {push} from "connected-react-router";
 const SectionLatestOffers = props => {
   const { classes } = props;
   const settings = {
@@ -45,9 +48,9 @@ const SectionLatestOffers = props => {
         <h2>{props.title}</h2>
         <Carousel {...settings}>
                   {props.randomProducts.map( (product,index) =>
-                  <Card product style={{maxHeight:'10vh'}}>
+                  <Card product style={{maxHeight:'10vh'}} onClick={() =>{ props.dispatch(push("/product-page")); props.actions.goToProductPage(product.id)}}>
                     <CardHeader image>
-                      <a href="#pablo">
+                      <a >
                         <img src={product.photos[0].src} alt="cardProduct" />
                       </a>
                     </CardHeader>
@@ -61,14 +64,18 @@ const SectionLatestOffers = props => {
                         Ropa
                       </h6>
                       <h4 className={classes.cardTitle}>{product.name}</h4>
+                        <div>
+                            {hasFeature("Evaluacion",props.tree) && Array.apply(null, { length: product.eval }).map((e, i) => <Star/>)}
+                    {hasFeature("Evaluacion",props.tree) &&Array.apply(null, { length: 5 -product.eval }).map((e, i) => <StarBorder/>)}
+                        </div>
                       <div className={classes.cardDescription}>
                           {product.description}
                       </div>
                     </CardBody>
                     <CardFooter className={classes.justifyContentBetween}>
-                      <div className={classes.price}>
+                      {hasFeature("Precio",props.tree) &&<div className={classes.price}>
                         <h4>{product.price}</h4>
-                      </div>
+                      </div>}
                       <div className={classes.stats}>
                        {hasFeature("WishList",props.tree) &&<Tooltip
                     id="tooltip-top"
@@ -93,7 +100,13 @@ const SectionLatestOffers = props => {
 const mapStateToProps = (state) => {
     return {
         tree: state.auth.data,
-        randomProducts :state.auth.products.concat().sort( function() { return 0.5 - Math.random() } ).slice(1,8),
+        randomProducts :state.auth.products.concat().sort( function() { return 0.5 - Math.random() } ).slice(1,8).map(
+            (product) => {
+                product.eval=product.evaluations.reduce((total, currentValue, currentIndex, arr) =>{ return total + currentValue.eval},0)/product.evaluations.length
+                return product
+            }
+        ),
+
     };
 };
 

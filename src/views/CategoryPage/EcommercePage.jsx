@@ -47,6 +47,8 @@ import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import Search from "@material-ui/icons/Search";
 import {Link} from "react-router-dom";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
+import queryString from 'query-string';
+import {withRouter} from "react-router";
 class EcommercePage extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -70,6 +72,8 @@ class EcommercePage extends React.Component {
     }
   render() {
     const { classes } = this.props;
+    const params = queryString.parse(this.props.location.search)
+    const title =   params.searchText? 'Buscaste '+'"'+params.searchText+'"': (params.categoryId?this.props.categories[params.categoryId].name : "Todos los articulos")
     return (
       <div>
         <Parallax
@@ -89,7 +93,7 @@ class EcommercePage extends React.Component {
                 )}
               >
                 <div className={classes.brand}>
-                  <h1 className={classes.title}>Ropa</h1>
+                  <h1 className={classes.title}>{title}</h1>
                 </div>
               </GridItem>
             </GridContainer>
@@ -97,7 +101,7 @@ class EcommercePage extends React.Component {
         </Parallax>
 
         <div className={classNames(classes.main, classes.mainRaised)}>
-           {this.hasFeature("TopProductsBuyTimes",this.props.tree) &&<SectionLatestOffers title={"Top Product"}/>}
+           {this.hasFeature("Recomendados",this.props.tree) &&<SectionLatestOffers title={"Recomendados"}/>}
             <SectionProducts />
         </div>
 
@@ -109,7 +113,7 @@ class EcommercePage extends React.Component {
           style={{ backgroundImage: `url(${ecommerceHeader})` }}
         >
           <div className={classes.container}>
-            <GridContainer>
+            {this.hasFeature("Subscripcion",this.props.tree) &&<GridContainer>
               <GridItem
                 xs={12}
                 sm={6}
@@ -157,11 +161,11 @@ class EcommercePage extends React.Component {
                   </CardBody>
                 </Card>
               </GridItem>
-            </GridContainer>
+            </GridContainer>}
           </div>
         </div>
 
-        <Footer
+        {this.hasFeature("Informacion",this.props.tree) &&<Footer
           theme="dark"
           content={
             <div>
@@ -213,7 +217,7 @@ class EcommercePage extends React.Component {
             </div>
           }
         >
-        </Footer>
+        </Footer>}
       </div>
     );
   }
@@ -233,4 +237,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(EcommercePage));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(withStyles(styles)(EcommercePage)));

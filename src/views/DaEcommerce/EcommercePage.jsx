@@ -94,10 +94,10 @@ class DaEcommerce extends React.Component {
               >
                 <div className={classes.brand}>
 
-                  <h4>
+                  {hasFeature("CodigoDesc",this.props.tree) ?(<h4>
                     Delivery a todo Chile. Usa el cupon{" "}
                     <b>25verano</b> para un descuento extra de un 25%
-                  </h4>
+                  </h4>):(<h4>Delivery a todo Chile. Bienvenido</h4>)}
                 </div>
               </GridItem>
             </GridContainer>
@@ -120,7 +120,7 @@ class DaEcommerce extends React.Component {
           )}
           style={{ backgroundImage: `url(${ecommerceHeader})` }}
         >
-          <div className={classes.container}>
+          {hasFeature("Subscripcion",this.props.tree) &&<div className={classes.container}>
             <GridContainer>
               <GridItem
                 xs={12}
@@ -170,10 +170,10 @@ class DaEcommerce extends React.Component {
                 </Card>
               </GridItem>
             </GridContainer>
-          </div>
+          </div>}
         </div>
 
-        <Footer
+        {hasFeature("Informacion",this.props.tree) &&<Footer
           theme="dark"
           content={
             <div>
@@ -225,7 +225,7 @@ class DaEcommerce extends React.Component {
             </div>
           }
         >
-        </Footer>
+        </Footer>}
       </div>
     );
   }

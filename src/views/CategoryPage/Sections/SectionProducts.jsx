@@ -25,6 +25,9 @@ import CardFooter from "components/Card/CardFooter.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import Clearfix from "components/Clearfix/Clearfix.jsx";
 import { push } from 'connected-react-router'
+
+import queryString from 'query-string';
+import {withRouter} from "react-router";
 import suit1 from "assets/img/examples/suit-1.jpg";
 import suit2 from "assets/img/examples/suit-2.jpg";
 import suit3 from "assets/img/examples/suit-3.jpg";
@@ -101,6 +104,11 @@ class SectionProducts extends React.Component {
 
     }
   render() {
+
+     const params = queryString.parse(this.props.location.search)
+        console.log(params.searchText)
+      const products = this.props.products.filter( product => params.searchText ? (params.categoryId? product.category === params.categoryId : true) && product.name.includes(params.searchText): true)
+
     const { classes } = this.props;
 
     return (
@@ -1019,7 +1027,7 @@ class SectionProducts extends React.Component {
                   {/*</Card>*/}
                 {/*</GridItem>*/}
 
-                    {this.props.products.map( (product,index) =>
+                    {products.map( (product,index) =>
                          <GridItem md={4} sm={4}>
                     <Card plain product>
                         <CardHeader noShadow image>
@@ -1267,10 +1275,11 @@ const mapStateToProps = (state) => {
     console.log(state.auth.activeCategory)
      console.log(state.auth.actualPage)
     console.log(state.auth.products)
-    
+
     return {
         tree: state.auth.data,
-        products: state.auth.products.filter( product => product.category === state.auth.activeCategory).map(
+
+        products: state.auth.products.map(
             (product) => {
                 product.eval=product.evaluations.reduce((total, currentValue, currentIndex, arr) =>{ return total + currentValue.eval},0)/product.evaluations.length
                 return product
@@ -1288,4 +1297,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SectionProducts));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(withStyles(styles)(SectionProducts)));
