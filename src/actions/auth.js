@@ -110,6 +110,40 @@ export function sideBar() {
         type: "SIDEBAR",
     };
 }
+export function addQuestion(product,question){
+    console.log("addquestion")
+    let questions = product.questions;
+    questions.push({description:question,
+                     answer:"",
+                    upVotes:0,
+                    nameOfQuestioner:"Silvio",
+                    downVotes:0,
+
+        })
+    return {
+        type: "ADD_QUESTION",
+        payload: {
+            product: {...product, questions: questions,}
+        }
+    }
+}
+export function setFilter(product,question){
+    console.log("addquestion")
+    let questions = product.questions;
+    questions.push({description:question,
+                     answer:"",
+                    upVotes:0,
+                    nameOfQuestioner:"Silvio",
+                    downVotes:0,
+
+        })
+    return {
+        type: "ADD_QUESTION",
+        payload: {
+            product: {...product, questions: questions,}
+        }
+    }
+}
 
 export function qtyToProduct(product,qty) {
     console.log("this")

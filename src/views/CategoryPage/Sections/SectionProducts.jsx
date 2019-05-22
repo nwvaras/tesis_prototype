@@ -52,7 +52,7 @@ class SectionProducts extends React.Component {
 
     this.state = {
       checked: [1, 9, 27],
-      priceRange: [101, 790]
+      priceRange: [101, 2000]
     };
   }
   componentDidMount() {
@@ -63,14 +63,14 @@ class SectionProducts extends React.Component {
       .create(slider, {
         start: this.state.priceRange,
         connect: true,
-        range: { min: 30, max: 900 },
+        range: { min: 30, max: 3000 },
         step: 1
       })
       .on("update", function(values, handle) {
         let currencyLow = priceLow.dataset.currency;
         let currencyHigh = priceHigh.dataset.currency;
-        priceLow.innerHTML = currencyLow + Math.round(values[0]);
-        priceHigh.innerHTML = currencyHigh + Math.round(values[1]);
+        priceLow.innerHTML = Math.round(values[0]);
+        priceHigh.innerHTML = Math.round(values[1]);
       });
   }
   handleToggle(value) {
@@ -107,7 +107,9 @@ class SectionProducts extends React.Component {
 
      const params = queryString.parse(this.props.location.search)
         console.log(params.searchText)
-      const products = this.props.products.filter( product => params.searchText ? (params.categoryId? product.category === params.categoryId : true) && product.name.includes(params.searchText): true)
+      const min = params.min
+      const max = params.max
+      const products = this.props.products.filter( product => params.searchText ? (params.categoryId? product.category === params.categoryId : true) && product.name.includes(params.searchText): true).filter( product =>params.min&&params.max? (product.price > min && product.price < max): true)
 
     const { classes } = this.props;
 
@@ -123,13 +125,14 @@ class SectionProducts extends React.Component {
                     Refinar
                     <Tooltip
                       id="tooltip-top"
-                      title="Reset Filter"
+                      title="Filtrar"
                       placement="top"
                       classes={{ tooltip: classes.tooltip }}
                     >
                       <Button
                         link
                         justIcon
+                        onClick={() => this.props.dispatch(push("/category-page?min="+this.refs.priceLow.innerHTML +"&max=" +this.refs.priceHigh.innerHTML))}
                         size="sm"
                         className={`${classes.pullRight} ${
                           classes.refineButton
@@ -175,7 +178,7 @@ class SectionProducts extends React.Component {
                         )
                       }: {},
                       {
-                        title: "Clothing",
+                        title: "Variable 1",
                         content: (
                           <div className={classes.customExpandPanel}>
                             <div
@@ -371,7 +374,7 @@ class SectionProducts extends React.Component {
                         )
                       },
                       {
-                        title: "Designer",
+                        title: "Variable 2",
                         content: (
                           <div className={classes.customExpandPanel}>
                             <div
@@ -787,7 +790,7 @@ class SectionProducts extends React.Component {
                         )
                       },
                       {
-                        title: "Colour",
+                        title: "Variable 3",
                         content: (
                           <div className={classes.customExpandPanel}>
                             <div

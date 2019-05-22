@@ -22,13 +22,15 @@ import MailIcon from '@material-ui/icons/Mail';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router'
-
+import tooltipsStyle from "assets/jss/material-kit-pro-react/tooltipsStyle.jsx";
 import * as actionCreators from '../../actions/auth';
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
+import Tooltip from "@material-ui/core/Tooltip";
 const drawerWidth = 240;
 
 const styles = theme => ({
+    ...tooltipsStyle,
   root: {
     display: 'flex',
   },
@@ -159,11 +161,15 @@ class MiniDrawer extends React.Component {
           <Divider />
           <Divider />
           <List button style={{backgroundColor: '#7d7d7d'}}>
-
+              <Tooltip
+                      id="tooltip-top"
+                      title={element.name}
+                      placement="top"
+                      classes={{ tooltip: classes.tooltip }}>
               <ListItem  key={element.name} color="info" disabled={element.disabled && element.disabled.includes(this.props.actualPage) } onClick={() => this.props.actions.activateOrDesactivate(element.name)}>
                   {/*<ListItemIcon>{index % 2 === 0 ?<div style={{marginLeft:'-5px',color: element.selected?'#3a7d2a':'#ff0006'}}>  <element.icon/> </div> :<div style={{marginLeft:'-5px',color:element.selected?'#3a7d2a':'#ff0006'}}> <element.icon /></div>}</ListItemIcon>*/}
                   <ListItemText style={{marginLeft:'-5px',color: element.selected?'#3a7d2a':'#ff0006'}}  ><Typography variant="subtitle2" color={ element.selected?'primary':'secondary'} gutterBottom>{element.name}</Typography></ListItemText>
-              </ListItem>
+              </ListItem></Tooltip>
 
           </List>
           <Divider />
@@ -171,10 +177,16 @@ class MiniDrawer extends React.Component {
           <Divider />
           <List>
             {element.children && element.children.map((child, index) => ( (console.log(child) || true) &&
-              <ListItem  button key={child.name} disabled={element.disabled && element.disabled.includes(this.props.actualPage) ||child.disabled && child.disabled.includes(this.props.actualPage) } onClick={() => this.props.actions.activateOrDesactivate(child.name)}>
+              <Tooltip
+                      id="tooltip-top"
+                      title={child.name}
+                      placement="top"
+                      classes={{ tooltip: classes.tooltip }}
+                    ><ListItem  button key={child.name} disabled={element.disabled && element.disabled.includes(this.props.actualPage) ||child.disabled && child.disabled.includes(this.props.actualPage) } onClick={() => this.props.actions.activateOrDesactivate(child.name)}>
                   <ListItemIcon>{index % 2 === 0 ? <div  style={{color:child.selected?'#3a7d2a':'#ff0006'}}><child.icon/> </div>: <div style={{color:child.selected?'#3a7d2a':'#ff0006'}}> <child.icon /> </div>}</ListItemIcon>
                 <ListItemText  primary={child.name} />
               </ListItem>
+              </Tooltip>
             ))}
           </List>
                 </div>

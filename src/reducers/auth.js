@@ -65,6 +65,7 @@ const initialState = {
                 description:"Preguntaaaa",
                 answer:"Respuestaaaaaaaaaaaaaaaaa",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -89,12 +90,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -119,12 +122,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -149,12 +154,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -179,12 +186,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -209,12 +218,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -239,12 +250,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -269,12 +282,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -299,12 +314,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -329,12 +346,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -359,12 +378,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -389,12 +410,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -419,12 +442,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -449,12 +474,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -479,12 +506,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -509,12 +538,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -539,12 +570,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -569,12 +602,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -599,12 +634,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -629,12 +666,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -659,12 +698,14 @@ const initialState = {
             {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",                answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -690,12 +731,14 @@ const initialState = {
                 description:"Nunc nunc tortor, suscipit eu tempus ac, cursus et massa. Maecenas vitae lacus vitae lacus maximus pellentesque a vel justo. Praesent cursus justo et orci facilisis cursus. Quisque eget consectetur tortor, ullamcorper vulputate ligula. Quisque dolor est, sodales non ultricies vitae, ullamcorper eu mi. Integer blandit dolor erat, et tincidunt nulla molestie eu. Nullam viverra neque vitae nisl viverra, vel elementum lacus venenatis. Phasellus fermentum interdum magna, nec gravida urna accumsan vitae. Donec rhoncus ac enim quis gravida. Pellentesque pellentesque nisi sed consequat molestie.",
                 answer:"Nulla auctor, erat id euismod pellentesque, ligula lorem pulvinar dui, id dapibus nunc velit ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac velit a arcu lobortis iaculis eget in libero. Ut in quam nibh. Fusce eget nisi vitae erat bibendum sollicitudin eu vel leo. Morbi a felis commodo magna cursus iaculis non sed enim. Integer condimentum laoreet tellus a rhoncus. Aliquam ornare ullamcorper euismod. Ut eu congue orci. Suspendisse at facilisis arcu. Ut consectetur, risus sed sodales molestie, mauris justo feugiat metus, in placerat purus libero vitae nibh.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             },
             {
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna purus, congue eget scelerisque vitae, congue non sem. Praesent fermentum tempor leo, quis consequat orci. Proin sit amet magna ut urna consectetur maximus at ut elit. Vestibulum ultricies ligula in ornare bibendum. Nulla justo lectus, malesuada eget accumsan id, ultrices nec velit. Donec semper vitae massa vehicula viverra. Morbi et sagittis diam. Vestibulum egestas, arcu id eleifend fringilla, felis felis mollis velit, quis porttitor neque orci a nibh. Proin rhoncus ex eget risus tincidunt, a blandit velit aliquet. Nulla accumsan volutpat magna, quis efficitur felis pellentesque in.",
                 answer:"Fusce quis urna eros. Mauris sagittis orci non massa egestas dictum. Vestibulum metus odio, porttitor id facilisis id, imperdiet ut metus. Mauris erat odio, congue vitae nisi quis, sodales iaculis mi. Nunc cursus turpis ac est efficitur, vitae varius diam pellentesque. Etiam eu risus mattis, facilisis nunc ut, sodales felis. Nunc a ligula leo.",
                 upVotes:30,
+                nameOfQuestioner:"Silvio",
                 downVotes:1,
             }
         ]
@@ -776,6 +819,11 @@ export default function authReducer(state = initialState, action) {
                    }
                    return prod
                })
+            });
+        case "ADD_QUESTION":
+            console.log(action.payload.product)
+            return Object.assign({}, state, {
+               products: [...state.products.filter((prod,index) => prod.id !== action.payload.product.id),action.payload.product]
             });
         default:
 

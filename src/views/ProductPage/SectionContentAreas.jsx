@@ -58,6 +58,10 @@ class SectionContentAreas extends React.Component {
       checked: newChecked
     });
   }
+  handleChange = name => event => {
+      console.log(event.target)
+    this.setState({ [name]: event.target.value });
+  };
   render() {
     const { classes, ...rest } = this.props;
     const fillButtons = [
@@ -109,10 +113,10 @@ class SectionContentAreas extends React.Component {
                   10 Preguntas
                 </h3>
                   { this.props.activeProduct.questions.map( (question,index) =><Media
-                  avatar={marc}
+                  avatar={"https://avatars.servers.getgo.com/2205256774854474505_medium.jpg"}
                   title={
                     <span>
-                      John Camber <small>· Yesterday</small>
+                        Usuario <small>· Hoy </small>
                     </span>
                   }
                   body={
@@ -120,7 +124,6 @@ class SectionContentAreas extends React.Component {
                       <p>
                           {question.description}
                       </p>
-                      <p>Don't forget, You're Awesome!</p>
                     </span>
                   }
                   footer={
@@ -132,13 +135,13 @@ class SectionContentAreas extends React.Component {
                       </Button>
                     </div>
                   }
-                  innerMedias={[
+                  innerMedias={question.answer !== ""?[
                     <Media
                       key={Math.random() * Date.now()}
-                      avatar={avatar}
+                      avatar={"https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/shopify-512.png"}
                       title={
                         <span>
-                          Tina Andrew <small>· 2 Days Ago</small>
+                            Tienda <small>· Hace 30 minutos</small>
                         </span>
                       }
                       body={
@@ -146,7 +149,6 @@ class SectionContentAreas extends React.Component {
                           <p>
                               {question.answer}
                           </p>
-                          <p>Don't forget, You're Awesome!</p>
                         </span>
                       }
                       footer={
@@ -162,7 +164,7 @@ class SectionContentAreas extends React.Component {
                         </div>
                       }
                     />
-                  ]}
+                  ]:[]}
                 />)}
                 <div>
                   <Paginations
@@ -198,7 +200,8 @@ class SectionContentAreas extends React.Component {
                             fullWidth: true
                           }}
                           inputProps={{
-                            placeholder: "Your Name"
+                            placeholder: "Tu nombre",
+
                           }}
                         />
                       </GridItem>
@@ -209,7 +212,7 @@ class SectionContentAreas extends React.Component {
                             fullWidth: true
                           }}
                           inputProps={{
-                            placeholder: "Your Email"
+                            placeholder: "Tu email"
                           }}
                         />
                       </GridItem>
@@ -222,14 +225,16 @@ class SectionContentAreas extends React.Component {
                       inputProps={{
                         multiline: true,
                         rows: 6,
-                        placeholder: " Write some nice stuff or nothing..."
+                        placeholder: " Escribe tu pregunta",
+                        onChange: this.handleChange("question"),
+                        value: this.state.question
                       }}
                     />
                   </div>
                 }
                 footer={
                  <div className={classes.signInButton}>
-                    {hasFeature("Usuarios",this.props.tree) &&<h6>SIGN IN WITH</h6>}
+                    {hasFeature("Usuarios",this.props.tree) &&<h6>INICIA SESION CON</h6>}
                      {hasFeature("Usuarios",this.props.tree) &&<Button justIcon round color="twitter">
                       <i className="fab fa-twitter" />
                     </Button>}
@@ -239,7 +244,7 @@ class SectionContentAreas extends React.Component {
                      {hasFeature("Usuarios",this.props.tree) &&<Button justIcon round color="google">
                       <i className="fab fa-google-plus-square" />
                     </Button>}
-                    <Button color="primary" className={classes.floatRight}>
+                    <Button color="primary" className={classes.floatRight} onClick={() => this.props.actions.addQuestion(this.props.activeProduct,this.state.question)}>
                       Post comment
                     </Button>
                   </div>
