@@ -5,7 +5,8 @@ import { Router, Route, Switch } from "react-router";
 import { Provider } from 'react-redux'
 
 import "assets/scss/material-kit-pro-react.scss?v=1.3.0";
-
+import { Widget } from 'react-chat-widget';
+import 'react-chat-widget/lib/styles.css';
 // pages for this product
 import AboutUsPage from "views/AboutUsPage/AboutUsPage.jsx";
 import BlogPostPage from "views/BlogPostPage/BlogPostPage.jsx";
@@ -27,7 +28,7 @@ import SideBar from "views/SideBar/SideBar.js";
 import ErrorPage from "views/ErrorPage/ErrorPage.jsx";
 import CategoryPage from "views/CategoryPage/EcommercePage.jsx";
 import Header from "views/Header/index.js";
-
+import hasFeature from "utils/index.js"
 import { ConnectedRouter } from 'connected-react-router';
 
 
@@ -54,9 +55,11 @@ import CreditCard from "@material-ui/icons/CreditCard"
 import AccountBalance from "@material-ui/icons/AccountBalance"
 import AccountBalanceWallet from "@material-ui/icons/AccountBalanceWallet"
 import AccountCircle from "@material-ui/icons/AccountCircle"
+import ChatWidget from 'views/DaEcommerce/Chat.jsx'
 const initialState = {};
 const hist = createBrowserHistory()
 const store = configureStore(initialState, hist);
+
 
 let data={}
 // try {
@@ -308,7 +311,9 @@ ReactDOM.render(
       <Route path="/sidebar" component={SideBar} />
       <Route path="/" component={EcommercePage} />
     </Switch>
+
       </SideBar>
+      <ChatWidget/>
   </Router>
   </ConnectedRouter>
     </Provider>,

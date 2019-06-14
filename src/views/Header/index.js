@@ -22,7 +22,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Search from "@material-ui/icons/Search";
-
+import Email from "@material-ui/icons/Email";
 // @material-ui icons
 import Mail from "@material-ui/icons/Mail";
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -66,7 +66,7 @@ class DaEcommerce extends React.Component {
             if(node.children){
 
                 return node.children.some( (child) => {
-                    return this.hasFeature(id,child)
+                    return hasFeature(id,child)
                 })
             }
         }
@@ -90,7 +90,7 @@ class DaEcommerce extends React.Component {
                 <div className={classes.collapse}>
                   <List className={classes.list + " " + classes.mlAuto}>
 
-                    {this.hasFeature("Categorias",this.props.tree) &&<ListItem className={classes.listItem}>
+                    {hasFeature("Categorias",this.props.tree) &&<ListItem className={classes.listItem}>
                       <CustomDropdown
                       left
                       caret={false}
@@ -143,7 +143,7 @@ class DaEcommerce extends React.Component {
                       <Search className={classes.searchIcon} />
                     </Button>
                   </ListItem>}
-                      {hasFeature("Notificaciones",this.props.tree)? (this.hasFeature("Compra",this.props.tree) && this.hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
+                      {hasFeature("Notificaciones",this.props.tree)? (hasFeature("Compra",this.props.tree) && hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
                     <Button
                       className={classes.navLink + " " + classes.navLinkActive}
                       onClick={() => this.props.dispatch(push("/shopping-cart-page?"))}
@@ -152,7 +152,7 @@ class DaEcommerce extends React.Component {
                     >
                       <Badge badgeContent={this.props.cart.length} color="primary" classes={{ badge: classes.badge }}><ShoppingCart /> Carro</Badge>
                     </Button>
-                  </ListItem>):(this.hasFeature("Compra",this.props.tree) && this.hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
+                  </ListItem>):(hasFeature("Compra",this.props.tree) && hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
                     <Button
                       className={classes.navLink + " " + classes.navLinkActive}
                       onClick={() => this.props.dispatch(push("/shopping-cart-page?"))}
@@ -162,7 +162,7 @@ class DaEcommerce extends React.Component {
                       <ShoppingCart /> Carro
                     </Button>
                   </ListItem>)}
-                      {this.hasFeature("Usuarios",this.props.tree) && this.hasFeature("HistorialDeCompra",this.props.tree) && <ListItem className={classes.listItem}>
+                      {hasFeature("Usuarios",this.props.tree) && hasFeature("HistorialDeCompra",this.props.tree) && <ListItem className={classes.listItem}>
                     <Button
                       href="#pablo"
                       className={classes.navLink}
@@ -172,14 +172,14 @@ class DaEcommerce extends React.Component {
                       <AccountCircle /> Historial
                     </Button>
                   </ListItem>}
-                  {this.hasFeature("Usuarios",this.props.tree) &&<ListItem className={classes.listItem}>
+                  {hasFeature("Email",this.props.tree) &&<ListItem className={classes.listItem}>
                     <Button
-                      href="#pablo"
+                      href="mailto:ecommerce@email.com"
                       className={classes.navLink}
                       onClick={e => e.preventDefault()}
                       color="transparent"
                     >
-                      <Settings /> Configuracion
+                      <Email /> ¿Dudas o problemas¿ ¡Contactanos!
                     </Button>
                   </ListItem>}
                   {/*</div>*/}

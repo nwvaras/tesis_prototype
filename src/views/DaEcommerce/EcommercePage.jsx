@@ -62,7 +62,7 @@ class DaEcommerce extends React.Component {
             if(node.children){
 
                 return node.children.some( (child) => {
-                    return this.hasFeature(id,child)
+                    return hasFeature(id,child)
                 })
             }
         }
@@ -105,13 +105,13 @@ class DaEcommerce extends React.Component {
         </Parallax>
 
         <div className={classNames(classes.main, classes.mainRaised)}>
-            {this.hasFeature("Ads",this.props.tree) &&this.hasFeature("Novedades",this.props.tree) && <SectionLatestOffers title={"Novedades"} />}
+            {hasFeature("Ads",this.props.tree) &&hasFeature("Novedades",this.props.tree) && <SectionLatestOffers title={"Novedades"} />}
         </div>
           <div className={classNames(classes.main, classes.mainRaised)}>
-          {this.hasFeature("Ads",this.props.tree) &&this.hasFeature("Recomendados",this.props.tree) && <SectionLatestOffers title={"Recomendados"}/>}
+          {hasFeature("Ads",this.props.tree) &&hasFeature("Recomendados",this.props.tree) && <SectionLatestOffers title={"Recomendados"}/>}
         </div>
          <div className={classNames(classes.main, classes.mainRaised)}>
-         {this.hasFeature("Ads",this.props.tree) &&this.hasFeature("TopProductsBuyTimes",this.props.tree) && <SectionLatestOffers title={"Top Products"}/>}
+         {hasFeature("Ads",this.props.tree) &&hasFeature("TopProductsBuyTimes",this.props.tree) && <SectionLatestOffers title={"Top Products"}/>}
         </div>
         <div
           className={classNames(
@@ -225,6 +225,7 @@ class DaEcommerce extends React.Component {
             </div>
           }
         >
+
         </Footer>}
       </div>
     );

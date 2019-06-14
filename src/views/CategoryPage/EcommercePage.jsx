@@ -32,7 +32,7 @@ import face5 from "assets/img/faces/marc.jpg";
 import face6 from "assets/img/faces/kendall.jpg";
 import face7 from "assets/img/faces/card-profile5-square.jpg";
 import face8 from "assets/img/faces/card-profile2-square.jpg";
-
+import hasFeature from '../../utils/index'
 // @material-ui icons
 
 import SectionLatestOffersTePodria from "./Sections/SectionLatestOffersTePodria";
@@ -55,21 +55,21 @@ class EcommercePage extends React.Component {
     document.body.scrollTop = 0;
     this.props.actions.goToPage(1)
   }
-  hasFeature(id,node){
-        if(node.id === id){
-            return node.selected
-        }else{
-            if(node.children){
-
-                return node.children.some( (child) => {
-                    return this.hasFeature(id,child)
-                })
-            }
-        }
-        return false
-
-
-    }
+  // hasFeature(id,node){
+  //       if(node.id === id){
+  //           return node.selected
+  //       }else{
+  //           if(node.children){
+  //
+  //               return node.children.some( (child) => {
+  //                   return hasFeature(id,child)
+  //               })
+  //           }
+  //       }
+  //       return false
+  //
+  //
+  //   }
   render() {
     const { classes } = this.props;
     const params = queryString.parse(this.props.location.search)
@@ -101,7 +101,7 @@ class EcommercePage extends React.Component {
         </Parallax>
 
         <div className={classNames(classes.main, classes.mainRaised)}>
-           {this.hasFeature("Recomendados",this.props.tree) &&<SectionLatestOffers title={"Recomendados"}/>}
+           {hasFeature("Recomendados",this.props.tree) &&<SectionLatestOffers title={"Recomendados"}/>}
             <SectionProducts />
         </div>
 
@@ -113,7 +113,7 @@ class EcommercePage extends React.Component {
           style={{ backgroundImage: `url(${ecommerceHeader})` }}
         >
           <div className={classes.container}>
-            {this.hasFeature("Subscripcion",this.props.tree) &&<GridContainer>
+            {hasFeature("Subscripcion",this.props.tree) &&<GridContainer>
               <GridItem
                 xs={12}
                 sm={6}
@@ -165,7 +165,7 @@ class EcommercePage extends React.Component {
           </div>
         </div>
 
-        {this.hasFeature("Informacion",this.props.tree) &&<Footer
+        {hasFeature("Informacion",this.props.tree) &&<Footer
           theme="dark"
           content={
             <div>

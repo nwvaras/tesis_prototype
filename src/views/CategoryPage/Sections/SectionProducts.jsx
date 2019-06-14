@@ -45,7 +45,7 @@ import styles from "assets/jss/material-kit-pro-react/views/ecommerceSections/pr
 import * as actionCreators from "../../../actions/auth";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-
+import hasFeature from '../../../utils/index'
 class SectionProducts extends React.Component {
   constructor(props) {
     super(props);
@@ -95,7 +95,7 @@ class SectionProducts extends React.Component {
             if(node.children){
 
                 return node.children.some( (child) => {
-                    return this.hasFeature(id,child)
+                    return hasFeature(id,child)
                 })
             }
         }
@@ -147,7 +147,7 @@ class SectionProducts extends React.Component {
                     active={[0, 2]}
                     activeColor="rose"
                     collapses={[
-                      this.hasFeature("Precio",this.props.tree)? {
+                      hasFeature("Precio",this.props.tree)? {
                         title: "Rango de precio",
                         content: (
                           <CardBody className={classes.cardBodyRefine}>
@@ -1009,9 +1009,9 @@ class SectionProducts extends React.Component {
                     {/*</CardBody>*/}
                     {/*<CardFooter plain className={classes.justifyContentBetween}>*/}
                       {/*<div className={classes.priceContainer}>*/}
-                        {/*{this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €800</span>}*/}
+                        {/*{hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €800</span>}*/}
                       {/*</div>*/}
-                      {/*{this.hasFeature("WishList",this.props.tree) &&<Tooltip*/}
+                      {/*{hasFeature("WishList",this.props.tree) &&<Tooltip*/}
                         {/*id="tooltip-top"*/}
                         {/*title="Saved to Wishlist"*/}
                         {/*placement="left"*/}
@@ -1042,8 +1042,8 @@ class SectionProducts extends React.Component {
                           <a onClick={() =>{ this.props.dispatch(push("/product-page")); this.props.actions.goToProductPage(product.id)}}>
                             <h4 className={classes.cardTitle}>{product.name}</h4>
                           </a>
-                            {this.hasFeature("Evaluacion",this.props.tree) && Array.apply(null, { length: product.eval }).map((e, i) => <Star/>)}
-                    {this.hasFeature("Evaluacion",this.props.tree) &&Array.apply(null, { length: 5 -product.eval }).map((e, i) => <StarBorder/>)}
+                            {hasFeature("Evaluacion",this.props.tree) && Array.apply(null, { length: product.eval }).map((e, i) => <Star/>)}
+                    {hasFeature("Evaluacion",this.props.tree) &&Array.apply(null, { length: 5 -product.eval }).map((e, i) => <StarBorder/>)}
                           <p className={classes.description}>
                               {product.description}
                           </p>
@@ -1051,9 +1051,9 @@ class SectionProducts extends React.Component {
                         </CardBody>
                         <CardFooter plain className={classes.justifyContentBetween}>
                           <div className={classes.priceContainer}>
-                            {this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> {product.price}</span>}
+                            {hasFeature("Precio",this.props.tree) &&<span className={classes.price}> {product.price}</span>}
                           </div>
-                          {this.hasFeature("WishList",this.props.tree) &&<Tooltip
+                          {hasFeature("WishList",this.props.tree) &&<Tooltip
                             id="tooltip-top"
                             title="Save to Wishlist"
                             placement="left"
@@ -1087,9 +1087,9 @@ class SectionProducts extends React.Component {
                     {/*</CardBody>*/}
                     {/*<CardFooter plain className={classes.justifyContentBetween}>*/}
                       {/*<div className={classes.priceContainer}>*/}
-                        {/*{this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €555</span>}*/}
+                        {/*{hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €555</span>}*/}
                       {/*</div>*/}
-                      {/*{this.hasFeature("WishList",this.props.tree) &&<Tooltip*/}
+                      {/*{hasFeature("WishList",this.props.tree) &&<Tooltip*/}
                         {/*id="tooltip-top"*/}
                         {/*title="Save to Wishlist"*/}
                         {/*placement="left"*/}
@@ -1124,9 +1124,9 @@ class SectionProducts extends React.Component {
                     {/*</CardBody>*/}
                     {/*<CardFooter plain className={classes.justifyContentBetween}>*/}
                       {/*<div className={classes.priceContainer}>*/}
-                        {/*{this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €879</span>}*/}
+                        {/*{hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €879</span>}*/}
                       {/*</div>*/}
-                      {/*{this.hasFeature("WishList",this.props.tree) &&<Tooltip*/}
+                      {/*{hasFeature("WishList",this.props.tree) &&<Tooltip*/}
                         {/*id="tooltip-top"*/}
                         {/*title="Save to Wishlist"*/}
                         {/*placement="left"*/}
@@ -1161,9 +1161,9 @@ class SectionProducts extends React.Component {
                     {/*</CardBody>*/}
                     {/*<CardFooter plain className={classes.justifyContentBetween}>*/}
                       {/*<div className={classes.priceContainer}>*/}
-                        {/*{this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €680</span>}*/}
+                        {/*{hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €680</span>}*/}
                       {/*</div>*/}
-                      {/*{this.hasFeature("WishList",this.props.tree) &&<Tooltip*/}
+                      {/*{hasFeature("WishList",this.props.tree) &&<Tooltip*/}
                         {/*id="tooltip-top"*/}
                         {/*title="Save to Wishlist"*/}
                         {/*placement="left"*/}
@@ -1198,9 +1198,9 @@ class SectionProducts extends React.Component {
                     {/*</CardBody>*/}
                     {/*<CardFooter plain className={classes.justifyContentBetween}>*/}
                       {/*<div className={classes.priceContainer}>*/}
-                        {/*{this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €725</span>}*/}
+                        {/*{hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €725</span>}*/}
                       {/*</div>*/}
-                      {/*{this.hasFeature("WishList",this.props.tree) &&<Tooltip*/}
+                      {/*{hasFeature("WishList",this.props.tree) &&<Tooltip*/}
                         {/*id="tooltip-top"*/}
                         {/*title="Saved to Wishlist"*/}
                         {/*placement="left"*/}
@@ -1235,9 +1235,9 @@ class SectionProducts extends React.Component {
                     {/*</CardBody>*/}
                     {/*<CardFooter plain className={classes.justifyContentBetween}>*/}
                       {/*<div className={classes.priceContainer}>*/}
-                        {/*{this.hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €699</span>}*/}
+                        {/*{hasFeature("Precio",this.props.tree) &&<span className={classes.price}> €699</span>}*/}
                       {/*</div>*/}
-                      {/*{this.hasFeature("WishList",this.props.tree) &&<Tooltip*/}
+                      {/*{hasFeature("WishList",this.props.tree) &&<Tooltip*/}
                         {/*id="tooltip-top"*/}
                         {/*title="Save to Wishlist"*/}
                         {/*placement="left"*/}
