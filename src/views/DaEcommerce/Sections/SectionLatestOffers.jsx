@@ -48,10 +48,10 @@ const SectionLatestOffers = props => {
         <h2>{props.title}</h2>
         <Carousel {...settings}>
                   {props.randomProducts.map( (product,index) =>
-                  <Card product style={{maxHeight:'10vh'}} onClick={() =>{ props.dispatch(push("/product-page")); props.actions.goToProductPage(product.id)}}>
+                  <Card product style={{maxHeight:'20vh'}} onClick={() =>{ props.dispatch(push("/product-page")); props.actions.goToProductPage(product.id)}}>
                     <CardHeader image>
                       <a >
-                        <img src={product.photos[0].src} alt="cardProduct" />
+                        <img style={{objectFit: 'fill'}}src={product.photos[0].src} alt="cardProduct" />
                       </a>
                     </CardHeader>
                     <CardBody>
@@ -61,7 +61,7 @@ const SectionLatestOffers = props => {
                           classes.textRose
                         )}
                       >
-                        Ropa
+                          {product.categoryName}
                       </h6>
                       <h4 className={classes.cardTitle}>{product.name}</h4>
                         <div>
@@ -74,7 +74,7 @@ const SectionLatestOffers = props => {
                     </CardBody>
                     <CardFooter className={classes.justifyContentBetween}>
                       {hasFeature("Precio",props.tree) &&<div className={classes.price}>
-                        <h4>{product.price}</h4>
+                        <h4>${parseInt(product.price)}</h4>
                       </div>}
                       <div className={classes.stats}>
                        {hasFeature("WishList",props.tree) &&<Tooltip
@@ -100,7 +100,7 @@ const SectionLatestOffers = props => {
 const mapStateToProps = (state) => {
     return {
         tree: state.auth.data,
-        randomProducts :state.auth.products.concat().sort( function() { return 0.5 - Math.random() } ).slice(1,8).map(
+        randomProducts :state.auth.products.concat().filter((product) => product.category ===1).sort( function() { return 0.5 - Math.random() } ).slice(1,8).map(
             (product) => {
                 product.eval=product.evaluations.reduce((total, currentValue, currentIndex, arr) =>{ return total + currentValue.eval},0)/product.evaluations.length
                 return product

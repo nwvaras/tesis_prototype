@@ -69,7 +69,7 @@ class ShoppingCartPage extends React.Component {
                       "Red",
                       "M",
                       hasFeature("Precio",this.props.tree) &&<span>
-                        <small className={classes.tdNumberSmall}>€</small> {product.price}
+                        <small className={classes.tdNumberSmall}>$</small> {product.price}
                       </span>,
                       <span>
                           {product.qty}{` `}
@@ -113,7 +113,7 @@ class ShoppingCartPage extends React.Component {
                       colspan: "3",
                       amount: (
                         hasFeature("Precio",this.props.tree) &&<span>
-                          <small>€</small>{this.props.sum}
+                          <small>$</small>{this.props.sum}
                         </span>
                       ),
                       col: {

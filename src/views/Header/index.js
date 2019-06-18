@@ -114,8 +114,8 @@ class DaEcommerce extends React.Component {
                         color: "transparent"
                       }}
                       dropdownList={[
-                        <Link to="/category-page?categoryId=0">Ropa</Link>,
-                        "Laptops",
+                        <Link to="/category-page?categoryId=0">Notebooks</Link>,
+                        <Link to="/category-page?categoryId=1">Microondas</Link>,
                         "Instrumentos"
                       ]}
                     />

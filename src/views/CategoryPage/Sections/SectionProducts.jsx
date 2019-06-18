@@ -106,10 +106,10 @@ class SectionProducts extends React.Component {
   render() {
 
      const params = queryString.parse(this.props.location.search)
-        console.log(params.searchText)
+        console.log(params)
       const min = params.min
       const max = params.max
-      const products = this.props.products.filter( product => params.searchText ? (params.categoryId? product.category === params.categoryId : true) && product.name.includes(params.searchText): true).filter( product =>params.min&&params.max? (product.price > min && product.price < max): true)
+      const products = this.props.products.filter( product => params.searchText ? ((params.categoryId? (product.category === parseInt(params.categoryId)) : true) && product.name.includes(params.searchText)): (params.categoryId? (product.category === parseInt(params.categoryId)) : true)).filter( product =>params.min&&params.max? (product.price > min && product.price < max): true)
 
     const { classes } = this.props;
 
@@ -1031,7 +1031,7 @@ class SectionProducts extends React.Component {
                 {/*</GridItem>*/}
 
                     {products.map( (product,index) =>
-                         <GridItem md={4} sm={4}>
+                         <GridItem md={4} sm={4} key={product.id}>
                     <Card plain product>
                         <CardHeader noShadow image>
                           <a onClick={() =>{ this.props.dispatch(push("/product-page")); this.props.actions.goToProductPage(product.id)}}>

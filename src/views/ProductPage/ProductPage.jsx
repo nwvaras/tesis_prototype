@@ -111,7 +111,7 @@ class ProductPage extends React.Component {
                 </GridItem>
                 <GridItem md={6} sm={6}>
                   <h2 className={classes.title}>{this.props.activeProduct.name}</h2>
-                  {hasFeature("Precio",this.props.tree) &&<h3 className={classes.mainPrice}>{this.props.activeProduct.price}</h3>}
+                  {hasFeature("Precio",this.props.tree) &&<h3 className={classes.mainPrice}>${this.props.activeProduct.price}</h3>}
                     {hasFeature("Evaluacion",this.props.tree) &&Array.apply(null, { length: this.props.evaluation }).map((e, i) => <Star/>)}
                     {hasFeature("Evaluacion",this.props.tree) &&Array.apply(null, { length: 5 -this.props.evaluation }).map((e, i) => <StarBorder/>)}
                      {hasFeature("Stock",this.props.tree) &&<h3 className={classes.title}>Stock {": "}{this.props.activeProduct.stock}</h3>}

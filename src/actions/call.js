@@ -13,7 +13,6 @@ import {
     CALL_GET_APPLIED_LIST_SUCCESS,
     CALL_GET_APPLIED_LIST_FAILURE,
 } from '../constants';
-import {authLogoutAndRedirect} from './auth'
 export function callGetListSuccess(calls) {
     return {
         type: CALL_GET_LIST_SUCCESS,
