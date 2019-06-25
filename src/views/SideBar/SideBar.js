@@ -27,8 +27,234 @@ import * as actionCreators from '../../actions/auth';
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
+import AccountBalance from "@material-ui/icons/AccountBalance";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import Email from "@material-ui/icons/Email";
+import Description from "@material-ui/icons/Description";
+import AccountBalanceWallet from "@material-ui/icons/AccountBalanceWallet";
+import Money from "@material-ui/icons/AttachMoney";
+import CardGiftcard from "@material-ui/icons/CardGiftcard";
+import Chat from "@material-ui/icons/Chat";
+import Notification from "@material-ui/icons/NotificationImportant";
+import Search from "@material-ui/icons/Search";
+import CreditCard from "@material-ui/icons/CreditCard";
+import ChromeReaderMode from "@material-ui/icons/ChromeReaderMode";
+import AllInbox from "@material-ui/icons/AllInbox";
+import DirectionsCar from "@material-ui/icons/DirectionsCar";
+import Category from "@material-ui/icons/Category";
+import Favorite from "@material-ui/icons/Favorite";
+import QuestionAnswer from "@material-ui/icons/QuestionAnswer";
+import StarRate from "@material-ui/icons/StarRate";
 const drawerWidth = 240;
+let data= {
+    name: 'Ecommerce',
+    id: 'Ecommerce',
+    toggled: true,
+    selected: true,
+      icon: Money,
+    children: [
+        {
+            name: 'Usuarios',
+            id: 'Usuarios',
+            disabled:[],
+            children: [
+                { name: 'Notificaciones',
+                 id: 'Notificaciones',
+            selected: true,
+                    disabled:[],
+                icon: Notification,},
+                { name: 'HistorialDeCompra',
+                 id: 'HistorialDeCompra',
+            selected: true,
+                    disabled:[0,1,2],
+                icon: List,},
+                { name: 'Subscripcion',
+                 id: 'Subscripcion',
+                    disabled:[2,4,3],
+            selected: true,
+                icon: Email,},
+                { name: 'WishList',
+                 id: 'WishList',
+            selected: true,
+                    disabled:[3,4],
+                icon: Favorite,},
+                { name: 'CodigoDesc',
+                 id: 'CodigoDesc',
+            selected: true,
+                    disabled:[1,2,3],
+                icon:CardGiftcard,},
+            ],
+            selected: true,
+            icon: AccountCircle,
+        },
+        {
+            name: 'Compra',
+            id: 'Compra',
+            disabled:[0,1,2,3],
+            children: [
+                { name: 'Despacho',
+                 id: 'Despacho',
+            selected: true,
+                    disabled:[0,1,2,3],
+                icon: DirectionsCar,},
+                { name: 'Ordenes',
+                 id: 'Ordenes',
+            selected: true,
+                    disabled:[0,1,2,3],
+                icon: AllInbox,},
+            ],
+                selected: true,
+            icon: Money,
 
+        },
+        {
+            name: 'Ads',
+            id: 'Ads',
+            disabled:[3,4],
+                    children: [
+                { name: 'Ofertas',
+                 id: 'Ofertas',
+            selected: true,
+                    disabled:[0,2,3,4],
+                icon: ChromeReaderMode,},
+                { name: 'Recomendados',
+                 id: 'Recomendados',
+            selected: true,
+                    disabled:[3,4],
+                icon: ChromeReaderMode,},
+                { name: 'Novedades',
+                 id: 'Novedades',
+            selected: true,
+                    disabled:[1,2,3,4],
+                icon: ChromeReaderMode,},
+                { name: 'TopProductsBuyTimes',
+                 id: 'TopProductsBuyTimes',
+            selected: true,
+                    disabled:[1,2,3,4],
+                icon: ChromeReaderMode,},
+                { name: 'TopProductsEvaluations',
+                 id: 'TopProductsEvaluations',
+                    disabled:[1,2,3,4],
+                selected: true, icon:ChromeReaderMode}],
+            selected: true,
+            icon: ChromeReaderMode,
+        },
+        {
+            name: 'Products',
+            id: 'Products',
+            disabled:[],
+                    children: [
+                { name: 'Precio',
+                 id: 'Precio',
+            selected: true,
+                    disabled:[],
+                icon: Money,},
+                { name: 'Stock',
+                 id: 'Stock',
+            selected: true,
+                    disabled:[0,1,3],
+                icon: AllInbox,},
+                { name: 'Evaluacion',
+                 id: 'Evaluacion',
+            selected: true,
+                    disabled:[3,4],
+                icon: StarRate,},
+                { name: 'Preguntas',
+                 id: 'Preguntas',
+                    disabled:[0,1,3,4],
+                selected: true, icon:QuestionAnswer}],
+            selected: true,
+
+            icon: AllInbox,
+        },
+        {
+            name: 'Catalogo',
+            id: 'Catalogo',
+            selected: true,
+            icon: Category,
+            disabled:[],
+            children: [
+                { name: 'Busqueda',
+                 id: 'Busqueda',
+            selected: true,
+                    disabled:[],
+                icon: Search,},
+                { name: 'Categorias',
+                 id: 'Categorias',
+            selected: true,
+                    disabled:[],
+                icon: Category,},
+            ],
+
+
+        },
+        {
+            name: 'Soporte',
+            id: 'Soporte',
+            disabled:[],
+            children: [
+                { name: 'Chat',
+                 id: 'Chat',
+            selected: true,
+                    disabled:[],
+                icon: Chat,},
+                { name: 'Email',
+                 id: 'Email',
+            selected: true,
+                    disabled:[],
+                icon: Email,},
+            ],
+                selected: true,
+            icon: Email,
+
+        },
+        {
+            name: 'InformacionEmpresa',
+            id: 'InformacionEmpresa',
+            disabled: [4],
+            children: [
+                { name: 'Informacion',
+                 id: 'Informacion',
+            selected: true,
+                    disabled:[4],
+                icon: Description,}
+            ],
+                selected: true,
+            icon: Description,
+
+        },
+        {
+            name: 'Pago',
+            id: 'Pago',
+            disabled:[0,1,2,3],
+            children: [
+                { name: 'TarjetaDeCredito',
+                 id: 'TarjetaDeCredito',
+            selected: true,
+                    disabled:[0,1,2,3],
+                icon: CreditCard,},
+                { name: 'TransferenciaBancaria',
+                 id: 'TransferenciaBancaria',
+            selected: true,
+                    disabled:[0,1,2,3],
+                icon: AccountBalance,},
+                { name: 'PagoEnCash',
+                 id: 'PagoEnCash',
+            selected: true,
+                    disabled:[0,1,2,3],
+                icon: Money,},
+                { name: 'PagoEnCuotas',
+                 id: 'PagoEnCuotas',
+            selected: true,
+                    disabled:[0,1,2,3],
+                icon: AccountBalanceWallet,},
+            ],
+                selected: true,
+            icon: Money,
+
+        }
+    ]
+};
 const styles = theme => ({
     ...tooltipsStyle,
   root: {
@@ -183,7 +409,7 @@ class MiniDrawer extends React.Component {
                       placement="top"
                       classes={{ tooltip: classes.tooltip }}
                     ><ListItem  button key={child.name} disabled={element.disabled && element.disabled.includes(this.props.actualPage) ||child.disabled && child.disabled.includes(this.props.actualPage) } onClick={() => this.props.actions.activateOrDesactivate(child.name)}>
-                  <ListItemIcon>{index % 2 === 0 ? <div  style={{color:child.selected?'#3a7d2a':'#ff0006'}}><child.icon/> </div>: <div style={{color:child.selected?'#3a7d2a':'#ff0006'}}> <child.icon /> </div>}</ListItemIcon>
+                  <ListItemIcon>{index % 2 === 0 ? <div  style={{color:child.selected?'#3a7d2a':'#ff0006'}}><MailIcon/> </div>: <div style={{color:child.selected?'#3a7d2a':'#ff0006'}}> <MailIcon /> </div>}</ListItemIcon>
                 <ListItemText  primary={child.name} />
               </ListItem>
               </Tooltip>

@@ -74,7 +74,7 @@ const SectionLatestOffers = props => {
                     </CardBody>
                     <CardFooter className={classes.justifyContentBetween}>
                       {hasFeature("Precio",props.tree) &&<div className={classes.price}>
-                        <h4>${parseInt(product.price)}</h4>
+                        <h4>${(product.price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&.').slice(0, -3)}</h4>
                       </div>}
                       <div className={classes.stats}>
                        {hasFeature("WishList",props.tree) &&<Tooltip
@@ -100,7 +100,7 @@ const SectionLatestOffers = props => {
 const mapStateToProps = (state) => {
     return {
         tree: state.auth.data,
-        randomProducts :state.auth.products.concat().filter((product) => product.category ===1).sort( function() { return 0.5 - Math.random() } ).slice(1,8).map(
+        randomProducts :state.auth.products.concat().sort( function() { return 0.5 - Math.random() } ).slice(1,8).map(
             (product) => {
                 product.eval=product.evaluations.reduce((total, currentValue, currentIndex, arr) =>{ return total + currentValue.eval},0)/product.evaluations.length
                 return product

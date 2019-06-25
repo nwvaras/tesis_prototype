@@ -111,7 +111,7 @@ class ProductPage extends React.Component {
                 </GridItem>
                 <GridItem md={6} sm={6}>
                   <h2 className={classes.title}>{this.props.activeProduct.name}</h2>
-                  {hasFeature("Precio",this.props.tree) &&<h3 className={classes.mainPrice}>${this.props.activeProduct.price}</h3>}
+                  {hasFeature("Precio",this.props.tree) &&<h3 className={classes.mainPrice}>${(this.props.activeProduct.price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&.').slice(0, -3)}</h3>}
                     {hasFeature("Evaluacion",this.props.tree) &&Array.apply(null, { length: this.props.evaluation }).map((e, i) => <Star/>)}
                     {hasFeature("Evaluacion",this.props.tree) &&Array.apply(null, { length: 5 -this.props.evaluation }).map((e, i) => <StarBorder/>)}
                      {hasFeature("Stock",this.props.tree) &&<h3 className={classes.title}>Stock {": "}{this.props.activeProduct.stock}</h3>}
@@ -127,133 +127,133 @@ class ProductPage extends React.Component {
                           </p>
                         )
                       },
-                      {
-                        title: "Informacion 1",
-                        content: (
-                          <p>
-                           {this.props.activeProduct.description}
-                          </p>
-                        )
-                      },
-                      {
-                        title: "Informacion 2",
-                        content: (
-                          <ul>
-                            <li>
-                             {this.props.activeProduct.description}
-                            </li>
-                            <li>
-                              {this.props.activeProduct.description}
-                            </li>
-                            <li>{this.props.activeProduct.description}</li>
-                            <li>84% cotton, 14% nylon, 2% elastane</li>
-                            <li>Dry clean</li>
-                          </ul>
-                        )
-                      }
+                      // {
+                      //   title: "Informacion 1",
+                      //   content: (
+                      //     <p>
+                      //      {this.props.activeProduct.description}
+                      //     </p>
+                      //   )
+                      // },
+                      // {
+                      //   title: "Informacion 2",
+                      //   content: (
+                      //     <ul>
+                      //       <li>
+                      //        {this.props.activeProduct.description}
+                      //       </li>
+                      //       <li>
+                      //         {this.props.activeProduct.description}
+                      //       </li>
+                      //       <li>{this.props.activeProduct.description}</li>
+                      //       <li>84% cotton, 14% nylon, 2% elastane</li>
+                      //       <li>Dry clean</li>
+                      //     </ul>
+                      //   )
+                      // }
                     ]}
                   />
                   <GridContainer className={classes.pickSize}>
-                    <GridItem md={6} sm={6}>
-                      <label>Seleccion 1</label>
-                      <FormControl
-                        fullWidth
-                        className={classes.selectFormControl}
-                      >
-                        <Select
-                          MenuProps={{
-                            className: classes.selectMenu
-                          }}
-                          classes={{
-                            select: classes.select
-                          }}
-                          value={this.state.colorSelect}
-                          onChange={this.handleSelect}
-                          inputProps={{
-                            name: "colorSelect",
-                            id: "color-select"
-                          }}
-                        >
-                          <MenuItem
-                            classes={{
-                              root: classes.selectMenuItem,
-                              selected: classes.selectMenuItemSelected
-                            }}
-                            value="0"
-                          >
-                            Rose
-                          </MenuItem>
-                          <MenuItem
-                            classes={{
-                              root: classes.selectMenuItem,
-                              selected: classes.selectMenuItemSelected
-                            }}
-                            value="1"
-                          >
-                            Gray
-                          </MenuItem>
-                          <MenuItem
-                            classes={{
-                              root: classes.selectMenuItem,
-                              selected: classes.selectMenuItemSelected
-                            }}
-                            value="2"
-                          >
-                            White
-                          </MenuItem>
-                        </Select>
-                      </FormControl>
-                    </GridItem>
-                    <GridItem md={6} sm={6}>
-                      <label>Seleccion 2</label>
-                      <FormControl
-                        fullWidth
-                        className={classes.selectFormControl}
-                      >
-                        <Select
-                          MenuProps={{
-                            className: classes.selectMenu
-                          }}
-                          classes={{
-                            select: classes.select
-                          }}
-                          value={this.state.sizeSelect}
-                          onChange={this.handleSelect}
-                          inputProps={{
-                            name: "sizeSelect",
-                            id: "size-select"
-                          }}
-                        >
-                          <MenuItem
-                            classes={{
-                              root: classes.selectMenuItem,
-                              selected: classes.selectMenuItemSelected
-                            }}
-                            value="0"
-                          >
-                            Small
-                          </MenuItem>
-                          <MenuItem
-                            classes={{
-                              root: classes.selectMenuItem,
-                              selected: classes.selectMenuItemSelected
-                            }}
-                            value="1"
-                          >
-                            Medium
-                          </MenuItem>
-                          <MenuItem
-                            classes={{
-                              root: classes.selectMenuItem,
-                              selected: classes.selectMenuItemSelected
-                            }}
-                            value="2"
-                          >
-                            Large
-                          </MenuItem>
-                        </Select>
-                      </FormControl>
-                    </GridItem>
+                    {/*<GridItem md={6} sm={6}>*/}
+                      {/*<label>Seleccion 1</label>*/}
+                      {/*<FormControl*/}
+                        {/*fullWidth*/}
+                        {/*className={classes.selectFormControl}*/}
+                      {/*>*/}
+                        {/*<Select*/}
+                          {/*MenuProps={{*/}
+                            {/*className: classes.selectMenu*/}
+                          {/*}}*/}
+                          {/*classes={{*/}
+                            {/*select: classes.select*/}
+                          {/*}}*/}
+                          {/*value={this.state.colorSelect}*/}
+                          {/*onChange={this.handleSelect}*/}
+                          {/*inputProps={{*/}
+                            {/*name: "colorSelect",*/}
+                            {/*id: "color-select"*/}
+                          {/*}}*/}
+                        {/*>*/}
+                          {/*<MenuItem*/}
+                            {/*classes={{*/}
+                              {/*root: classes.selectMenuItem,*/}
+                              {/*selected: classes.selectMenuItemSelected*/}
+                            {/*}}*/}
+                            {/*value="0"*/}
+                          {/*>*/}
+                            {/*Rose*/}
+                          {/*</MenuItem>*/}
+                          {/*<MenuItem*/}
+                            {/*classes={{*/}
+                              {/*root: classes.selectMenuItem,*/}
+                              {/*selected: classes.selectMenuItemSelected*/}
+                            {/*}}*/}
+                            {/*value="1"*/}
+                          {/*>*/}
+                            {/*Gray*/}
+                          {/*</MenuItem>*/}
+                          {/*<MenuItem*/}
+                            {/*classes={{*/}
+                              {/*root: classes.selectMenuItem,*/}
+                              {/*selected: classes.selectMenuItemSelected*/}
+                            {/*}}*/}
+                            {/*value="2"*/}
+                          {/*>*/}
+                            {/*White*/}
+                          {/*</MenuItem>*/}
+                        {/*</Select>*/}
+                      {/*</FormControl>*/}
+                    {/*</GridItem>*/}
+                    {/*<GridItem md={6} sm={6}>*/}
+                      {/*<label>Seleccion 2</label>*/}
+                      {/*<FormControl*/}
+                        {/*fullWidth*/}
+                        {/*className={classes.selectFormControl}*/}
+                      {/*>*/}
+                        {/*<Select*/}
+                          {/*MenuProps={{*/}
+                            {/*className: classes.selectMenu*/}
+                          {/*}}*/}
+                          {/*classes={{*/}
+                            {/*select: classes.select*/}
+                          {/*}}*/}
+                          {/*value={this.state.sizeSelect}*/}
+                          {/*onChange={this.handleSelect}*/}
+                          {/*inputProps={{*/}
+                            {/*name: "sizeSelect",*/}
+                            {/*id: "size-select"*/}
+                          {/*}}*/}
+                        {/*>*/}
+                          {/*<MenuItem*/}
+                            {/*classes={{*/}
+                              {/*root: classes.selectMenuItem,*/}
+                              {/*selected: classes.selectMenuItemSelected*/}
+                            {/*}}*/}
+                            {/*value="0"*/}
+                          {/*>*/}
+                            {/*Small*/}
+                          {/*</MenuItem>*/}
+                          {/*<MenuItem*/}
+                            {/*classes={{*/}
+                              {/*root: classes.selectMenuItem,*/}
+                              {/*selected: classes.selectMenuItemSelected*/}
+                            {/*}}*/}
+                            {/*value="1"*/}
+                          {/*>*/}
+                            {/*Medium*/}
+                          {/*</MenuItem>*/}
+                          {/*<MenuItem*/}
+                            {/*classes={{*/}
+                              {/*root: classes.selectMenuItem,*/}
+                              {/*selected: classes.selectMenuItemSelected*/}
+                            {/*}}*/}
+                            {/*value="2"*/}
+                          {/*>*/}
+                            {/*Large*/}
+                          {/*</MenuItem>*/}
+                        {/*</Select>*/}
+                      {/*</FormControl>*/}
+                    {/*</GridItem>*/}
                   </GridContainer>
                   <GridContainer className={classes.pullRight}>
                     <Button round color="rose" onClick={() => { this.props.dispatch(push("/shopping-cart-page")); this.props.actions.addProductToCart(this.props.activeProduct)}}>
@@ -323,7 +323,7 @@ class ProductPage extends React.Component {
                     </CardBody>
                     <CardFooter className={classes.justifyContentBetween}>
                        {hasFeature("Precio",this.props.tree) &&<div className={classes.price}>
-                        <h4>{product.price}</h4>
+                        <h4>{(product.price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&.').slice(0, -3)}</h4>
                       </div>}
                       <div className={classes.stats}>
                          {hasFeature("WishList",this.props.tree) &&<Tooltip

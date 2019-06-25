@@ -108,7 +108,7 @@ class SectionContentAreas extends React.Component {
                     index+1,
                     this.returnName(product),
                     product.qty,
-                    hasFeature("Precio",this.props.tree)?product.price:"",
+                    hasFeature("Precio",this.props.tree)?(product.price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&.').slice(0, -3):"",
                     fillButtons
                   ])
       data.push({
@@ -116,7 +116,7 @@ class SectionContentAreas extends React.Component {
                     colspan: "3",
                     amount: (
                         hasFeature("Precio",this.props.tree)&&<span>
-                          <small>€</small>{this.props.sum}
+                          <small>€</small>{(this.props.sum).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&.').slice(0, -3)}
                       </span>
                     )
                   })

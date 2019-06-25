@@ -69,7 +69,7 @@ class ShoppingCartPage extends React.Component {
                       "Red",
                       "M",
                       hasFeature("Precio",this.props.tree) &&<span>
-                        <small className={classes.tdNumberSmall}>$</small> {product.price}
+                        <small className={classes.tdNumberSmall}>$</small> {(product.price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&.').slice(0, -3)}
                       </span>,
                       <span>
                           {product.qty}{` `}
@@ -95,7 +95,7 @@ class ShoppingCartPage extends React.Component {
                         </div>
                       </span>,
                       <span>
-                          {hasFeature("Precio",this.props.tree) &&<small className={classes.tdNumberSmall}>{product.price*product.qty}</small>}
+                          {hasFeature("Precio",this.props.tree) &&<small className={classes.tdNumberSmall}>{(product.price*product.qty).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&.').slice(0, -3)}</small>}
                       </span>,
                       <Tooltip
                         id="close1"
@@ -113,14 +113,14 @@ class ShoppingCartPage extends React.Component {
                       colspan: "3",
                       amount: (
                         hasFeature("Precio",this.props.tree) &&<span>
-                          <small>$</small>{this.props.sum}
+                          <small>$</small>{(this.props.sum).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&.').slice(0, -3)}
                         </span>
                       ),
                       col: {
                         colspan: 3,
                         text: (
                           <Button color="info" round onClick={() => {if(this.props.cart.length >0){this.props.dispatch(push("/payment-page"))}}}>
-                            Complete Purchase <KeyboardArrowRight />
+                            Termina tu compra <KeyboardArrowRight />
                           </Button>
                         )
                       }
@@ -131,13 +131,13 @@ class ShoppingCartPage extends React.Component {
           <div className={classes.container} style={{'marginTop' :0,'paddingTop': '20vh'}}>
             <Card plain style={{'marginTop' :0}}>
               <CardBody plain>
-                <h3 className={classes.cardTitle}>Shopping Cart</h3>
+                <h3 className={classes.cardTitle}>Tu carro de compra</h3>
                 <Table
                   tableHead={[
                     "",
                     "Producto",
-                    "Var 1",
-                    "Var 2",
+                    "",
+                    "",
                         hasFeature("Precio",this.props.tree)?"Precio":"",
                     "CANTIDAD",
                     hasFeature("Precio",this.props.tree)?"P. Final":"",

@@ -81,7 +81,7 @@ return {photos:["","",""].map( (wop) => {return({src :result.product_entries[0].
 price:parseInt(result.product_entries[0].prices[0].min_normal_price),
 discountPrice:parseInt(result.product_entries[0].prices[0].min_normal_price),
 name:result.product_entries[0].product.name,
-id:index,
+id:50+index,
     categoryName: "Microondas",
 description :result.product_entries[0].product.slug,
 category:1,

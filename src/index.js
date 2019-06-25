@@ -59,16 +59,28 @@ import ChatWidget from 'views/DaEcommerce/Chat.jsx'
 const initialState = {};
 const hist = createBrowserHistory()
 const store = configureStore(initialState, hist);
+export function isObject(item) {
+  return (item && typeof item === 'object' && !Array.isArray(item));
+}
 
+export default function mergeDeep(target, source) {
+  let output = Object.assign({}, target);
+  if (isObject(target) && isObject(source)) {
+    Object.keys(source).forEach(key => {
+      if (isObject(source[key])) {
+        if (!(key in target))
+          Object.assign(output, { [key]: source[key] });
+        else
+          output[key] = mergeDeep(target[key], source[key]);
+      } else {
+        Object.assign(output, { [key]: source[key] });
+      }
+    });
+  }
+  return output;
+}
 
-let data={}
-// try {
-//
-//    data = JSON.parse(localStorage.getItem('datsa'));
-//
-// }
-// catch (e) {
-  data= {
+let data= {
     name: 'Ecommerce',
     id: 'Ecommerce',
     toggled: true,
@@ -277,8 +289,16 @@ let data={}
         }
     ]
 };
+try {
 
-// }
+   const saved = JSON.parse(localStorage.getItem('data'));
+   data = mergeDeep(data,saved)
+
+}
+catch (e) {
+
+
+}
 store.dispatch(setDataTree(data))
 
 ReactDOM.render(
