@@ -66,8 +66,8 @@ class ShoppingCartPage extends React.Component {
                           by Dolce&amp;Gabbana
                         </small>
                       </span>,
-                      "Red",
-                      "M",
+                      "",
+                      "",
                       hasFeature("Precio",this.props.tree) &&<span>
                         <small className={classes.tdNumberSmall}>$</small> {(product.price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&.').slice(0, -3)}
                       </span>,

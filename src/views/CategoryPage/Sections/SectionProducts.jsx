@@ -109,6 +109,7 @@ class SectionProducts extends React.Component {
         console.log(params)
       const min = params.min
       const max = params.max
+      const categoryVariables = params.categoryId?this.props.categoryVariables[params.categoryId]:false
       const products = this.props.products.filter( product => params.searchText ? ((params.categoryId? (product.category === parseInt(params.categoryId)) : true) && product.name.includes(params.searchText)): (params.categoryId? (product.category === parseInt(params.categoryId)) : true)).filter( product =>params.min&&params.max? (product.price > min && product.price < max): true)
 
     const { classes } = this.props;
@@ -177,618 +178,91 @@ class SectionProducts extends React.Component {
                           </CardBody>
                         )
                       }: {},
-                      // {
-                      //   title: "Variable 1",
-                      //   content: (
-                      //     <div className={classes.customExpandPanel}>
-                      //       <div
-                      //         className={
-                      //           classes.checkboxAndRadio +
-                      //           " " +
-                      //           classes.checkboxAndRadioHorizontal
-                      //         }
-                      //       >
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(1)}
-                      //               checked={
-                      //                 this.state.checked.indexOf(1) !== -1
-                      //                   ? true
-                      //                   : false
-                      //               }
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Blazers"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(2)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Casual Shirts"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(3)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Formal Shirts"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(4)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Jeans"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(5)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Polos"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(6)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Pyjamas"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(7)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Shorts"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(8)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Trousers"
-                      //         />
-                      //       </div>
-                      //     </div>
-                      //   )
-                      // },
-                      // {
-                      //   title: "Variable 2",
-                      //   content: (
-                      //     <div className={classes.customExpandPanel}>
-                      //       <div
-                      //         className={
-                      //           classes.checkboxAndRadio +
-                      //           " " +
-                      //           classes.checkboxAndRadioHorizontal
-                      //         }
-                      //       >
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(9)}
-                      //               checked={
-                      //                 this.state.checked.indexOf(9) !== -1
-                      //                   ? true
-                      //                   : false
-                      //               }
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="All"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(10)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Polo Ralph Lauren"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(11)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Wooyoungmi"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(12)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Alexander McQueen"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(13)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Tom Ford"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(14)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="AMI"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(15)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Berena"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(16)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Thom Sweeney"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(17)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Burberry Prorsum"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(18)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Calvin Klein"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(19)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Kingsman"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(20)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Club Monaco"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(21)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Dolce & Gabbana"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(22)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Gucci"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(23)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Biglioli"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(24)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Lanvin"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(25)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Loro Piana"
-                      //         />
-                      //         <FormControlLabel
-                      //           control={
-                      //             <Checkbox
-                      //               tabIndex={-1}
-                      //               onClick={() => this.handleToggle(26)}
-                      //               checkedIcon={
-                      //                 <Check className={classes.checkedIcon} />
-                      //               }
-                      //               icon={
-                      //                 <Check
-                      //                   className={classes.uncheckedIcon}
-                      //                 />
-                      //               }
-                      //               classes={{
-                      //                 checked: classes.checked,
-                      //                 root: classes.checkRoot
-                      //               }}
-                      //             />
-                      //           }
-                      //           classes={{ label: classes.label }}
-                      //           label="Massimo Alba"
-                      //         />
-                      //       </div>
-                      //     </div>
-                      //   )
-                      // },
+                       categoryVariables?{
+                        title: categoryVariables.name1,
+                        content: (
+                          <div className={classes.customExpandPanel}>
+                            <div
+                              className={
+                                classes.checkboxAndRadio +
+                                " " +
+                                classes.checkboxAndRadioHorizontal
+                              }
+                            >
+                                {categoryVariables.values1.map((marca,index) =><FormControlLabel key={marca}
+                                control={
+                                  <Checkbox
+                                    tabIndex={-1}
+                                    onClick={() => this.handleToggle(1)}
+                                    // checked={
+                                    //   this.state.checked.indexOf(1) !== -1
+                                    //     ? true
+                                    //     : false
+                                    // }
+                                    checkedIcon={
+                                      <Check className={classes.checkedIcon} />
+                                    }
+                                    icon={
+                                      <Check
+                                        className={classes.uncheckedIcon}
+                                      />
+                                    }
+                                    classes={{
+                                      checked: classes.checked,
+                                      root: classes.checkRoot
+                                    }}
+                                  />
+                                }
+                                classes={{ label: classes.label }}
+                                label={marca}
+                              />)}
+
+                            </div>
+                          </div>
+                        )
+                      }:{},
+                      categoryVariables?{
+                        title: categoryVariables.name2,
+                        content: (
+                          <div className={classes.customExpandPanel}>
+                            <div
+                              className={
+                                classes.checkboxAndRadio +
+                                " " +
+                                classes.checkboxAndRadioHorizontal
+                              }
+                            >
+                              {categoryVariables.values2.map((marca,index) =><FormControlLabel key={marca}
+                                control={
+                                  <Checkbox
+                                    tabIndex={-1}
+                                    onClick={() => this.handleToggle(1)}
+                                    // checked={
+                                    //   this.state.checked.indexOf(1) !== -1
+                                    //     ? true
+                                    //     : false
+                                    // }
+                                    checkedIcon={
+                                      <Check className={classes.checkedIcon} />
+                                    }
+                                    icon={
+                                      <Check
+                                        className={classes.uncheckedIcon}
+                                      />
+                                    }
+                                    classes={{
+                                      checked: classes.checked,
+                                      root: classes.checkRoot
+                                    }}
+                                  />
+                                }
+                                classes={{ label: classes.label }}
+                                label={marca}
+                              />)}
+                            </div>
+                          </div>
+                        )
+                      }:{},
                       // {
                       //   title: "Variable 3",
                       //   content: (
@@ -1281,7 +755,7 @@ const mapStateToProps = (state) => {
 
     return {
         tree: state.auth.data,
-
+        categoryVariables:state.auth.categoryVariables,
         products: state.auth.products.map(
             (product) => {
                 product.eval=product.evaluations.reduce((total, currentValue, currentIndex, arr) =>{ return total + currentValue.eval},0)/product.evaluations.length

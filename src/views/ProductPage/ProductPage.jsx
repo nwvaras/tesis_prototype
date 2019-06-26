@@ -94,7 +94,7 @@ class ProductPage extends React.Component {
         thumbnail: product2
       }
     ];
-
+    const categoryVariables = this.props.categoryVariables[this.props.activeProduct.category]
     return (
       <div className={classes.productPage}>
         <div className={classNames(classes.section, classes.sectionGray)}>
@@ -127,14 +127,22 @@ class ProductPage extends React.Component {
                           </p>
                         )
                       },
-                      // {
-                      //   title: "Informacion 1",
-                      //   content: (
-                      //     <p>
-                      //      {this.props.activeProduct.description}
-                      //     </p>
-                      //   )
-                      // },
+                      {
+                        title: categoryVariables.name1,
+                        content: (
+                          <p>
+                           {this.props.activeProduct.specs[categoryVariables.variable1]}
+                          </p>
+                        )
+                      },
+                        {
+                        title: categoryVariables.name2,
+                        content: (
+                          <p>
+                           {this.props.activeProduct.specs[categoryVariables.variable2]}
+                          </p>
+                        )
+                      },
                       // {
                       //   title: "Informacion 2",
                       //   content: (
@@ -323,7 +331,7 @@ class ProductPage extends React.Component {
                     </CardBody>
                     <CardFooter className={classes.justifyContentBetween}>
                        {hasFeature("Precio",this.props.tree) &&<div className={classes.price}>
-                        <h4>{(product.price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&.').slice(0, -3)}</h4>
+                        <h4>${(product.price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&.').slice(0, -3)}</h4>
                       </div>}
                       <div className={classes.stats}>
                          {hasFeature("WishList",this.props.tree) &&<Tooltip
@@ -526,6 +534,7 @@ const mapStateToProps = (state) => {
     return {
         tree: state.auth.data,
         activeProduct : activeProduct,
+        categoryVariables:state.auth.categoryVariables,
         idProduct: state.auth.activeProduct,
         categories: state.auth.categories,
         randomProducts :state.auth.products.concat().sort( function() { return 0.5 - Math.random() } ).slice(1,5),

@@ -85,7 +85,7 @@ let data= {
     id: 'Ecommerce',
     toggled: true,
     selected: true,
-      icon: Money,
+      icon: "Money",
     children: [
         {
             name: 'Usuarios',
@@ -96,30 +96,30 @@ let data= {
                  id: 'Notificaciones',
             selected: true,
                     disabled:[],
-                icon: Notification,},
+                icon: "Notification",},
                 { name: 'HistorialDeCompra',
                  id: 'HistorialDeCompra',
             selected: true,
                     disabled:[0,1,2],
-                icon: List,},
+                icon: "List",},
                 { name: 'Subscripcion',
                  id: 'Subscripcion',
                     disabled:[2,4,3],
             selected: true,
-                icon: Email,},
+                icon: "Email",},
                 { name: 'WishList',
                  id: 'WishList',
             selected: true,
                     disabled:[3,4],
-                icon: Favorite,},
+                icon: "Favorite",},
                 { name: 'CodigoDesc',
                  id: 'CodigoDesc',
             selected: true,
                     disabled:[1,2,3],
-                icon:CardGiftcard,},
+                icon:"CardGiftcard",},
             ],
             selected: true,
-            icon: AccountCircle,
+            icon: "AccountCircle",
         },
         {
             name: 'Compra',
@@ -130,15 +130,15 @@ let data= {
                  id: 'Despacho',
             selected: true,
                     disabled:[0,1,2,3],
-                icon: DirectionsCar,},
+                icon: "DirectionsCar",},
                 { name: 'Ordenes',
                  id: 'Ordenes',
             selected: true,
                     disabled:[0,1,2,3],
-                icon: AllInbox,},
+                icon: "AllInbox",},
             ],
                 selected: true,
-            icon: Money,
+            icon: "Money",
 
         },
         {
@@ -150,28 +150,28 @@ let data= {
                  id: 'Ofertas',
             selected: true,
                     disabled:[0,2,3,4],
-                icon: ChromeReaderMode,},
+                icon: "ChromeReaderMode",},
                 { name: 'Recomendados',
                  id: 'Recomendados',
             selected: true,
                     disabled:[3,4],
-                icon: ChromeReaderMode,},
+                icon: "ChromeReaderMode",},
                 { name: 'Novedades',
                  id: 'Novedades',
             selected: true,
                     disabled:[1,2,3,4],
-                icon: ChromeReaderMode,},
+                icon: "ChromeReaderMode",},
                 { name: 'TopProductsBuyTimes',
                  id: 'TopProductsBuyTimes',
             selected: true,
                     disabled:[1,2,3,4],
-                icon: ChromeReaderMode,},
+                icon: "ChromeReaderMode",},
                 { name: 'TopProductsEvaluations',
                  id: 'TopProductsEvaluations',
                     disabled:[1,2,3,4],
-                selected: true, icon:ChromeReaderMode}],
+                selected: true, icon:"ChromeReaderMode"}],
             selected: true,
-            icon: ChromeReaderMode,
+            icon: "ChromeReaderMode",
         },
         {
             name: 'Products',
@@ -182,42 +182,42 @@ let data= {
                  id: 'Precio',
             selected: true,
                     disabled:[],
-                icon: Money,},
+                icon: "Money",},
                 { name: 'Stock',
                  id: 'Stock',
             selected: true,
                     disabled:[0,1,3],
-                icon: AllInbox,},
+                icon: "AllInbox",},
                 { name: 'Evaluacion',
                  id: 'Evaluacion',
             selected: true,
                     disabled:[3,4],
-                icon: StarRate,},
+                icon: "StarRate",},
                 { name: 'Preguntas',
                  id: 'Preguntas',
                     disabled:[0,1,3,4],
-                selected: true, icon:QuestionAnswer}],
+                selected: true, icon:"QuestionAnswer"}],
             selected: true,
 
-            icon: AllInbox,
+            icon: "AllInbox",
         },
         {
             name: 'Catalogo',
             id: 'Catalogo',
             selected: true,
-            icon: Category,
+            icon: "Category",
             disabled:[],
             children: [
                 { name: 'Busqueda',
                  id: 'Busqueda',
             selected: true,
                     disabled:[],
-                icon: Search,},
+                icon: "Search",},
                 { name: 'Categorias',
                  id: 'Categorias',
             selected: true,
                     disabled:[],
-                icon: Category,},
+                icon: "Category",},
             ],
 
 
@@ -231,15 +231,15 @@ let data= {
                  id: 'Chat',
             selected: true,
                     disabled:[],
-                icon: Chat,},
+                icon: "Chat",},
                 { name: 'Email',
                  id: 'Email',
             selected: true,
                     disabled:[],
-                icon: Email,},
+                icon: "Email",},
             ],
                 selected: true,
-            icon: Email,
+            icon: "Email",
 
         },
         {
@@ -251,10 +251,10 @@ let data= {
                  id: 'Informacion',
             selected: true,
                     disabled:[4],
-                icon: Description,}
+                icon: "Description",}
             ],
                 selected: true,
-            icon: Description,
+            icon: "Description",
 
         },
         {
@@ -266,39 +266,39 @@ let data= {
                  id: 'TarjetaDeCredito',
             selected: true,
                     disabled:[0,1,2,3],
-                icon: CreditCard,},
+                icon: "CreditCard",},
                 { name: 'TransferenciaBancaria',
                  id: 'TransferenciaBancaria',
             selected: true,
                     disabled:[0,1,2,3],
-                icon: AccountBalance,},
+                icon: "AccountBalance",},
                 { name: 'PagoEnCash',
                  id: 'PagoEnCash',
             selected: true,
                     disabled:[0,1,2,3],
-                icon: Money,},
+                icon: "Money",},
                 { name: 'PagoEnCuotas',
                  id: 'PagoEnCuotas',
             selected: true,
                     disabled:[0,1,2,3],
-                icon: AccountBalanceWallet,},
+                icon: "AccountBalanceWallet",},
             ],
                 selected: true,
-            icon: Money,
+            icon: "Money",
 
         }
     ]
 };
-try {
-
-   const saved = JSON.parse(localStorage.getItem('data'));
-   data = mergeDeep(data,saved)
-
-}
-catch (e) {
-
-
-}
+// try {
+//
+//    const saved = JSON.parse(localStorage.getItem('data'));
+//    data = mergeDeep(data,saved)
+//
+// }
+// catch (e) {
+//
+//
+// }
 store.dispatch(setDataTree(data))
 
 ReactDOM.render(

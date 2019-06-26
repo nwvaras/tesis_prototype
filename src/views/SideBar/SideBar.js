@@ -45,6 +45,7 @@ import Category from "@material-ui/icons/Category";
 import Favorite from "@material-ui/icons/Favorite";
 import QuestionAnswer from "@material-ui/icons/QuestionAnswer";
 import StarRate from "@material-ui/icons/StarRate";
+import {getIconOfBar} from "../../utils";
 const drawerWidth = 240;
 let data= {
     name: 'Ecommerce',
@@ -402,18 +403,18 @@ class MiniDrawer extends React.Component {
           <Divider />
           <Divider />
           <List>
-            {element.children && element.children.map((child, index) => ( (console.log(child) || true) &&
+            {element.children && element.children.map((child, index) =>{ const childicon=getIconOfBar(child); console.log(childicon); return( (console.log(child) || true) &&
               <Tooltip
                       id="tooltip-top"
                       title={child.name}
                       placement="top"
                       classes={{ tooltip: classes.tooltip }}
                     ><ListItem  button key={child.name} disabled={element.disabled && element.disabled.includes(this.props.actualPage) ||child.disabled && child.disabled.includes(this.props.actualPage) } onClick={() => this.props.actions.activateOrDesactivate(child.name)}>
-                  <ListItemIcon>{index % 2 === 0 ? <div  style={{color:child.selected?'#3a7d2a':'#ff0006'}}><MailIcon/> </div>: <div style={{color:child.selected?'#3a7d2a':'#ff0006'}}> <MailIcon /> </div>}</ListItemIcon>
+                  <ListItemIcon>{index % 2 === 0 ? <div  style={{color:child.selected?'#3a7d2a':'#ff0006'}}>{childicon} </div>: <div style={{color:child.selected?'#3a7d2a':'#ff0006'}}> {childicon} </div>}</ListItemIcon>
                 <ListItemText  primary={child.name} />
               </ListItem>
               </Tooltip>
-            ))}
+            )})}
           </List>
                 </div>
                 ))}

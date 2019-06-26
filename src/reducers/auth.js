@@ -52,6 +52,8 @@ price:parseInt(result.product_entries[0].prices[0].min_normal_price),
 discountPrice:parseInt(result.product_entries[0].prices[0].min_normal_price),
 name:result.product_entries[0].product.name,
 id:index,
+    specs:result.product_entries[0].product.specs,
+    stock: Math.floor((Math.random() * 30   ) + 1),
     categoryName: "Notebooks",
 description :result.product_entries[0].product.slug,
 category:0,
@@ -81,7 +83,9 @@ return {photos:["","",""].map( (wop) => {return({src :result.product_entries[0].
 price:parseInt(result.product_entries[0].prices[0].min_normal_price),
 discountPrice:parseInt(result.product_entries[0].prices[0].min_normal_price),
 name:result.product_entries[0].product.name,
+specs:result.product_entries[0].product.specs,
 id:50+index,
+    stock: Math.floor((Math.random() * 100) + 1),
     categoryName: "Microondas",
 description :result.product_entries[0].product.slug,
 category:1,
@@ -111,7 +115,14 @@ activeCategory: 0,
     activeProduct: 0,
     cart:[],
     searchText: "",
+    categoryVariables:[{variable1:"line_brand_unicode",name1: "Marca",values1:getOptionsforVar(jsonInitial,"line_brand_unicode"),variable2:'processor_core_count_unicode',name2: "Procesadores",values2:getOptionsforVar(jsonInitial,"processor_core_count_unicode")},{variable1:'brand_name',name1:"Marca",values1:getOptionsforVar(jsonInitial2,"brand_name"),variable2: 'has_grill',name2:"¿Tiene Parrilla?",values2:["Si","No"]}],
     sidebarActive: true,}
+
+function getOptionsforVar(json,variable){
+    return Array.from(new Set(json()['results'].map( (result,index) =>{
+return result.product_entries[0].product.specs[variable]
+})))
+}
 // const initialState = {
 //
 //     data: null,
